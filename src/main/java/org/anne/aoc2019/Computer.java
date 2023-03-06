@@ -26,6 +26,10 @@ public class Computer {
         return intCode;
     }
 
+    public List<Long> getOutput() {
+        return output;
+    }
+
     public long getLastOutput() {
         if (this.output.isEmpty()) {
             return 0;
@@ -43,6 +47,10 @@ public class Computer {
         for (long i : input) {
             this.input.add(i);
         }
+    }
+
+    public void writeInput(int input) {
+        this.input.add((long) input);
     }
 
     private long readInput() {
