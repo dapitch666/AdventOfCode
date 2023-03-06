@@ -30,7 +30,7 @@ public class Computer {
         if (this.output.isEmpty()) {
             return 0;
         } else {
-            return this.output.get(this.output.size() - 1);
+            return this.output.remove(0);
         }
     }
 
@@ -51,8 +51,8 @@ public class Computer {
         return firstInput;
     }
 
-    public boolean isStopped() {
-        return this.stopped;
+    public boolean isStillRunning() {
+        return !this.stopped;
     }
 
     public void compute(int noun, int verb) {

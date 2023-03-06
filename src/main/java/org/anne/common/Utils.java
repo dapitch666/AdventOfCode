@@ -1,7 +1,9 @@
 package org.anne.common;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,6 +35,18 @@ public class Utils {
     public static String printAscii(int[][] array) {
         // print2dIntArray(array, "  ", "██");
         return print2dIntArray(array, "  ", "##");
+    }
+
+    public static String printAscii(Set<Point> points) {
+        int minX = points.stream().map(x -> x.x).min(Integer::compare).orElseThrow();
+        int maxX = points.stream().map(x -> x.x).max(Integer::compare).orElseThrow();
+        int minY = points.stream().map(x -> x.y).min(Integer::compare).orElseThrow();
+        int maxY = points.stream().map(x -> x.y).max(Integer::compare).orElseThrow();
+        int[][] array = new int[maxY - minY + 1][maxX - minX + 1];
+        for (Point p : points) {
+            array[p.y - minY][p.x - minX] = 1;
+        }
+        return printAscii(array);
     }
 
     public static List<String> transpose(List<String> input) {

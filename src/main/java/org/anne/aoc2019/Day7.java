@@ -50,7 +50,7 @@ public class Day7 extends Day {
             for (int i = 0; i < computers.length; i++) {
                 computers[i].writeInput(new long[]{ampliOrder[i]});
             }
-            while(!computers[4].isStopped()) {
+            while(computers[4].isStillRunning()) {
                 for (Computer computer : computers) {
                     computer.compute(output);
                     output = (int) computer.getLastOutput();
