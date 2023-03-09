@@ -14,12 +14,12 @@ public class Day5 extends Day {
     public static long part1(String input) {
         Computer computer = new Computer(input);
         computer.compute(1);
-        return computer.getLastOutput();
+        return computer.getOutput();
     }
 
     public static long part2(String input) {
         Computer computer = new Computer(input);
         computer.compute(5);
-        return computer.getLastOutput();
+        return computer.getOutput();
     }
 }

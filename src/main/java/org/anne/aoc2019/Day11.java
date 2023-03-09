@@ -26,7 +26,7 @@ public class Day11 extends Day {
         while (computer.isStillRunning()) {
             int color = white.contains(current) ? 1 : 0;
             computer.compute(color);
-            long outColor = computer.getLastOutput();
+            long outColor = computer.getOutput();
             if (outColor != color) {
                 painted.add(new Point(current));
                 if (outColor == 1)
@@ -34,7 +34,7 @@ public class Day11 extends Day {
                 else if (outColor == 0)
                     white.remove(new Point(current));
             }
-            long outDirection = computer.getLastOutput();
+            long outDirection = computer.getOutput();
             direction = turn(direction, outDirection);
             current.translate(direction.x, direction.y);
         }
@@ -50,14 +50,14 @@ public class Day11 extends Day {
         while (computer.isStillRunning()) {
             int color = white.contains(current) ? 1 : 0;
             computer.compute(color);
-            long outColor = computer.getLastOutput();
+            long outColor = computer.getOutput();
             if (outColor != color) {
                 if (outColor == 1)
                     white.add(new Point(current));
                 else if (outColor == 0)
                     white.remove(new Point(current));
             }
-            long outDirection = computer.getLastOutput();
+            long outDirection = computer.getOutput();
             direction = turn(direction, outDirection);
             current.translate(direction.x, direction.y);
         }

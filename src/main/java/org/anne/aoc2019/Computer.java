@@ -26,15 +26,23 @@ public class Computer {
         return intCode;
     }
 
-    public List<Long> getOutput() {
+    public List<Long> getOutputs() {
         return output;
+    }
+
+    public long getOutput() {
+        if (this.output.isEmpty()) {
+            return 0;
+        } else {
+            return this.output.remove(0);
+        }
     }
 
     public long getLastOutput() {
         if (this.output.isEmpty()) {
             return 0;
         } else {
-            return this.output.remove(0);
+            return this.output.get(this.output.size() - 1);
         }
     }
 
@@ -43,10 +51,10 @@ public class Computer {
         compute();
     }
 
-    public long computeAndGetLastOutput(long input) {
+    public long computeAndGetOutput(long input) {
         this.input.add(input);
         compute();
-        return getLastOutput();
+        return getOutput();
     }
 
     public void writeInput(long[] input) {

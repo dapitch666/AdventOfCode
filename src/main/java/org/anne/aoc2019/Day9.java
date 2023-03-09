@@ -17,12 +17,12 @@ public class Day9 extends Day {
     static long part1(String input) {
         Computer computer = new Computer(input, 2048);
         computer.compute(1);
-        return computer.getLastOutput();
+        return computer.getOutput();
     }
 
     static long part2(String input) {
         Computer computer = new Computer(input, 2048);
         computer.compute(2);
-        return computer.getLastOutput();
+        return computer.getOutput();
     }
 }

@@ -18,7 +18,7 @@ public class Day13 extends Day {
         int tiles = 0;
         Computer computer = new Computer(input, 3072);
         computer.compute();
-        List<Long> output = computer.getOutput();
+        List<Long> output = computer.getOutputs();
         for (int i = 0; i < output.size(); i += 3) {
             if (output.get(i + 2) == 2) {
                 tiles++;
@@ -44,7 +44,7 @@ public class Day13 extends Day {
         int ball = 0;
         int paddle = 0;
         int score = 0;
-        List<Long> output = computer.getOutput();
+        List<Long> output = computer.getOutputs();
         while (output.size() > 0) {
             int x = Math.toIntExact(output.remove(0));
             int y = Math.toIntExact(output.remove(0));

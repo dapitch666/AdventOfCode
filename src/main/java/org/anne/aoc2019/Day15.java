@@ -63,11 +63,11 @@ public class Day15 extends Day {
                 var adjacent = findNeighbor(map, next);
                 var path = path(map, current, adjacent);
                 for (var point : path) {
-                    computer.computeAndGetLastOutput(Direction.getDirectionBetween(current, point));
+                    computer.computeAndGetOutput(Direction.getDirectionBetween(current, point));
                     current = point;
                 }
             }
-            var status = (int) computer.computeAndGetLastOutput(Direction.getDirectionBetween(current, next));
+            var status = (int) computer.computeAndGetOutput(Direction.getDirectionBetween(current, next));
             switch (status) {
                 case 0 -> map.put(next, '#');
                 case 1 -> {

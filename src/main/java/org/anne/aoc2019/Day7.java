@@ -26,7 +26,7 @@ public class Day7 extends Day {
                 Computer computer = new Computer(input);
                 computer.writeInput(new long[]{i, output});
                 computer.compute();
-                output = computer.getLastOutput();
+                output = computer.getOutput();
             }
             if (output > maxOutput) {
                 maxOutput = output;
@@ -53,7 +53,7 @@ public class Day7 extends Day {
             while(computers[4].isStillRunning()) {
                 for (Computer computer : computers) {
                     computer.compute(output);
-                    output = (int) computer.getLastOutput();
+                    output = (int) computer.getOutput();
                 }
             }
             if (output > maxOutput) {
