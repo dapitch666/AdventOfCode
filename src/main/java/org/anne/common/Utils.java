@@ -3,6 +3,7 @@ package org.anne.common;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
@@ -47,6 +48,25 @@ public class Utils {
             array[p.y - minY][p.x - minX] = 1;
         }
         return printAscii(array);
+    }
+
+    public static String printHashmap(Map<Point, Character> map) {
+        int minX = map.keySet().stream().map(x -> x.x).min(Integer::compare).orElseThrow();
+        int maxX = map.keySet().stream().map(x -> x.x).max(Integer::compare).orElseThrow();
+        int minY = map.keySet().stream().map(x -> x.y).min(Integer::compare).orElseThrow();
+        int maxY = map.keySet().stream().map(x -> x.y).max(Integer::compare).orElseThrow();
+        char[][] array = new char[maxY - minY + 1][maxX - minX + 1];
+        for (Point p : map.keySet()) {
+            array[p.y - minY][p.x - minX] = map.get(p);
+        }
+        StringBuilder sb = new StringBuilder();
+        for (char[] chars : array) {
+            for (int j = 0; j < array[0].length; j++) {
+                sb.append(chars[j]);
+            }
+            sb.append(LINE_SEPARATOR);
+        }
+        return sb.toString();
     }
 
     public static List<String> transpose(List<String> input) {
