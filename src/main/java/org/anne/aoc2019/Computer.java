@@ -57,6 +57,12 @@ public class Computer {
         return getOutput();
     }
 
+    public long computeAndGetOutput(long[] input) {
+        this.writeInput(input);
+        compute();
+        return getOutput();
+    }
+
     public void writeInput(long[] input) {
         for (long i : input) {
             this.input.add(i);
