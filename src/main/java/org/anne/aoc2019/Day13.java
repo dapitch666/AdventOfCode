@@ -16,7 +16,7 @@ public class Day13 extends Day {
 
     static int part1(String input) {
         int tiles = 0;
-        Computer computer = new Computer(input, 3072);
+        Computer computer = new Computer(input);
         computer.compute();
         List<Long> output = computer.getOutputs();
         for (int i = 0; i < output.size(); i += 3) {
@@ -29,7 +29,7 @@ public class Day13 extends Day {
 
     static int part2(String input) {
         input = "2" + input.substring(1);
-        Computer computer = new Computer(input, 3072);
+        Computer computer = new Computer(input);
         computer.compute();
         Game game = getGame(computer);
         while (computer.isStillRunning()) {

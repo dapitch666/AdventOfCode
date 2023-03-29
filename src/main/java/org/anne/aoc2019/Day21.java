@@ -12,7 +12,7 @@ public class Day21 extends Day {
     }
 
     static long part1(String input) {
-        Computer computer = new Computer(input, 4096);
+        Computer computer = new Computer(input);
         String program = """
                 NOT A J
                 NOT B T
@@ -31,7 +31,7 @@ public class Day21 extends Day {
     }
 
     static long part2(String input) {
-        Computer computer = new Computer(input, 4096);
+        Computer computer = new Computer(input);
         String program = """
                 NOT A J
                 NOT B T

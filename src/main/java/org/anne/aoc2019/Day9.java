@@ -15,13 +15,13 @@ public class Day9 extends Day {
     }
 
     static long part1(String input) {
-        Computer computer = new Computer(input, 2048);
+        Computer computer = new Computer(input);
         computer.compute(1);
         return computer.getOutput();
     }
 
     static long part2(String input) {
-        Computer computer = new Computer(input, 2048);
+        Computer computer = new Computer(input);
         computer.compute(2);
         return computer.getOutput();
     }

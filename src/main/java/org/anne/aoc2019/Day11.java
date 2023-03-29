@@ -22,7 +22,7 @@ public class Day11 extends Day {
         Set<Point> white = new HashSet<>();
         Point current = new Point(0, 0);
         Direction direction = Direction.UP;
-        Computer computer = new Computer(input, 2048);
+        Computer computer = new Computer(input);
         while (computer.isStillRunning()) {
             int color = white.contains(current) ? 1 : 0;
             computer.compute(color);
@@ -45,7 +45,7 @@ public class Day11 extends Day {
         Set<Point> white = new HashSet<>();
         Point current = new Point(0, 0);
         Direction direction = Direction.UP;
-        Computer computer = new Computer(input, 2048);
+        Computer computer = new Computer(input);
         white.add(new Point(current));
         while (computer.isStillRunning()) {
             int color = white.contains(current) ? 1 : 0;

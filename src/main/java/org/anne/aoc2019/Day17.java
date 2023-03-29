@@ -46,7 +46,7 @@ public class Day17 extends Day {
         List<String> instructions = getInstructions(cameraInput);
         String newInput = getNewInput(20, instructions);
         input = input.replaceFirst("1", "2");
-        Computer computer = new Computer(input, 4000);
+        Computer computer = new Computer(input);
         for (var c : newInput.toCharArray()) {
             computer.writeInput(c);
         }
@@ -141,7 +141,7 @@ public class Day17 extends Day {
     }
 
     private static List<String> getCameraInput(String input) {
-        Computer computer = new Computer(input, 4000);
+        Computer computer = new Computer(input);
         computer.compute();
         var cameraOutput = computer.getOutputs().stream()
                 .map(i -> (char) i.intValue())

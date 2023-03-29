@@ -24,7 +24,7 @@ public class Day7 extends Day {
             long output = 0;
             for (int i : ampliOrder) {
                 Computer computer = new Computer(input);
-                computer.writeInput(new long[]{i, output});
+                computer.writeInput(i, output);
                 computer.compute();
                 output = computer.getOutput();
             }
@@ -48,7 +48,7 @@ public class Day7 extends Day {
             };
             int output = 0;
             for (int i = 0; i < computers.length; i++) {
-                computers[i].writeInput(new long[]{ampliOrder[i]});
+                computers[i].writeInput(ampliOrder[i]);
             }
             while(computers[4].isStillRunning()) {
                 for (Computer computer : computers) {

@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    private final long[] intCode;
+    private final long[] intCode = new long[4096];
     private final List<Long> input = new ArrayList<>();
     private final List<Long> output = new ArrayList<>();
     private boolean stopped = false;
@@ -15,11 +15,11 @@ public class Computer {
     private int relativeBase = 0;
 
     public Computer(String memory) {
-        this.intCode = stringToIntCode(memory);
-    }
-
-    public Computer(String memory, int memorySize) {
-        this.intCode = stringToIntCode(memory, memorySize);
+        int i = 0;
+        for (String s : memory.split(",")) {
+            intCode[i] = Long.parseLong(s);
+            i++;
+        }
     }
 
     public long[] getIntCode() {
@@ -46,31 +46,21 @@ public class Computer {
         }
     }
 
-    public void compute(long input) {
-        this.input.add(input);
+    public void compute(long... input) {
+        this.writeInput(input);
         compute();
     }
 
-    public long computeAndGetOutput(long input) {
-        this.input.add(input);
-        compute();
-        return getOutput();
-    }
-
-    public long computeAndGetOutput(long[] input) {
+    public long computeAndGetOutput(long... input) {
         this.writeInput(input);
         compute();
         return getOutput();
     }
 
-    public void writeInput(long[] input) {
+    public void writeInput(long... input) {
         for (long i : input) {
             this.input.add(i);
         }
-    }
-
-    public void writeInput(int input) {
-        this.input.add((long) input);
     }
 
     private long readInput() {
@@ -208,22 +198,6 @@ public class Computer {
         } else {
             return relativeBase + (int) intCode[pos];
         }
-    }
-
-    private long[] stringToIntCode (String memory) {
-        return Arrays.stream(memory.split(","))
-                .mapToLong(Long::parseLong)
-                .toArray();
-    }
-
-    private long[] stringToIntCode (String memory, int memorySize) {
-        long[] result = new long[memorySize];
-        int i = 0;
-        for (String s : memory.split(",")) {
-            result[i] = Long.parseLong(s);
-            i++;
-        }
-        return result;
     }
 
     public boolean hasOutput() {
