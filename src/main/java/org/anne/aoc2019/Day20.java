@@ -1,6 +1,7 @@
 package org.anne.aoc2019;
 
 import org.anne.common.Day;
+import org.anne.common.Point3d;
 
 import java.awt.*;
 import java.util.*;
@@ -131,17 +132,17 @@ public class Day20 extends Day {
             if(current3d.equals(new Point3d(maze.end, 0))) {
                 return currentCost.get(current3d);
             }
-            Point current = new Point(current3d.x, current3d.y);
+            Point current = new Point(current3d.x(), current3d.y());
             if(maze.portals.containsKey(current)) {
                 Point portal = maze.portals.get(current);
                 Point3d point3d = null;
                 if(current.x <= 2 || current.x >= width - 3 || current.y <= 2 || current.y >= height - 3) {
-                    if(current3d.z > 0) {
-                        point3d = new Point3d(portal,current3d.z - 1);
+                    if(current3d.z() > 0) {
+                        point3d = new Point3d(portal,current3d.z() - 1);
                     }
                 } else {
-                    if(current3d.z < maze.portals.size() / 2) {
-                        point3d = new Point3d(portal,current3d.z + 1);
+                    if(current3d.z() < maze.portals.size() / 2) {
+                        point3d = new Point3d(portal,current3d.z() + 1);
                     }
                 }
                 if(point3d != null) {
@@ -154,7 +155,7 @@ public class Day20 extends Day {
             }
             for(Point point : neighbors(current)) {
                 if(maze.pathway.contains(point)) {
-                    Point3d destination = new Point3d(point, current3d.z);
+                    Point3d destination = new Point3d(point, current3d.z());
                     int cost = currentCost.get(current3d) + 1;
                     if(cost < currentCost.getOrDefault(destination, Integer.MAX_VALUE)) {
                         currentCost.put(destination, cost);
@@ -164,12 +165,6 @@ public class Day20 extends Day {
             }
         }
         return -1;
-    }
-
-    record Point3d(int x, int y, int z) {
-        private Point3d (Point point, int z) {
-            this(point.x, point.y, z);
-        }
     }
 
     record DonutMaze (Set<Point> pathway, Map<Point, Point> portals, Point start, Point end) {}

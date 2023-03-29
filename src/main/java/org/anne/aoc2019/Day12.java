@@ -1,6 +1,7 @@
 package org.anne.aoc2019;
 
 import org.anne.common.Day;
+import org.anne.common.Point3d;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,13 +51,13 @@ public class Day12  extends Day {
                 moon.applyVelocity();
             }
             steps++;
-            if (cycleX == 0 && moons.stream().allMatch(moon -> moon.velocity.x == 0)) {
+            if (cycleX == 0 && moons.stream().allMatch(moon -> moon.velocity.x() == 0)) {
                 cycleX = steps;
             }
-            if (cycleY == 0 && moons.stream().allMatch(moon -> moon.velocity.y == 0)) {
+            if (cycleY == 0 && moons.stream().allMatch(moon -> moon.velocity.y() == 0)) {
                 cycleY = steps;
             }
-            if (cycleZ == 0 && moons.stream().allMatch(moon -> moon.velocity.z == 0)) {
+            if (cycleZ == 0 && moons.stream().allMatch(moon -> moon.velocity.z() == 0)) {
                 cycleZ = steps;
             }
         }
@@ -85,14 +86,6 @@ public class Day12  extends Day {
         }
         return moons;
     }
-    protected record Point3d(int x, int y, int z) {
-        Point3d add(Point3d other) {
-            return new Point3d(x + other.x, y + other.y, z + other.z);
-        }
-        int absSum() {
-            return Math.abs(x) + Math.abs(y) + Math.abs(z);
-        }
-    }
 
     static class Moon {
         private Point3d position;
@@ -104,9 +97,9 @@ public class Day12  extends Day {
         }
 
         public void applyGravity(Moon other) {
-            int x = Integer.compare(other.position.x, position.x);
-            int y = Integer.compare(other.position.y, position.y);
-            int z = Integer.compare(other.position.z, position.z);
+            int x = Integer.compare(other.position.x(), position.x());
+            int y = Integer.compare(other.position.y(), position.y());
+            int z = Integer.compare(other.position.z(), position.z());
             velocity = velocity.add(new Point3d(x, y, z));
         }
 
