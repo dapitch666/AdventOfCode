@@ -225,4 +225,8 @@ public class Computer {
         }
         return result;
     }
+
+    public boolean hasOutput() {
+        return !output.isEmpty();
+    }
 }
