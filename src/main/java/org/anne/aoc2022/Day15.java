@@ -1,16 +1,13 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
 import java.awt.*;
-import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Day15 extends Day {
     public static void main(String[] args) {
@@ -76,7 +73,7 @@ public class Day15 extends Day {
                 .filter(s -> s.isInRange(row))
                 .map(s -> new Range(s.sensor().x - s.spareDistance(row), s.sensor().x + s.spareDistance(row)))
                 .sorted(Comparator.comparingInt(r -> r.start))
-                .collect(Collectors.toList());
+                .toList();
         List<Range> reducedRanges = new ArrayList<>();
         int min = ranges.get(0).start;
         int max = ranges.get(0).end;

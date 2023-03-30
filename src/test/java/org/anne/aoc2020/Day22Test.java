@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Day22Test {
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "Player 1:",
             "9",
             "2",

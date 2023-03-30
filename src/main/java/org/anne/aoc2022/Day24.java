@@ -1,10 +1,8 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
 import java.awt.*;
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -86,7 +84,7 @@ public class Day24 extends Day{
         bounds.add(new Point(maxX - 2,maxY + 1));
     }
 
-    public static record Blizzard (Point pos, char facing) {
+    public record Blizzard (Point pos, char facing) {
         void tick() {
             Point newPos = switch (facing) {
                 case '>' -> new Point(pos.x+1, pos.y);

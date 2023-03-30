@@ -1,10 +1,6 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
-
-import java.lang.invoke.MethodHandles;
-import java.util.List;
 
 public class Day6 extends Day{
     public static void main(String[] args) {

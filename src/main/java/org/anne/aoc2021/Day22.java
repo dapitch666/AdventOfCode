@@ -1,6 +1,7 @@
 package org.anne.aoc2021;
 
 import org.anne.common.Day;
+import org.anne.common.Point3d;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -18,15 +19,15 @@ public class Day22 extends Day {
 
     public static long part1(List<String>  input) {
         List<Cuboid> cuboids = cuboidList(input);
-        Set<Cube> onCubes = new HashSet<>();
+        Set<Point3d> onCubes = new HashSet<>();
         for (Cuboid cuboid : cuboids) {
             for (int x = Math.max(cuboid.xMin, -50); x <= Math.min(cuboid.xMax, 50); x++) {
                 for (int y = Math.max(cuboid.yMin, -50); y <= Math.min(cuboid.yMax, 50); y++) {
                     for (int z = Math.max(cuboid.zMin, -50); z <= Math.min(cuboid.zMax, 50); z++) {
                         if (cuboid.isOn) {
-                            onCubes.add(new Cube(x, y, z));
+                            onCubes.add(new Point3d(x, y, z));
                         } else {
-                            onCubes.remove(new Cube(x, y, z));
+                            onCubes.remove(new Point3d(x, y, z));
                         }
                     }
                 }
@@ -79,9 +80,7 @@ public class Day22 extends Day {
         return cuboids;
     }
 
-    public static record Cube (int x, int y, int z) {}
-
-    public static record Cuboid(int xMin, int xMax, int yMin, int yMax, int zMin, int zMax, boolean isOn) {
+    public record Cuboid(int xMin, int xMax, int yMin, int yMax, int zMin, int zMax, boolean isOn) {
 
         public Optional<Cuboid> intersection(Cuboid o, boolean on) {
             if (xMin > o.xMax || xMax < o.xMin || yMin > o.yMax || yMax < o.yMin || zMin > o.zMax || zMax < o.zMin) {

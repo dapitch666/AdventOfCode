@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Day24Test {
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "sesenwnenenewseeswwswswwnenewsewsw",
             "neeenesenwnwwswnenewnwwsewnenwseswesw",
             "seswneswswsenwwnwse",

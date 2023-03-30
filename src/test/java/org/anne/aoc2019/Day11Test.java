@@ -2,10 +2,6 @@ package org.anne.aoc2019;
 
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
-import java.util.HashSet;
-import java.util.Set;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class Day11Test {
@@ -22,7 +18,4 @@ class Day11Test {
         assertEquals(Day11.Direction.DOWN, Day11.turn(Day11.Direction.RIGHT, 1));
     }
 
-    @Test
-    void testPart2() {
-    }
 }

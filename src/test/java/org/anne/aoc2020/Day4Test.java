@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Day4Test {
-    List<String> input = Day4.parseInput(List.of (
+    final List<String> input = Day4.parseInput(List.of (
             "ecl:gry pid:860033327 eyr:2020 hcl:#fffffd",
             "byr:1937 iyr:2017 cid:147 hgt:183cm",
             "",

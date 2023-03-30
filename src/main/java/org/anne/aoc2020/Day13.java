@@ -20,7 +20,7 @@ public class Day13 extends Day {
         int myTime = Integer.parseInt(input.get(0));
         List<Integer> busses = Stream.of(input.get(1).split(","))
                 .map(Day13::mapToInt)
-                .collect(Collectors.toList());
+                .toList();
         return minWait(busses, myTime);
     }
 

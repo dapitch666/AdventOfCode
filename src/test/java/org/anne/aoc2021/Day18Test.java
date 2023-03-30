@@ -31,11 +31,6 @@ class Day18Test {
     }
 
     @Test
-    void testPairs() {
-        System.out.println(Day18.part1(List.of("[[[[1,2],[3,4]],[[5,6],[7,8]]],9]")));
-    }
-
-    @Test
     void testReduce() {
         Day18.Pair pair = Day18.parseString("[7,[6,[5,[4,[3,2]]]]]");
         pair.reduce();

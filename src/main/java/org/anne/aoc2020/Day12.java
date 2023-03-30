@@ -48,6 +48,7 @@ public class Day12 extends Day {
                 int newX = 0, newY = 0;
                 switch (nbRotation) {
                     case 1 -> {
+                        //noinspection SuspiciousNameCombination
                         newX = waypointY;
                         newY = -waypointX;
                     }
@@ -57,6 +58,7 @@ public class Day12 extends Day {
                     }
                     case 3 -> {
                         newX = -waypointY;
+                        //noinspection SuspiciousNameCombination
                         newY = waypointX;
                     }
                 }

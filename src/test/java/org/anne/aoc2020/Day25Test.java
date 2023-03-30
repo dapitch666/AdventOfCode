@@ -7,7 +7,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Day25Test {
-    List<Integer> input = List.of(5764801, 17807724);
+    final List<Integer> input = List.of(5764801, 17807724);
 
     @Test
     void part1() {

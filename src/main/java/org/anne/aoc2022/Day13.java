@@ -1,14 +1,11 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Day13 extends Day {
@@ -40,7 +37,7 @@ public class Day13 extends Day {
                     input.stream().filter(s -> !s.equals("")).map(Packet::new),
                     Stream.of(two, six))
                 .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+                .toList();
         return (packets.indexOf(two) + 1) * (packets.indexOf(six) + 1);
     }
 

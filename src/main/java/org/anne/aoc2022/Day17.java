@@ -1,13 +1,10 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
-import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -29,15 +26,15 @@ public class Day17 extends Day {
     }
 
     private static long tetris(String input, long maxRocks) {
-        Rock cave = new Rock(IntStream.range(0, 7).mapToObj(x -> new Coordinates(x, 0)).collect(Collectors.toList()));
+        Rock cave = new Rock(IntStream.range(0, 7).mapToObj(x -> new PointLongY(x, 0)).collect(Collectors.toList()));
         if (input.length() < 200) input = input.repeat(200 / input.length());
 
         char[] chars = input.toCharArray();
         long height = 0, rocks = 0;
         long firstCycleHeight = 0, firstCycleRocks = 0;
-        long nextCycleHeight = 0, nextCycleRocks = 0;
+        long nextCycleHeight, nextCycleRocks = 0;
 
-        Rock s = new Rock(shapes.get(0), new Coordinates(2, 4));
+        Rock s = new Rock(shapes.get(0), new PointLongY(2, 4));
         for(int i = 0, shapeIndex = 0; rocks < maxRocks; i++) {
             if(i>=chars.length) i = 0;
 
@@ -70,114 +67,80 @@ public class Day17 extends Day {
                 cave.addAll(s.points);
                 shapeIndex = (shapeIndex + 1) % shapes.size();
                 height = Math.max(s.topY(), height);
-                s = new Rock(shapes.get(shapeIndex), new Coordinates(2, 4 + height));
+                s = new Rock(shapes.get(shapeIndex), new PointLongY(2, 4 + height));
                 rocks++;
             }
         }
         return height;
     }
 
-    static class Coordinates {
-        int x;
-        long y;
-
-        public Coordinates(int x, long y) {
-            this.x = x;
-            this.y = y;
-        }
-
-        public Coordinates(Coordinates source, Coordinates origin) {
-            this.x = source.x + origin.x;
-            this.y = source.y + origin.y;
-        }
-
-        public void shiftUp(long y) {
-            this.y += y;
-        }
-
-        public int getX() {
-            return x;
-        }
-
-        public long getY() {
-            return y;
-        }
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Coordinates that = (Coordinates) o;
-            return x == that.x && y == that.y;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(x, y);
+    record PointLongY (int x, long y) {
+        public PointLongY(PointLongY source, PointLongY origin) {
+            this(source.x + origin.x, source.y + origin.y);
         }
     }
 
-    public record Rock(List<Coordinates> points) {
-        public Rock(Rock shape, Coordinates initialPosition) {
+    public record Rock(List<PointLongY> points) {
+        public Rock(Rock shape, PointLongY initialPosition) {
             this(new ArrayList<>());
-            for (Coordinates p : shape.points) {
-                this.points.add(new Coordinates(p, initialPosition));
+            for (PointLongY p : shape.points) {
+                this.points.add(new PointLongY(p, initialPosition));
             }
         }
 
         public Rock translate(int x, long y) {
-            List<Coordinates> points = new ArrayList<>();
-            for (Coordinates p : this.points) {
-                points.add(new Coordinates(p, new Coordinates(x, y)));
+            List<PointLongY> points = new ArrayList<>();
+            for (PointLongY p : this.points) {
+                points.add(new PointLongY(p, new PointLongY(x, y)));
             }
             return new Rock(points);
         }
 
         boolean isBetweenWalls() {
-            return points.stream().mapToInt(Coordinates::getX).max().orElseThrow() <= 6
-                    && points.stream().mapToLong(Coordinates::getX).min().orElseThrow() >= 0;
+            return points.stream().mapToInt(p -> p.x).max().orElseThrow() <= 6
+                    && points.stream().mapToInt(p -> p.x).min().orElseThrow() >= 0;
         }
 
         long topY() {
             return points.stream().mapToLong(p -> p.y).max().orElse(0);
         }
 
-        public boolean contains(Coordinates coordinates) {
-            return this.points.contains(coordinates);
+        public boolean contains(PointLongY point) {
+            return this.points.contains(point);
         }
 
-        public void addAll(List<Coordinates> points) {
+        public void addAll(List<PointLongY> points) {
             this.points.addAll(points);
         }
     }
     
-    static List<Rock> shapes = Arrays.asList(
+    static final List<Rock> shapes = Arrays.asList(
             new Rock(Arrays.asList(
-                    new Coordinates(0, 0),
-                    new Coordinates(1, 0),
-                    new Coordinates(2, 0),
-                    new Coordinates(3, 0))),
+                    new PointLongY(0, 0),
+                    new PointLongY(1, 0),
+                    new PointLongY(2, 0),
+                    new PointLongY(3, 0))),
             new Rock(Arrays.asList(
-                    new Coordinates(1, 0),
-                    new Coordinates(0, 1),
-                    new Coordinates(1, 1),
-                    new Coordinates(2, 1),
-                    new Coordinates(1, 2))),
+                    new PointLongY(1, 0),
+                    new PointLongY(0, 1),
+                    new PointLongY(1, 1),
+                    new PointLongY(2, 1),
+                    new PointLongY(1, 2))),
             new Rock(Arrays.asList(
-                    new Coordinates(0, 0),
-                    new Coordinates(1, 0),
-                    new Coordinates(2, 0),
-                    new Coordinates(2, 1),
-                    new Coordinates(2, 2))),
+                    new PointLongY(0, 0),
+                    new PointLongY(1, 0),
+                    new PointLongY(2, 0),
+                    new PointLongY(2, 1),
+                    new PointLongY(2, 2))),
             new Rock(Arrays.asList(
-                    new Coordinates(0, 0),
-                    new Coordinates(0, 1),
-                    new Coordinates(0, 2),
-                    new Coordinates(0, 3))),
+                    new PointLongY(0, 0),
+                    new PointLongY(0, 1),
+                    new PointLongY(0, 2),
+                    new PointLongY(0, 3))),
             new Rock(Arrays.asList(
-                    new Coordinates(0, 0),
-                    new Coordinates(0, 1),
-                    new Coordinates(1, 1),
-                    new Coordinates(1, 0)))
+                    new PointLongY(0, 0),
+                    new PointLongY(0, 1),
+                    new PointLongY(1, 1),
+                    new PointLongY(1, 0)))
     );
 }

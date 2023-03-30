@@ -1,7 +1,6 @@
 package org.anne.aoc2020;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
 import java.util.List;
 

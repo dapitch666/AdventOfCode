@@ -1,9 +1,7 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 public class Day25 extends Day {
@@ -23,6 +21,7 @@ public class Day25 extends Day {
         return decimal2snafu(total);
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static String part2() {
         return "Merry Christmas!";
     }

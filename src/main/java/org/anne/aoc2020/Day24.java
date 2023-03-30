@@ -121,7 +121,7 @@ public class Day24 extends Day {
     }
 
 
-    private static record HexTile (int x, int y) {
+    private record HexTile (int x, int y) {
         private HexTile(String str) {
             this(Integer.parseInt(str.split(", ")[0].replaceAll("x: ", "")), Integer.parseInt(str.split(", ")[1].replaceAll("y: ", "")));
         }

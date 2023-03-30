@@ -20,7 +20,7 @@ class Day20Test {
         assertEquals(273, Day20.part2(tiles));
     }
 
-    Map<Integer, Day20.Tile> tiles = getTiles(List.of(
+    final Map<Integer, Day20.Tile> tiles = getTiles(List.of(
             "Tile 2311:",
             "..##.#..#.",
             "##..#.....",

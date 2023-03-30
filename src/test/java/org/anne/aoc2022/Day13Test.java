@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day13Test {
-    List<String> input = Arrays.asList(
+    final List<String> input = Arrays.asList(
             "[1,1,3,1,1]",
             "[1,1,5,1,1]",
             "",

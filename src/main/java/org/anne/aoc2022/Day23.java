@@ -1,10 +1,8 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
 import java.awt.*;
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 import java.util.*;
 import java.util.function.Function;
@@ -24,7 +22,7 @@ public class Day23 extends Day {
         var dirs = new LinkedList<>(Arrays.asList(Direction.N, Direction.S, Direction.W, Direction.E));
         var elves = scanTheGrove(input);
 
-        for(int iter = 0; iter < 10; iter++) {
+        for(int i = 0; i < 10; i++) {
             elves = round(elves, dirs);
             dirs.add(dirs.removeFirst());
         }

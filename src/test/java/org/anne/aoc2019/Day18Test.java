@@ -9,13 +9,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day18Test {
 
-    List<String> input1 = List.of(
+    final List<String> input1 = List.of(
             "#########",
             "#b.A.@.a#",
             "#########"
     );
 
-    List<String> input2 = List.of(
+    final List<String> input2 = List.of(
             "########################",
             "#f.D.E.e.C.b.A.@.a.B.c.#",
             "######################.#",
@@ -23,7 +23,7 @@ class Day18Test {
             "########################"
     );
 
-    List<String> input3 = List.of(
+    final List<String> input3 = List.of(
             "########################",
             "#...............b.C.D.f#",
             "#.######################",
@@ -31,7 +31,7 @@ class Day18Test {
             "########################"
     );
 
-    List<String> input4 = List.of(
+    final List<String> input4 = List.of(
             "#################",
             "#i.G..c...e..H.p#",
             "########.########",
@@ -43,7 +43,7 @@ class Day18Test {
             "#################"
     );
 
-    List<String> input5 = List.of(
+    final List<String> input5 = List.of(
             "########################",
             "#@..............ac.GI.b#",
             "###d#e#f################",
@@ -61,7 +61,7 @@ class Day18Test {
         assertEquals(81, Day18.part1(input5));
     }
 
-    List<String> input6 = List.of(
+    final List<String> input6 = List.of(
             "###############",
             "#d.ABC.#.....a#",
             "######...######",
@@ -71,7 +71,7 @@ class Day18Test {
             "###############"
     );
 
-    List<String> input7 = List.of(
+    final List<String> input7 = List.of(
             "#############",
             "#g#f.D#..h#l#",
             "#F###e#E###.#",

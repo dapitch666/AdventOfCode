@@ -279,6 +279,7 @@ public class Day20 extends Day {
             return tile;
         }
 
+        @SuppressWarnings("SuspiciousNameCombination")
         public void rotate() {
             int[][] ret = new int[this.size][this.size];
 

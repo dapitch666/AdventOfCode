@@ -14,7 +14,7 @@ public class Day2Test {
 
     @Test
     void testPart1() {
-        assertEquals(4, Day2.part1(Arrays.asList("A X")));
+        assertEquals(4, Day2.part1(List.of("A X")));
         assertEquals(15, Day2.part1(list));
     }
 

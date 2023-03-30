@@ -1,10 +1,8 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
 import java.awt.*;
-import java.lang.invoke.MethodHandles;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -54,10 +52,10 @@ public class Day14 extends Day {
     static Set<Point> drawCave(List<String> input) {
         Set<Point> cave = new HashSet<>();
         for (String line : input) {
-            String[] splittedLine = line.split(" -> ");
-            for (int i = 1; i < splittedLine.length; i++) {
-                Point start = getPoint(splittedLine[i-1]);
-                Point end = getPoint(splittedLine[i]);
+            String[] splitLine = line.split(" -> ");
+            for (int i = 1; i < splitLine.length; i++) {
+                Point start = getPoint(splitLine[i-1]);
+                Point end = getPoint(splitLine[i]);
                 if (start.x == end.x) {
                     int yMin = Math.min(start.y, end.y);
                     int yMax = Math.max(start.y, end.y);
@@ -77,7 +75,7 @@ public class Day14 extends Day {
     }
 
     private static Point getPoint(String coordinates) {
-        String[] splittedCoordinates = coordinates.split(",");
-        return new Point(Integer.parseInt(splittedCoordinates[0]), Integer.parseInt(splittedCoordinates[1]));
+        String[] splitCoordinates = coordinates.split(",");
+        return new Point(Integer.parseInt(splitCoordinates[0]), Integer.parseInt(splitCoordinates[1]));
     }
 }

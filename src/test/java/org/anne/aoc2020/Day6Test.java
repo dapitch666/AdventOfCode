@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day6Test {
 
-    List<String> input = new LinkedList<>(List.of("abc", "", "a", "b", "c", "", "ab", "ac", "", "a", "a", "a", "", "b"));
+    final List<String> input = new LinkedList<>(List.of("abc", "", "a", "b", "c", "", "ab", "ac", "", "a", "a", "a", "", "b"));
 
     @Test
     void part1() {

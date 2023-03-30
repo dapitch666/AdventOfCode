@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day11Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "L.LL.LL.LL",
             "LLLLLLL.LL",
             "L.L.L..L..",

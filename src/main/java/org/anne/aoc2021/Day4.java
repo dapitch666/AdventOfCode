@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Day4 extends Day {
 
@@ -23,7 +22,7 @@ public class Day4 extends Day {
     private static int resolve(List<String> input, int part) {
         List<Integer> draws = Arrays.stream(input.get(0).split(","))
                 .map(Integer::parseInt)
-                .collect(Collectors.toList());
+                .toList();
         List<int[][]> boards = loadBoards(input);
         for (int draw: draws) {
             removeDrawn(boards, draw);

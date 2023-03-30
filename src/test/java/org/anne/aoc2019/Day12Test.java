@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day12Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "<x=-1, y=0, z=2>",
             "<x=2, y=-10, z=-7>",
             "<x=4, y=-8, z=8>",

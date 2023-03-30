@@ -50,6 +50,6 @@ public class Day19 extends Day {
 
     static boolean isInBeam(Point p, String input) {
         Computer computer = new Computer(input);
-        return computer.computeAndGetOutput(new long[]{p.x, p.y}) == 1;
+        return computer.computeAndGetOutput(p.x, p.y) == 1;
     }
 }

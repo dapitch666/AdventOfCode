@@ -11,11 +11,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class Day24Test {
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "....#",
             "#..#.",
             "#..##",
-            "...#.",
+            "..#..",
             "#...."
     );
     

@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day5Test {
-    List<String> input = Arrays.asList(
+    final List<String> input = Arrays.asList(
     "    [D]",
     "[N] [C]",
     "[Z] [M] [P]",
@@ -22,13 +22,11 @@ public class Day5Test {
 
     @Test
     void testPart1() {
-        System.out.println(input.indexOf(""));
         assertEquals("CMZ", Day5.part1(input));
     }
 
     @Test
     void testPart2() {
-        System.out.println(input.indexOf(""));
         assertEquals("MCD", Day5.part2(input));
     }
 }

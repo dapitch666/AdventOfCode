@@ -21,7 +21,7 @@ public class Day8 extends Day {
         int counter = 0;
         for (String line : input) {
             String[] split = line.split(" \\| ");
-            counter += Arrays.stream(split[1].split("\s"))
+            counter += Arrays.stream(split[1].split(" "))
                              .mapToInt(String::length)
                              .filter(integers::contains)
                              .count();
@@ -36,7 +36,7 @@ public class Day8 extends Day {
             String[] digits = new String[10];
             List<String> fives = new ArrayList<>();
             List<String> sixes = new ArrayList<>();
-            for (String word : split[0].split("\s")) {
+            for (String word : split[0].split(" ")) {
                 switch (word.length()) {
                     /* 1, 7, 4 and 8 have a distinct number of bars, so they can be assigned right away */
                     case 2 -> digits[1] = word;
@@ -82,7 +82,7 @@ public class Day8 extends Day {
 
     private static int calculateOutput(String s, String[] digits) {
         StringBuilder sb = new StringBuilder();
-        for (String word : s.split("\s")) {
+        for (String word : s.split(" ")) {
             sb.append(decodeWord(word, digits));
         }
         return Integer.parseInt(sb.toString());

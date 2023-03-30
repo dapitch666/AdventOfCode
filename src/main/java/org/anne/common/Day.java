@@ -17,19 +17,10 @@ public abstract class Day {
     private Object part1;
     private Object part2;
 
-    public Day(int year, int day) {
-        this.year = year;
-        this.day = day;
-    }
-
     public Day() {
         Class<?> clazz = this.getClass();
         this.year = getYearFromClass(clazz);
         this.day = getDayNumberFromClass(clazz);
-    }
-
-    public int getDay() {
-        return day;
     }
 
     public void setPart1(Object part1) {

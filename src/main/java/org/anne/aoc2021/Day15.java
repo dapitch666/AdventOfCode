@@ -1,6 +1,5 @@
 package org.anne.aoc2021;
 
-import org.anne.aoc2022.Day2;
 import org.anne.common.Day;
 
 import java.awt.*;

@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day14Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "171 ORE => 8 CNZTR",
             "7 ZLQW, 3 BMBT, 9 XCVML, 26 XMNCP, 1 WPTQ, 2 MZWV, 1 RJRHP => 4 PLWSL",
             "114 ORE => 4 BHXH",

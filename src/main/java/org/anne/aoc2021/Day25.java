@@ -26,6 +26,7 @@ public class Day25 extends Day {
         return step;
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static String part2() {
         return "Merry Christmas!";
     }

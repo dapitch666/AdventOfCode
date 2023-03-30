@@ -20,11 +20,11 @@ public class Day21 extends Day {
         Map<String, Set<String>> allergensIngredients = new TreeMap<>();
         for (String line : input) {
             String[] split = line.split("\\(");
-            List<String> ingredients = Arrays.stream(split[0].split(" ")).collect(Collectors.toList());
+            List<String> ingredients = Arrays.stream(split[0].split(" ")).toList();
             List<String> allergens = Arrays.stream(split[1]
                     .replaceFirst("contains ", "")
                     .replaceFirst("\\)", "")
-                    .split(", ")).collect(Collectors.toList());
+                    .split(", ")).toList();
             for (String ingredient : ingredients) {
                 ingredientsOccurrences.put(ingredient, ingredientsOccurrences.getOrDefault(ingredient, 0) + 1);
             }
@@ -58,11 +58,11 @@ public class Day21 extends Day {
         Map<String, Set<String>> allergensIngredients = new TreeMap<>();
         for (String line : input) {
             String[] split = line.split("\\(");
-            List<String> ingredients = Arrays.stream(split[0].split(" ")).collect(Collectors.toList());
+            List<String> ingredients = Arrays.stream(split[0].split(" ")).toList();
             List<String> allergens = Arrays.stream(split[1]
                     .replaceFirst("contains ", "")
                     .replaceFirst("\\)", "")
-                    .split(", ")).collect(Collectors.toList());
+                    .split(", ")).toList();
             for (String ingredient : ingredients) {
                 ingredientsOccurrences.put(ingredient, ingredientsOccurrences.getOrDefault(ingredient, 0) + 1);
             }

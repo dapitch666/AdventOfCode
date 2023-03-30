@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day20Test {
-    List<Integer> input = Arrays.asList(1, 2, -3, 3, -2, 0, 4);
+    final List<Integer> input = Arrays.asList(1, 2, -3, 3, -2, 0, 4);
 
     @Test
     void part1() {

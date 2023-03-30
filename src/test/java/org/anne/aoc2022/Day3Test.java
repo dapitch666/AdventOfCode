@@ -24,7 +24,6 @@ public class Day3Test {
 
     @Test
     void testValueOfChar() {
-        System.out.println(Day3.valueOfChar('Z'));
         assertEquals(16, Day3.valueOfChar('p'));
         assertEquals(38, Day3.valueOfChar('L'));
     }

@@ -1,9 +1,7 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
-import java.lang.invoke.MethodHandles;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,7 +28,7 @@ public class Day16 extends Day {
         return bestPressure(dp, true);
     }
 
-    public record Valve (String name, int flowRate, List<String> tunnels) {} // TODO rename flowRate, tunnels
+    public record Valve (String name, int flowRate, List<String> tunnels) {}
 
     public static int getFlowOfBitmask(List<Valve> nonzero, int bitmask) {
         int flow = 0;

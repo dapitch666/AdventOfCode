@@ -1,9 +1,8 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
+import org.anne.common.Point3d;
 
-import java.lang.invoke.MethodHandles;
 import java.util.*;
 
 public class Day18 extends Day {
@@ -16,33 +15,32 @@ public class Day18 extends Day {
     }
 
     public static long part1(List<String> input) {
-        List<Cube> cubes = getCubes(input);
+        List<Point3d> cubes = getCubes(input);
         return (cubes.size() * 6L) - cubes.stream()
-                                        .flatMap(c -> c.neighbors().stream())
+                                        .flatMap(c -> getNeighbors(c).stream())
                                         .filter(cubes::contains)
                                         .count();
     }
 
     public static long part2(List<String> input) {
-        List<Cube> cubes = getCubes(input);
-        Deque<Cube> queue = new LinkedList<>();
+        List<Point3d> cubes = getCubes(input);
+        Deque<Point3d> queue = new LinkedList<>();
 
-        Cube start = cubes.stream()
-                .min(Comparator.comparingInt(o -> o.x + o.y + o.z))
-                .orElseThrow()
-                .neighbors()
-                .stream()
-                .filter(c -> !cubes.contains(c))
-                .findFirst()
-                .orElseThrow();
+        Point3d start = getNeighbors(cubes.stream()
+                    .min(Comparator.comparingInt(o -> o.x() + o.y() + o.z()))
+                    .orElseThrow())
+                        .stream()
+                        .filter(c -> !cubes.contains(c))
+                        .findFirst()
+                        .orElseThrow();
 
         queue.add(start);
-        HashSet<Cube> air = new HashSet<>();
+        HashSet<Point3d> air = new HashSet<>();
         while(queue.size() > 0) {
-            Cube current = queue.poll();
+            Point3d current = queue.poll();
             air.add(current);
 
-            for(Cube neighbor : current.neighbors()) {
+            for(Point3d neighbor : getNeighbors(current)) {
                 if(air.contains(neighbor) || cubes.contains(neighbor) || queue.contains(neighbor)
                     || cubes.stream().mapToInt(c -> c.manhattanDistance(neighbor)).min().orElseThrow() > 2) {
                     continue;
@@ -51,33 +49,28 @@ public class Day18 extends Day {
             }
         }
         return air.stream()
-                .flatMap(c -> c.neighbors().stream())
+                .flatMap(c -> getNeighbors(c).stream())
                 .filter(cubes::contains)
                 .count();
     }
 
-    public record Cube (int x, int y, int z) {
-        List<Cube> neighbors () {
-            List<Cube> neighbors = new ArrayList<>();
-            neighbors.add(new Cube(x-1, y, z));
-            neighbors.add(new Cube(x+1, y, z));
-            neighbors.add(new Cube(x, y-1, z));
-            neighbors.add(new Cube(x, y+1, z));
-            neighbors.add(new Cube(x, y, z-1));
-            neighbors.add(new Cube(x, y, z+1));
-            return neighbors;
-        }
-        int manhattanDistance(Cube other) {
-            return Math.abs(this.x - other.x) + Math.abs(this.y - other.y) + Math.abs(this.z - other.z);
-        }
-    }
-
-    private static List<Cube> getCubes(List<String> input) {
-        List<Cube> cubes = new ArrayList<>();
+    private static List<Point3d> getCubes(List<String> input) {
+        List<Point3d> cubes = new ArrayList<>();
         for (String line : input) {
             String[] params = line.split(",");
-            cubes.add(new Cube(Integer.parseInt(params[0]), Integer.parseInt(params[1]), Integer.parseInt(params[2])));
+            cubes.add(new Point3d(Integer.parseInt(params[0]), Integer.parseInt(params[1]), Integer.parseInt(params[2])));
         }
         return cubes;
+    }
+
+    private static List<Point3d> getNeighbors(Point3d point) {
+        return List.of(
+                new Point3d(point.x() - 1, point.y(), point.z()),
+                new Point3d(point.x() + 1, point.y(), point.z()),
+                new Point3d(point.x(), point.y() - 1, point.z()),
+                new Point3d(point.x(), point.y() + 1, point.z()),
+                new Point3d(point.x(), point.y(), point.z() - 1),
+                new Point3d(point.x(), point.y(), point.z() + 1)
+        );
     }
 }

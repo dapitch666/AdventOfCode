@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day21Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "mxmxvkd kfcds sqjhc nhms (contains dairy, fish)",
             "trh fvjkl sbzzf mxmxvkd (contains dairy)",
             "sqjhc fvjkl (contains soy)",

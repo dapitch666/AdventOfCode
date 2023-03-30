@@ -8,14 +8,14 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day14Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "mask = XXXXXXXXXXXXXXXXXXXXXXXXXXXXX1XXXX0X",
             "mem[8] = 11",
             "mem[7] = 101",
             "mem[8] = 0"
     );
 
-    List<String> input2 = List.of(
+    final List<String> input2 = List.of(
             "mask = 000000000000000000000000000000X1001X",
             "mem[42] = 100",
             "mask = 00000000000000000000000000000000X0XX",

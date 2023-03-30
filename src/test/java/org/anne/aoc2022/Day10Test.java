@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day10Test {
-    List<String> input = Arrays.asList(
+    final List<String> input = Arrays.asList(
             "addx 15",
             "addx -11",
             "addx 6",
@@ -166,6 +166,14 @@ class Day10Test {
 
     @Test
     void part2() {
-        System.out.println(Day10.part2(input));
+        String output = """
+                ####    ####    ####    ####    ####    ####    ####    ####    ####    ####   \s
+                ######      ######      ######      ######      ######      ######      ###### \s
+                ########        ########        ########        ########        ########       \s
+                ##########          ##########          ##########          ##########         \s
+                ############            ############            ############            ########
+                ##############              ##############              ##############         \s
+                """;
+        assertEquals(output, Day10.part2(input));
     }
 }

@@ -11,7 +11,7 @@ public class Day1Test {
 
     final List<String> list = Arrays.asList("1000", "2000", "3000", "", "4000", "", "5000", "6000",
             "", "7000", "8000", "9000", "", "10000");
-    List<Integer> elves = Day1.getElves(list);
+    final List<Integer> elves = Day1.getElves(list);
 
     @Test
     void testPart1() {

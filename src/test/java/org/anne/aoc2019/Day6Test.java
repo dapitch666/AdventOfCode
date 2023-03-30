@@ -3,14 +3,13 @@ package org.anne.aoc2019;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class Day6Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "COM)B",
             "B)C",
             "C)D",

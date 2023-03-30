@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day12Test {
 
-    List<String> input = List.of("F10", "N3", "F7", "R90", "F11");
+    final List<String> input = List.of("F10", "N3", "F7", "R90", "F11");
 
     @Test
     void testPart1() {

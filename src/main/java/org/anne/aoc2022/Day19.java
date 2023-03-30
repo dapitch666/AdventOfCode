@@ -3,7 +3,6 @@ package org.anne.aoc2022;
 import org.anne.common.Day;
 import org.anne.common.Utils;
 
-import java.lang.invoke.MethodHandles;
 import java.util.List;
 
 public class Day19 extends Day {
@@ -39,8 +38,8 @@ public class Day19 extends Day {
         return result;
     }
 
-    private static record Blueprint (int number, int oreCostForOreBot, int oreCostForClayBot, int oreCostForObsidianBot,
-                                     int clayCostForObsidianBot, int oreCostForGeodeBot, int obsidianCostForGeodeBot) {
+    private record Blueprint (int number, int oreCostForOreBot, int oreCostForClayBot, int oreCostForObsidianBot,
+                              int clayCostForObsidianBot, int oreCostForGeodeBot, int obsidianCostForGeodeBot) {
         public Blueprint(int[] bp) {
             this(bp[0], bp[1], bp[2], bp[3], bp[4], bp[5], bp[6]);
         }

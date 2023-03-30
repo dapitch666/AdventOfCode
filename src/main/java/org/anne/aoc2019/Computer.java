@@ -10,9 +10,9 @@ public class Computer {
     private final long[] intCode = new long[4096];
     private final List<Long> input = new ArrayList<>();
     private final List<Long> output = new ArrayList<>();
-    private boolean stopped = false;
-    private int currentInstruction = 0;
-    private int relativeBase = 0;
+    private boolean stopped;
+    private int currentInstruction;
+    private int relativeBase;
 
     public Computer(String memory) {
         int i = 0;
@@ -23,7 +23,7 @@ public class Computer {
     }
 
     public long[] getIntCode() {
-        return intCode;
+        return this.intCode;
     }
 
     public List<Long> getOutputs() {
@@ -31,7 +31,7 @@ public class Computer {
     }
 
     public long getOutput() {
-        if (this.output.isEmpty()) {
+        if (output.isEmpty()) {
             return 0;
         } else {
             return this.output.remove(0);
@@ -180,6 +180,7 @@ public class Computer {
         }
     }
 
+    @SuppressWarnings({"EmptyMethod", "unused"})
     private void journal(long instruction, String operation, ArrayList<String> parameters) {
         // System.out.println(instruction + " " + operation + " - " + String.join("-", parameters));
     }

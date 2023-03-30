@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day7Test {
 
-    Map<String, Map<String, Integer>> input = Day7.decode(List.of(
+    final Map<String, Map<String, Integer>> input = Day7.decode(List.of(
             "light red bags contain 1 bright white bag, 2 muted yellow bags.",
             "dark orange bags contain 3 bright white bags, 4 muted yellow bags.",
             "bright white bags contain 1 shiny gold bag.",
@@ -21,7 +21,7 @@ class Day7Test {
             "dotted black bags contain no other bags."
     ));
 
-    Map<String, Map<String, Integer>> input2 = Day7.decode(List.of(
+    final Map<String, Map<String, Integer>> input2 = Day7.decode(List.of(
             "shiny gold bags contain 2 dark red bags.",
             "dark red bags contain 2 dark orange bags.",
             "dark orange bags contain 2 dark yellow bags.",

@@ -9,7 +9,7 @@ import static org.anne.aoc2022.Day7.getRoot;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day7Test {
-    List<String> input = Arrays.asList(
+    final List<String> input = Arrays.asList(
             "$ cd /",
             "$ ls",
             "dir a",
@@ -35,7 +35,7 @@ public class Day7Test {
             "7214296 k"
           );
 
-    List<String> input2 = Arrays.asList(
+    final List<String> input2 = Arrays.asList(
             "$ cd /",
             "$ ls",
             "dir a",
@@ -53,8 +53,8 @@ public class Day7Test {
             "150 file2"
     );
 
-    Day7.Directory root = getRoot(input);
-    Day7.Directory root2 = getRoot(input2);
+    final Day7.Directory root = getRoot(input);
+    final Day7.Directory root2 = getRoot(input2);
 
     @Test
     void part1() {

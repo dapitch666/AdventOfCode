@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day8Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "nop +0",
             "acc +1",
             "jmp +4",

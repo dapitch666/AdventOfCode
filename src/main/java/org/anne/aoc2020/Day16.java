@@ -150,7 +150,7 @@ public class Day16 extends Day {
         }
     }
 
-    private static record Interval (int min, int max) {
+    private record Interval (int min, int max) {
         public Interval(String s) {
             this(Integer.parseInt(s.split("-")[0]), Integer.parseInt(s.split("-")[1]));
         }

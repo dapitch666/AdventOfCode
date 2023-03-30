@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Day17Test {
 
-    List<String> input = List.of(
+    final List<String> input = List.of(
             "..#..........",
             "..#..........",
             "#######...###",
@@ -18,7 +18,7 @@ class Day17Test {
             "..#####...^.."
     );
 
-    List<String> input2 = List.of(
+    final List<String> input2 = List.of(
             "#######...#####",
             "#.....#...#...#",
             "#.....#...#...#",

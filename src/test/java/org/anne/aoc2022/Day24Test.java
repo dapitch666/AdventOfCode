@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day24Test {
-    List<String> input = Arrays.asList(
+    final List<String> input = Arrays.asList(
             "#.######",
             "#>>.<^<#",
             "#.<..<<#",

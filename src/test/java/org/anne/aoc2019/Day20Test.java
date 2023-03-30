@@ -45,7 +45,7 @@ class Day20Test {
         assertEquals(396, Day20.part2(input3));
     }
     
-    List<String> input = new ArrayList<>(List.of(
+    final List<String> input = new ArrayList<>(List.of(
             "         A         ",
             "         A         ",
             "  #######.#########",
@@ -67,7 +67,7 @@ class Day20Test {
             "             Z     "
     ));
 
-    List<String> input2 = new ArrayList<>(List.of(
+    final List<String> input2 = new ArrayList<>(List.of(
             "                   A               ",
             "                   A               ",
             "  #################.#############  ",
@@ -107,7 +107,7 @@ class Day20Test {
             "           U   P   P               "
     ));
     
-    List<String> input3 = new ArrayList<>(List.of(
+    final List<String> input3 = new ArrayList<>(List.of(
                     "             Z L X W       C                 ",
                     "             Z P Q B       K                 ",
                     "  ###########.#.#.#.#######.###############  ",

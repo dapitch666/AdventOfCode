@@ -1,9 +1,7 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
-import java.lang.invoke.MethodHandles;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -67,7 +65,7 @@ public class Day21 extends Day {
 
 
     static class Monkey {
-        public String name;
+        public final String name;
         public String leftTerm;
         public String rightTerm;
         public char operator;

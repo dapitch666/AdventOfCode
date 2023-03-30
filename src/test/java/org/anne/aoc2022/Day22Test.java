@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class Day22Test {
-    List<String> input = Arrays.asList(
+    final List<String> input = Arrays.asList(
             "        ...#",
             "        .#..",
             "        #...",
@@ -30,8 +30,4 @@ class Day22Test {
         assertEquals(6032, Day22.part1(input));
     }
 
-    @Test
-    void part2() {
-        // No test for part2 as the fold is not at the same place as the actual input...
-    }
 }

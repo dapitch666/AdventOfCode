@@ -11,7 +11,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class Day15Test {
-    static List<String> input = List.of(
+    static final List<String> input = List.of(
             " ##",
             "#..##",
             "#.#..#",
@@ -19,7 +19,7 @@ class Day15Test {
             " ###"
     );
 
-    static Map<Point, Character> map = new HashMap<>();
+    static final Map<Point, Character> map = new HashMap<>();
 
     @BeforeAll
     static void setup() {
@@ -28,13 +28,6 @@ class Day15Test {
                 map.put(new Point(x, y), input.get(y).charAt(x));
             }
         }
-    }
-
-    @Test
-    void testGetClosestUncharted() {
-        assertNull(Day15.getClosestUncharted(map, new Point(0, 0)));
-        map.remove(new Point(1, 1));
-        assertEquals(new Point(1, 1), Day15.getClosestUncharted(map, new Point(2, 1)));
     }
 
     @Test

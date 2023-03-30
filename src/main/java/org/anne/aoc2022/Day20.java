@@ -1,9 +1,7 @@
 package org.anne.aoc2022;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
 
-import java.lang.invoke.MethodHandles;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.IntStream;
@@ -54,8 +52,8 @@ public class Day20 extends Day {
                 + circular.get((zeroIdx + 3000) % modulo).value;
     }
 
-    static record Num (int id, long value) {}
-    static record Move (int idx, Num num) {
+    record Num (int id, long value) {}
+    record Move (int idx, Num num) {
         int newIndex (int modulo) {
             return (int) (modulo + this.idx + this.num.value % modulo) % modulo;
         }

@@ -15,4 +15,12 @@ public record Point3d(int x, int y, int z) {
     public int absSum() {
         return Math.abs(x) + Math.abs(y) + Math.abs(z);
     }
+    
+    public Point3d reverse() {
+        return new Point3d(-x, -y, -z);
+    }
+    
+    public int manhattanDistance(Point3d other) {
+        return Math.abs(x - other.x) + Math.abs(y - other.y) + Math.abs(z - other.z);
+    }
 }
