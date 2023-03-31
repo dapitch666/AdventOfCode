@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Computer {
 
-    private final long[] intCode = new long[4096];
+    private final long[] intCode = new long[10000];
     private final List<Long> input = new ArrayList<>();
     private final List<Long> output = new ArrayList<>();
     private boolean stopped;
@@ -50,16 +50,41 @@ public class Computer {
         this.writeInput(input);
         compute();
     }
+    
+    public void compute(String input) {
+        this.writeInput(input);
+        compute();
+    }
 
     public long computeAndGetOutput(long... input) {
         this.writeInput(input);
         compute();
         return getOutput();
     }
+    
+    public String computeAndGetOutputAsString(String input) {
+        this.writeInput(input);
+        compute();
+        return getOutputAsString();
+    }
+    
+    public String getOutputAsString() {
+        StringBuilder sb = new StringBuilder();
+        for (Long value : output) {
+            sb.append((char) value.intValue());
+        }
+        return sb.toString();
+    }
 
     public void writeInput(long... input) {
         for (long i : input) {
             this.input.add(i);
+        }
+    }
+    
+    public void writeInput(String input) {
+        for (char c : input.toCharArray()) {
+            this.input.add((long) c);
         }
     }
 
