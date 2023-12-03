@@ -2,18 +2,15 @@ package org.anne.aoc2023;
 
 import org.anne.common.Day;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Day1 extends Day {
     public static void main(String[] args) {
         Day day = new Day1();
         List<String> input = day.readFile();
-        day.setPart1(part1(input)); //Part 1: 54561
-        day.setPart2(part2(input)); //Part 2: 54076
+        day.setPart1(part1(input));
+        day.setPart2(part2(input));
         day.printParts();
     }
 

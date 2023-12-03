@@ -2,9 +2,7 @@ package org.anne.aoc2023;
 
 import org.anne.common.Day;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class Day2 extends Day {
     public static void main(String[] args) {
