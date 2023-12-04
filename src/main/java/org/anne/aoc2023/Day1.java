@@ -31,10 +31,10 @@ public class Day1 extends Day {
         int tens = 0, unit = 0, firstIdx = Integer.MAX_VALUE, lastIdx = 0;
         
         if(isPart2) {
-            for (String word : words) {
+            for (var word : words) {
                 if (line.contains(word)) {
-                    int fIdx = line.indexOf(word);
-                    int lIdx = line.lastIndexOf(word);
+                    var fIdx = line.indexOf(word);
+                    var lIdx = line.lastIndexOf(word);
                     if (fIdx < firstIdx) {
                         firstIdx = fIdx;
                         tens = Arrays.asList(words).indexOf(word) + 1;
@@ -47,7 +47,7 @@ public class Day1 extends Day {
             }
         }
         
-        int digit = line.chars()
+        var digit = line.chars()
                 .filter(Character::isDigit)
                 .map(Character::getNumericValue)
                 .findFirst().orElse(0);

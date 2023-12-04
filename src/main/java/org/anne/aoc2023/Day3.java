@@ -19,13 +19,13 @@ public class Day3 extends Day {
 
 
     public static int part1(List<String> input) {
-        StringBuilder numString = new StringBuilder();
+        var numString = new StringBuilder();
         List<Part> parts = new ArrayList<>();
         Set<Point> loc = new HashSet<>();
         Set<Point> symbols = new HashSet<>();
         for (int i = 0; i < input.size(); i++) {
             for (int j = 0; j < input.get(i).length(); j++) {
-                char c = input.get(i).charAt(j);
+                var c = input.get(i).charAt(j);
                 if (c >= '0' && c <= '9') {
                     numString.append(c);
                     loc.add(new Point(j, i));
@@ -54,13 +54,13 @@ public class Day3 extends Day {
 
     public static long part2(List<String> input) {
         long gearRatios = 0;
-        StringBuilder numString = new StringBuilder();
+        var numString = new StringBuilder();
         List<Part> parts = new ArrayList<>();
         Set<Point> loc = new HashSet<>();
         Set<Point> symbols = new HashSet<>();
         for (int i = 0; i < input.size(); i++) {
             for (int j = 0; j < input.get(i).length(); j++) {
-                char c = input.get(i).charAt(j);
+                var c = input.get(i).charAt(j);
                 if (c >= '0' && c <= '9') {
                     numString.append(c);
                     loc.add(new Point(j, i));
@@ -81,7 +81,7 @@ public class Day3 extends Day {
                 loc = new HashSet<>();
             }
         }
-        for (Point symbol : symbols) {
+        for (var symbol : symbols) {
             Set<Part> adjacent = parts.stream()
                     .filter(x -> isNextTo(symbol, x))
                     .collect(Collectors.toSet());

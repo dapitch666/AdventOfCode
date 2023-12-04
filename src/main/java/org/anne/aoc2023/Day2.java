@@ -17,20 +17,20 @@ public class Day2 extends Day {
     public static int part1(List<String> input) {
         int maxRed = 12, maxGreen = 13, maxBlue = 14;
         int result = 0;
-        for (String line : input) {
-            String[] split = line.split(":");
-            String[] parts = split[1].split(";");
+        for (var line : input) {
+            var split = line.split(":");
+            var parts = split[1].split(";");
             
             int game = Integer.parseInt(split[0].split(" ")[1]);
             boolean valid = true;
-            for (String part : parts) {
+            for (var part : parts) {
                 if (valid) {
                     int red = 0, green = 0, blue = 0;
-                    String[] cubes = part.split(",");
-                    for (String cube : cubes) {
-                        String[] cubeParts = cube.trim().split(" ");
-                        int count = Integer.parseInt(cubeParts[0]);
-                        String color = cubeParts[1];
+                    var cubes = part.split(",");
+                    for (var cube : cubes) {
+                        var cubeParts = cube.trim().split(" ");
+                        var count = Integer.parseInt(cubeParts[0]);
+                        var color = cubeParts[1];
                         switch (color) {
                             case "red" -> red = count;
                             case "green" -> green = count;
@@ -52,17 +52,17 @@ public class Day2 extends Day {
 
     public static long part2(List<String> input) {
         int result = 0;
-        for (String line : input) {
+        for (var line : input) {
             int maxRed = 0, maxGreen = 0, maxBlue = 0;
-            String[] split = line.split(":");
-            String[] parts = split[1].split(";");
-            for (String part : parts) {
+            var split = line.split(":");
+            var parts = split[1].split(";");
+            for (var part : parts) {
                 int red = 0, green = 0, blue = 0;
-                String[] cubes = part.split(",");
-                for (String cube : cubes) {
-                    String[] cubeParts = cube.trim().split(" ");
+                var cubes = part.split(",");
+                for (var cube : cubes) {
+                    var cubeParts = cube.trim().split(" ");
                     int count = Integer.parseInt(cubeParts[0]);
-                    String color = cubeParts[1];
+                    var color = cubeParts[1];
                     switch (color) {
                         case "red" -> red = count;
                         case "green" -> green = count;
