@@ -2,6 +2,7 @@ package org.anne.aoc2023;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class Day5Test {
 
-    List<String> input = Arrays.asList(
+    List<String> input = new ArrayList<>(Arrays.asList(
             "seeds: 79 14 55 13",
             "",
             "seed-to-soil map:",
@@ -43,7 +44,7 @@ public class Day5Test {
             "humidity-to-location map:",
             "60 56 37",
             "56 93 4"
-    );
+    ));
     
     @Test
     void testPart1() {

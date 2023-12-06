@@ -25,8 +25,7 @@ public class Day5 extends Day {
 
     public static long part1(List<String> input) {
         List<Long> locations = new ArrayList<>();
-        var seeds = Arrays.stream(input.get(0).split(": ")[1].split(" "))
-                .map(Long::parseLong).toList();
+        var seeds = Arrays.stream(input.get(0).split(": ")[1].split(" ")).map(Long::parseLong).toList();
         var maps = getMaps(input.subList(2, input.size()));
         for (var seed : seeds) {
             var location = seed;
@@ -40,30 +39,41 @@ public class Day5 extends Day {
 
     
     public static long part2(List<String> input) {
-        var seedList = Arrays.stream(input.get(0).split(": ")[1].split(" "))
-                .map(Long::parseLong).toList();
+        var seeds = Arrays.stream(input.get(0).split(": ")[1].split(" ")).map(Long::parseLong).toList();
         var maps = getMaps(input.subList(2, input.size()));
-        for (long l = 0; l < 1000000000000L; l++) {
-            long location = l;
-            for (int i = mapNames.size() - 1; i >= 0; i--) {
-                var mapName = mapNames.get(i);
-                var conversionMaps = maps.get(mapName);
-                location = getPreviousLocation(location, conversionMaps);
-            }
-            if (seedsContains(seedList, location)) {
-                return l;
-            }
+        List<Range> ranges = new ArrayList<>();
+        for (int i = 0; i < seeds.size(); i += 2) {
+            ranges.add(new Range(seeds.get(i), seeds.get(i) + seeds.get(i + 1)));
         }
-        return 0;
-    }
-
-    private static boolean seedsContains(List<Long> seedList, long location) {
-        for (int i = 0; i < seedList.size(); i += 2) {
-            if (location >= seedList.get(i) && location <= seedList.get(i) + seedList.get(i + 1)) {
-                return true;
+        List<Range> tmp = new ArrayList<>();
+        for (var map : maps.values()) {
+            for (var conversionMap : map) {
+                for (int i = 0; i < ranges.size(); i++) {
+                    Range seedRange = ranges.get(i);
+                    if (conversionMap.sourceRangeStart <= seedRange.end &&
+                            conversionMap.sourceRangeStart + conversionMap.rangeLength() > seedRange.start) {
+                        
+                        ranges.remove(i--);
+                        
+                        var delta = conversionMap.destinationRangeStart - conversionMap.sourceRangeStart;
+                        var tmpRange = new Range(Math.max(conversionMap.sourceRangeStart, seedRange.start), Math.min(conversionMap.sourceRangeStart + conversionMap.rangeLength, seedRange.end));
+                        var mappedRange = new Range(tmpRange.start + delta, tmpRange.end + delta);
+                        tmp.add(mappedRange);
+                        if (seedRange.start < tmpRange.start) {
+                            ranges.add(new Range(seedRange.start, tmpRange.start - 1));
+                        }
+                        if (seedRange.end > tmpRange.end) {
+                            ranges.add(new Range(tmpRange.end, seedRange.end - 1));
+                        }
+                    }
+                }
+                
             }
+            ranges.addAll(tmp);
+            tmp.clear();
         }
-        return false;
+        ranges.addAll(tmp);
+        return ranges.stream().mapToLong(r -> r.start).min().orElse(0);
     }
 
     record ConversionMap(long destinationRangeStart, long sourceRangeStart, long rangeLength) {
@@ -72,19 +82,12 @@ public class Day5 extends Day {
         }
     }
 
+    record Range(long start, long end) {}
+
     private static Long getNextLocation(Long location, List<ConversionMap> conversionMaps) {
         for (var conversionMap : conversionMaps) {
             if (location >= conversionMap.sourceRangeStart && location < conversionMap.sourceRangeStart + conversionMap.rangeLength) {
                 return conversionMap.destinationRangeStart + location - conversionMap.sourceRangeStart;
-            }
-        }
-        return location;
-    }
-    
-    private static Long getPreviousLocation(Long location, List<ConversionMap> conversionMaps) {
-        for (var conversionMap : conversionMaps) {
-            if (location >= conversionMap.destinationRangeStart && location < conversionMap.destinationRangeStart + conversionMap.rangeLength) {
-                return conversionMap.sourceRangeStart + location - conversionMap.destinationRangeStart;
             }
         }
         return location;
