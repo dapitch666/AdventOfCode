@@ -33,6 +33,17 @@ public class Utils {
         return print2dIntArray(array, " ", "#");
     }
 
+    public static String print2dArray(char[][] array) {
+        StringBuilder sb = new StringBuilder();
+        for (char[] chars : array) {
+            for (int j = 0; j < array[0].length; j++) {
+                sb.append(chars[j]);
+            }
+            sb.append(LINE_SEPARATOR);
+        }
+        return sb.toString();
+    }
+    
     public static String printAscii(int[][] array) {
         // print2dIntArray(array, "  ", "██");
         return print2dIntArray(array, "  ", "##");
