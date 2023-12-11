@@ -110,4 +110,8 @@ public class Utils {
         Pattern regex = Pattern.compile("^(.*)$", Pattern.MULTILINE);
         return regex.split(str).length > 0;
     }
+
+    public static long manhattanDistance(Point a, Point b) {
+        return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+    }
 }
