@@ -6,6 +6,8 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
+import static org.anne.common.Utils.manhattanDistance;
+
 public class Day15 extends Day {
 
     public static void main(String[] args) {
@@ -100,7 +102,7 @@ public class Day15 extends Day {
     }
 
     private static boolean areNeighbors(Point a, Point b) {
-        return distance(a, b) == 1;
+        return manhattanDistance(a, b) == 1;
     }
 
     static Point getClosestUncharted(Map<Point, Character> map, Point point) {
@@ -108,8 +110,8 @@ public class Day15 extends Day {
         Point closest = null;
         for (Point p : map.keySet().stream().filter(e -> map.get(e) == '.').toList()) {
             for (Point neighbor : getNeighbors(p)) {
-                if (!map.containsKey(neighbor) && distance(neighbor, point) < minDistance) {
-                    minDistance = distance(neighbor, point);
+                if (!map.containsKey(neighbor) && manhattanDistance(neighbor, point) < minDistance) {
+                    minDistance = (int) manhattanDistance(neighbor, point);
                     closest = neighbor;
                 }
             }
@@ -130,10 +132,6 @@ public class Day15 extends Day {
         return neighbors;
     }
 
-    private static int distance(Point a, Point b) {
-        return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-    }
-
     private static List<Point> path(Map<Point, Character> map, Point from, Point to) {
         HashMap<Point, Integer> distances = new HashMap<>();
         List<Point> path = new ArrayList<>();
@@ -141,7 +139,7 @@ public class Day15 extends Day {
         HashMap<Point, Point> previous = new HashMap<>();
         PriorityQueue<Point> queue = new PriorityQueue<>(Comparator.comparingInt(distances::get));
         queue.add(from);
-        while (queue.size() > 0) {
+        while (!queue.isEmpty()) {
             Point current = queue.poll();
             if (current.equals(to)) {
                 while (previous.containsKey(current)) {

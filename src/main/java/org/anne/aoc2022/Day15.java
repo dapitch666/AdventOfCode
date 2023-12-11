@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static org.anne.common.Utils.manhattanDistance;
+
 public class Day15 extends Day {
     public static void main(String[] args) {
         Day day = new Day15();
@@ -49,9 +51,6 @@ public class Day15 extends Day {
         }
     }
 
-    private static int manhattanDistance(Point a, Point b) {
-        return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-    }
 
     private static List<Sensor> getSensors(List<String> input) {
         List<Sensor> sensorList = new ArrayList<>();
@@ -61,13 +60,13 @@ public class Day15 extends Day {
             if (m.matches()) {
                 Point s = new Point(Integer.parseInt(m.group(1)), Integer.parseInt(m.group(2)));
                 Point b = new Point(Integer.parseInt(m.group(3)), Integer.parseInt(m.group(4)));
-                sensorList.add(new Sensor(s, manhattanDistance(s, b)));
+                sensorList.add(new Sensor(s, (int) manhattanDistance(s, b)));
             }
         }
         return sensorList;
     }
 
-    public static List<Range> getEmptyPositions(List<Sensor> sensorList, int row) {
+    static List<Range> getEmptyPositions(List<Sensor> sensorList, int row) {
         List<Range> ranges = sensorList
                 .stream()
                 .filter(s -> s.isInRange(row))

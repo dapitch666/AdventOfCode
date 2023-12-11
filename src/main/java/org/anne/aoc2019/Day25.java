@@ -61,7 +61,7 @@ public class Day25 extends Day {
         program = new StringBuilder();
         for (int i = output.indexOf("Items in your inventory:") + 1; i < output.size(); i++) {
             var object = output.get(i);
-            if (object.equals("")) {
+            if (object.isEmpty()) {
                 break;
             }
             object = object.substring(2);
@@ -79,7 +79,6 @@ public class Day25 extends Day {
             String out = computer.computeAndGetOutputAsString(program.toString());
             program = new StringBuilder();
             if (out.contains("Analysis complete! You may proceed.")) {
-                System.out.println(combination);
                 return Arrays.stream(out.split(LINE_SEPARATOR))
                         .filter(s -> s.contains("You should be able to get in by typing"))
                         .findFirst()

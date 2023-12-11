@@ -36,7 +36,7 @@ public class Day18 extends Day {
 
         queue.add(start);
         HashSet<Point3d> air = new HashSet<>();
-        while(queue.size() > 0) {
+        while(!queue.isEmpty()) {
             Point3d current = queue.poll();
             air.add(current);
 
