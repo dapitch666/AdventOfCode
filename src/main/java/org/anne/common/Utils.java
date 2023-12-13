@@ -61,6 +61,16 @@ public class Utils {
         return printAscii(array);
     }
 
+    public static String printAscii(Set<Point> points, String empty, String full) {
+        int maxX = points.stream().map(x -> x.x).max(Integer::compare).orElseThrow();
+        int maxY = points.stream().map(x -> x.y).max(Integer::compare).orElseThrow();
+        int[][] array = new int[maxY + 1][maxX + 1];
+        for (Point p : points) {
+            array[p.y][p.x] = 1;
+        }
+        return print2dIntArray(array, empty, full);
+    }
+
     public static String printHashmap(Map<Point, Character> map) {
         int minX = map.keySet().stream().map(x -> x.x).min(Integer::compare).orElseThrow();
         int maxX = map.keySet().stream().map(x -> x.x).max(Integer::compare).orElseThrow();
@@ -114,4 +124,5 @@ public class Utils {
     public static long manhattanDistance(Point a, Point b) {
         return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
     }
+
 }
