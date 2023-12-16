@@ -1,11 +1,14 @@
 package org.anne.aoc2023;
 
 import org.anne.common.Day;
+import org.anne.common.Direction;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import static org.anne.common.Direction.*;
 
 public class Day10 extends Day {
     public static void main(String[] args) {
@@ -19,7 +22,7 @@ public class Day10 extends Day {
     public static int part1(List<String> input) {
         var grid = getGrid(input);
         var start = getStart(grid);
-        var direction = Direction.NORTH;
+        var direction = NORTH;
         
         var nextDirection = getNext(grid, start, direction);
         var nextPoint = Direction.getPoint(nextDirection, start);
@@ -39,7 +42,7 @@ public class Day10 extends Day {
         var grid = getGrid(input);
         int[][] doubledGrid = new int[grid.length * 2 + 1][grid[0].length * 2 + 1];
         var start = getStart(grid);
-        var direction = Direction.NORTH;
+        var direction = NORTH;
 
         doubledGrid[start.y * 2 + 1][start.x * 2 + 1] = 1;
         var nextDirection = getNext(grid, start, direction);
@@ -94,19 +97,6 @@ public class Day10 extends Day {
         return area;
     }
 
-    enum Direction {
-        NORTH, SOUTH, EAST, WEST;
-        
-        static Point getPoint(Direction direction, Point start) {
-            return switch (direction) {
-                case NORTH -> new Point(start.x, start.y - 1);
-                case SOUTH -> new Point(start.x, start.y + 1);
-                case EAST -> new Point(start.x + 1, start.y);
-                case WEST -> new Point(start.x - 1, start.y);
-            };
-        }
-    }
-    
     static List<Point> getNeighbours(Point p, int[][] grid) {
         var neighbours = new ArrayList<Point>();
         if (p.x > 0) {
@@ -192,39 +182,39 @@ public class Day10 extends Day {
         var current = grid[start.y][start.x]; 
         if (current == 'S') {
             if (north == '|' || north == 'F' || north == '7') {
-                return Direction.NORTH;
+                return NORTH;
             } else if (south == '|' || south == 'J' || south == 'L') {
-                return Direction.SOUTH;
+                return SOUTH;
             } else if (east == '-' || east == '7' || east == 'J') {
-                return Direction.EAST;
+                return EAST;
             } else if (west == '-' || west == 'F' || west == 'L') {
-                return Direction.WEST;
+                return WEST;
             }
         } else if (current == '|' || current == '-') {
             return direction;
         } else if (current == 'J') {
-            if (direction == Direction.SOUTH) {
-                return Direction.WEST;
-            } else if (direction == Direction.EAST) {
-                return Direction.NORTH;
+            if (direction == SOUTH) {
+                return WEST;
+            } else if (direction == EAST) {
+                return NORTH;
             }
         } else if (current == 'L') {
-            if (direction == Direction.SOUTH) {
-                return Direction.EAST;
-            } else if (direction == Direction.WEST) {
-                return Direction.NORTH;
+            if (direction == SOUTH) {
+                return EAST;
+            } else if (direction == WEST) {
+                return NORTH;
             }
         } else if (current == 'F') {
-            if (direction == Direction.NORTH) {
-                return Direction.EAST;
-            } else if (direction == Direction.WEST) {
-                return Direction.SOUTH;
+            if (direction == NORTH) {
+                return EAST;
+            } else if (direction == WEST) {
+                return SOUTH;
             }
         } else if (current == '7') {
-            if (direction == Direction.NORTH) {
-                return Direction.WEST;
-            } else if (direction == Direction.EAST) {
-                return Direction.SOUTH;
+            if (direction == NORTH) {
+                return WEST;
+            } else if (direction == EAST) {
+                return SOUTH;
             }
         }
         return direction; // Should never happen
