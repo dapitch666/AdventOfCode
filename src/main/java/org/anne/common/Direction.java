@@ -22,4 +22,13 @@ public enum Direction {
             case WEST -> clockwise ? NORTH : SOUTH;
         };
     }
+    
+    public static Direction reverse(Direction direction) {
+        return switch (direction) {
+            case NORTH -> SOUTH;
+            case SOUTH -> NORTH;
+            case EAST -> WEST;
+            case WEST -> EAST;
+        };
+    }
 }
