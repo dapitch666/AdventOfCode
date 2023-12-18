@@ -62,11 +62,13 @@ public class Utils {
     }
 
     public static String printAscii(Set<Point> points, String empty, String full) {
+        int minX = points.stream().map(x -> x.x).min(Integer::compare).orElseThrow();
         int maxX = points.stream().map(x -> x.x).max(Integer::compare).orElseThrow();
+        int minY = points.stream().map(x -> x.y).min(Integer::compare).orElseThrow();
         int maxY = points.stream().map(x -> x.y).max(Integer::compare).orElseThrow();
-        int[][] array = new int[maxY + 1][maxX + 1];
+        int[][] array = new int[maxY - minY + 1][maxX - minX + 1];
         for (Point p : points) {
-            array[p.y][p.x] = 1;
+            array[p.y - minY][p.x - minX] = 1;
         }
         return print2dIntArray(array, empty, full);
     }
@@ -124,5 +126,20 @@ public class Utils {
     public static long manhattanDistance(Point a, Point b) {
         return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
     }
-
+    
+    public static long getArea(List<Point> vertices) {
+        // shoelace formula + pick's theorem 
+        // we also include boundaries
+        if (!vertices.get(0).equals(vertices.get(vertices.size() - 1))) {
+            vertices.add(vertices.get(0));
+        }
+        vertices.add(vertices.get(0));
+        var area = 0L;
+        var boundaries = 0L;
+        for (int i = 1; i < vertices.size() - 1; i++) {
+            area += (long) vertices.get(i).x * (vertices.get(i - 1).y - vertices.get(i + 1).y);
+            boundaries += manhattanDistance(vertices.get(i), vertices.get(i-1));
+        }
+        return Math.abs(area / 2) + boundaries / 2 + 1;
+    }
 }
