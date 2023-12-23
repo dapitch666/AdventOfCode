@@ -26,6 +26,6 @@ public class Day22Test {
 
     @Test
     void testPart2() {
-    //    assertEquals(7, Day20.part2(input));
+    //    assertEquals(7, Day22.part2(input));
     }
 }
