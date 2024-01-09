@@ -9,6 +9,7 @@ public class Day22 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day22();
+        day.setName("Slam Shuffle");
         List<String> input = day.readFile();
         day.setPart1(part1(input, 10007, 2019));
         day.setPart2(part2(input, 119315717514047L, 101741582076661L, 2020));

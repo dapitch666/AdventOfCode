@@ -13,6 +13,7 @@ import static org.anne.common.Direction.*;
 public class Day10 extends Day {
     public static void main(String[] args) {
         Day day = new Day10();
+        day.setName("Pipe Maze");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

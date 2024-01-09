@@ -11,14 +11,15 @@ import java.util.stream.Stream;
 public class Day23 extends Day {
     public static void main(String[] args) {
         Day day = new Day23();
+        day.setName("A Long Walk");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
         day.printParts();
     }
     
-    static Set<Point> visited = new HashSet<>();
-    static Map<Point, Map<Point, Integer>> graphs = new HashMap<>();
+    static final Set<Point> visited = new HashSet<>();
+    static final Map<Point, Map<Point, Integer>> graphs = new HashMap<>();
 
     public static int part1(List<String> input) {
         return longestPath(input, true);

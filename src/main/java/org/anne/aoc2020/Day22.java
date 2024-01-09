@@ -9,6 +9,7 @@ public class Day22 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day22();
+        day.setName("Crab Combat");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -53,7 +54,7 @@ public class Day22 extends Day {
         int winner;
         List<List<Integer>> player1History = new ArrayList<>();
         List<List<Integer>> player2History = new ArrayList<>();
-        while (player1.size() > 0 && player2.size() > 0) {
+        while (!player1.isEmpty() && !player2.isEmpty()) {
             if (player1History.contains(player1) && player2History.contains(player2)) {
                 return 1;
             } else {
@@ -82,13 +83,13 @@ public class Day22 extends Day {
             }
         }
         if (isFirstGame) {
-            if (player1.size() > 0) {
+            if (!player1.isEmpty()) {
                 return calculateScore(player1);
             } else {
                 return calculateScore(player2);
             }
         } else {
-            if (player1.size() > 0) {
+            if (!player1.isEmpty()) {
                 return 1;
             } else {
                 return 2;
@@ -97,7 +98,7 @@ public class Day22 extends Day {
     }
 
     private static int classicGame(List<Integer> player1, List<Integer> player2) {
-        while (player1.size() > 0 && player2.size() > 0) {
+        while (!player1.isEmpty() && !player2.isEmpty()) {
             int first = player1.get(0);
             int second = player2.get(0);
             player1.remove(0);
@@ -110,7 +111,7 @@ public class Day22 extends Day {
                 player1.add(second);
             }
         }
-        if (player1.size() > 0) {
+        if (!player1.isEmpty()) {
             return calculateScore(player1);
         } else {
             return calculateScore(player2);

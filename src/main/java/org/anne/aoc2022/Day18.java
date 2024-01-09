@@ -8,6 +8,7 @@ import java.util.*;
 public class Day18 extends Day {
     public static void main(String[] args) {
         Day day = new Day18();
+        day.setName("Boiling Boulders");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

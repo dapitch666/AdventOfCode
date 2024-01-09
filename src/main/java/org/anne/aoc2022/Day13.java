@@ -11,6 +11,7 @@ import java.util.stream.Stream;
 public class Day13 extends Day {
     public static void main(String[] args) {
         Day day = new Day13();
+        day.setName("Distress Signal");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -34,7 +35,7 @@ public class Day13 extends Day {
         Packet six = new Packet("[[6]]");
         List<Packet> packets = Stream
                 .concat(
-                    input.stream().filter(s -> !s.equals("")).map(Packet::new),
+                    input.stream().filter(s -> !s.isEmpty()).map(Packet::new),
                     Stream.of(two, six))
                 .sorted(Comparator.reverseOrder())
                 .toList();
@@ -66,7 +67,7 @@ public class Day13 extends Day {
         }
 
         public boolean isInt() {
-            return this.children.size() == 0 && !value.equals("");
+            return this.children.isEmpty() && !value.isEmpty();
         }
 
         @Override
@@ -93,7 +94,7 @@ public class Day13 extends Day {
             StringBuilder sb = new StringBuilder();
             if (isInt()) {
                 sb = new StringBuilder(value);
-            } else if (this.children.size() > 0) {
+            } else if (!this.children.isEmpty()) {
                 sb.append(String.join(",", this.children.toString()));
             }
             return sb.toString();

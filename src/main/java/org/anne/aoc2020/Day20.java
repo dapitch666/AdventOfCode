@@ -12,6 +12,7 @@ public class Day20 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day20();
+        day.setName("Jurassic Jigsaw");
         List<String> input = day.readFile();
         Map<Integer, Tile> tiles = getTiles(input);
         day.setPart1(part1(tiles));

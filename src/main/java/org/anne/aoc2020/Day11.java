@@ -8,6 +8,7 @@ public class Day11 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day11();
+        day.setName("Seating System");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

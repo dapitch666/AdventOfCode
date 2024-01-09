@@ -62,10 +62,11 @@ public class Year {
     }
 
     private static void printTitle(String title, String color) {
-        int length = title.length() + 4;
-        String box = color + "+" + repeat("-", length) + "+" + ANSI_RESET;
+        int length = title.length() + 6;
+        String box = color + "+" + repeat("=", length) + "+" + ANSI_RESET;
         System.out.println(box);
-        System.out.println(color + "|  " + ANSI_RESET + title + color + "  |" + ANSI_RESET);
+        System.out.println(color + "||  " + ANSI_RESET + title + color + "  ||" + ANSI_RESET);
         System.out.println(box);
+        System.out.println();
     }
 }

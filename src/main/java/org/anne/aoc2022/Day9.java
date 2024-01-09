@@ -10,6 +10,7 @@ import java.util.Set;
 public class Day9 extends Day {
     public static void main(String[] args) {
         Day day = new Day9();
+        day.setName("Rope Bridge");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

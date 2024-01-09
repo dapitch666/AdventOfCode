@@ -10,6 +10,7 @@ public class Day8 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day8();
+        day.setName("Handheld Halting");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

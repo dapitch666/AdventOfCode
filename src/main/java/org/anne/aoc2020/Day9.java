@@ -12,6 +12,7 @@ public class Day9 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day9();
+        day.setName("Encoding Error");
         List<Long> input = day.readFileAsLongs();
         day.setPart1(part1(input, STEP));
         day.setPart2(part2(input, STEP));
@@ -61,7 +62,7 @@ public class Day9 extends Day {
     }
 
     private static boolean validateSum(List<Long> entryList, long sum) {
-        while (entryList.size() > 0) {
+        while (!entryList.isEmpty()) {
             long entry = entryList.get(0);
             entryList.remove(0);
             for (long i : entryList) {

@@ -10,6 +10,7 @@ public class Day10 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day10();
+        day.setName("Adapter Array");
         List<Integer> input = day.readFileAsInts();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

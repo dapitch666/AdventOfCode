@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class Day20 extends Day {
     public static void main(String[] args) {
         Day day = new Day20();
+        day.setName("Pulse Propagation");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -121,8 +122,8 @@ public class Day20 extends Day {
    
     static class Module {
         String name;
-        List<String> targets = new ArrayList<>();
-        Map<String, Boolean> pulses = new HashMap<>();
+        final List<String> targets = new ArrayList<>();
+        final Map<String, Boolean> pulses = new HashMap<>();
         boolean isOn = false;
         Type type;
         

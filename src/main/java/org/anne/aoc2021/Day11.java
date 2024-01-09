@@ -11,6 +11,7 @@ public class Day11 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day11();
+        day.setName("Dumbo Octopus");
         List<String> input = day.readFile();
         day.setPart1(part1(input, 100));
         day.setPart2(part2(input));

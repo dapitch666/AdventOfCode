@@ -10,6 +10,7 @@ import java.util.Map;
 public class Day3 extends Day {
     public static void main(String[] args) {
         Day day = new Day3();
+        day.setName("Crossed Wires");
         List<String> input = day.readFile();
         Map<Point, Integer> wire1 = mapWire(input.get(0));
         Map<Point, Integer> wire2 = mapWire(input.get(1));

@@ -12,7 +12,8 @@ public class Day17 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day17();
-        String input = "target area: x=60..94, y=-171..-136";
+        day.setName("Trick Shot");
+        String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
         day.printParts();

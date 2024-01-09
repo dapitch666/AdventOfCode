@@ -11,6 +11,7 @@ import java.util.regex.Pattern;
 public class Day18 extends Day {
     public static void main(String[] args) {
         Day day = new Day18();
+        day.setName("Lavaduct Lagoon");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

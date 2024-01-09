@@ -9,6 +9,7 @@ import java.util.Map;
 public class Day2 extends Day {
     public static void main(String[] args) {
         Day day = new Day2();
+        day.setName("Rock Paper Scissors");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -48,16 +49,14 @@ public class Day2 extends Day {
     }
 
     public enum Result {
-        LOOSE(0, "X"),
-        DRAW(3, "Y"),
-        WIN(6, "Z");
+        LOOSE(0),
+        DRAW(3),
+        WIN(6);
 
         public final int points;
-        public final String letter;
 
-        Result(int points, String letter) {
+        Result(int points) {
             this.points = points;
-            this.letter = letter;
         }
 
         public static Result valueOfLetter(String letter) {

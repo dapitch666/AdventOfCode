@@ -11,6 +11,7 @@ public class Day11 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day11();
+        day.setName("Space Police");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

@@ -8,6 +8,7 @@ import java.util.List;
 public class Day1 extends Day {
     public static void main(String[] args) {
         Day day = new Day1();
+        day.setName("Trebuchet?!");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

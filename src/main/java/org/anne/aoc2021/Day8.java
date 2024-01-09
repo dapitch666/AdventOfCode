@@ -10,6 +10,7 @@ public class Day8 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day8();
+        day.setName("Seven Segment Search");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -21,7 +22,7 @@ public class Day8 extends Day {
         int counter = 0;
         for (String line : input) {
             String[] split = line.split(" \\| ");
-            counter += Arrays.stream(split[1].split(" "))
+            counter += (int) Arrays.stream(split[1].split(" "))
                              .mapToInt(String::length)
                              .filter(integers::contains)
                              .count();

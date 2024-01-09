@@ -16,6 +16,7 @@ public abstract class Day {
 
     private Object part1;
     private Object part2;
+    private String name;
 
     public Day() {
         Class<?> clazz = this.getClass();
@@ -31,6 +32,10 @@ public abstract class Day {
         this.part2 = part2;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public void printPart(int partNumber) {
         String result = partNumber == 1 ? part1.toString() : part2.toString();
         if (containsNewLine(result)) {
@@ -41,7 +46,7 @@ public abstract class Day {
     }
 
     public void printParts() {
-        String title = " Day " + this.day;
+        String title = " Day " + this.day + ": " + this.name;
         System.out.println(title);
         System.out.println(repeat("=", title.length() + 1));
         printPart(1);

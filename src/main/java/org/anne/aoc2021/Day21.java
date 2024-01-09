@@ -11,6 +11,7 @@ public class Day21 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day21();
+        day.setName("Dirac Dice");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

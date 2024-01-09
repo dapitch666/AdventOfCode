@@ -2,12 +2,12 @@ package org.anne.aoc2023;
 
 import org.anne.common.Day;
 
-import java.util.List;
 import java.util.*;
 
 public class Day12 extends Day {
     public static void main(String[] args) {
         Day day = new Day12();
+        day.setName("Hot Springs");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

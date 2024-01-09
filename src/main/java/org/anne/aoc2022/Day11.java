@@ -8,6 +8,7 @@ import java.util.List;
 public class Day11 extends Day {
     public static void main(String[] args) {
         Day day = new Day11();
+        day.setName("Monkey in the Middle");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -26,7 +27,7 @@ public class Day11 extends Day {
         long pgdc = monkeys.stream().mapToLong(Monkey::getTest).reduce((a,b) -> a * b).orElseThrow();
         for (int i = 0; i < nbRounds; i++) {
             for (Monkey monkey : monkeys) {
-                while (monkey.items.size() > 0) {
+                while (!monkey.items.isEmpty()) {
                     monkey.nbInspections++;
                     long item = monkey.items.remove(0);
                     String[] operation = monkey.operation;

@@ -14,6 +14,7 @@ import static org.anne.common.Utils.manhattanDistance;
 public class Day15 extends Day {
     public static void main(String[] args) {
         Day day = new Day15();
+        day.setName("Beacon Exclusion Zone");
         List<String> input = day.readFile();
         day.setPart1(part1(input, 2000000));
         day.setPart2(part2(input, 4000000));

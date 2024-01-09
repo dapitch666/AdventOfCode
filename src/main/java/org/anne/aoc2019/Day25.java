@@ -12,6 +12,7 @@ public class Day25 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day25();
+        day.setName("Cryostasis");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2());

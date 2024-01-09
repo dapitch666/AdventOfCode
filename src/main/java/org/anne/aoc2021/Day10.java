@@ -17,6 +17,7 @@ public class Day10 extends Day {
     public static void main(String[] args) {
         Day day = new Day10();
         List<String> input = day.readFile();
+        day.setName("Syntax Scoring");
         day.setPart1(part1(input));
         day.setPart2(part2(input));
         day.printParts();

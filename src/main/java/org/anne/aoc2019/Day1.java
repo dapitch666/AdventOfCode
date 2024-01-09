@@ -9,6 +9,7 @@ public class Day1 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day1();
+        day.setName("The Tyranny of the Rocket Equation");
         List<Integer> input = day.readFileAsInts();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

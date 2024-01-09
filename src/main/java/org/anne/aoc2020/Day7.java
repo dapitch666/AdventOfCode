@@ -10,6 +10,7 @@ public class Day7 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day7();
+        day.setName("Handy Haversacks");
         Map<String, Map<String, Integer>> input = decode(day.readFile());
         day.setPart1(part1(input));
         day.setPart2(part2(input));

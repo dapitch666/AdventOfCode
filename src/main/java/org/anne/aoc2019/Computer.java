@@ -197,7 +197,7 @@ public class Computer {
                 }
                 case 9 -> {     // Relative base offset
                     first = getParameters(mode1, currentInstruction + 1);
-                    this.relativeBase += first;
+                    this.relativeBase += (int) first;
                     currentInstruction += 2;
                     journal(instruction, "OFFSET", new ArrayList<>(Collections.singletonList(String.valueOf(first))));
                 }

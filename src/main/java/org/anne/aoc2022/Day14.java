@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 public class Day14 extends Day {
     public static void main(String[] args) {
         Day day = new Day14();
+        day.setName("Regolith Reservoir");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

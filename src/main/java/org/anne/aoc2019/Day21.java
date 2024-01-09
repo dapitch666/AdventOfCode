@@ -5,6 +5,7 @@ import org.anne.common.Day;
 public class Day21 extends Day {
     public static void main(String[] args) {
         Day day = new Day21();
+        day.setName("Springdroid Adventure");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

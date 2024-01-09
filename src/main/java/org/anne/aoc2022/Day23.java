@@ -12,6 +12,7 @@ import java.util.stream.Stream;
 public class Day23 extends Day {
     public static void main(String[] args) {
         Day day = new Day23();
+        day.setName("Unstable Diffusion");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -57,7 +58,7 @@ public class Day23 extends Day {
         for(Point elf : elves) {
             List<Point> adj = getSurrounding(elf);
             adj.retainAll(elves);
-            if(adj.size() == 0)
+            if(adj.isEmpty())
                 continue;
             for(Direction d : directions) {
                 List<Point> checks = d.getDiagonals(elf);

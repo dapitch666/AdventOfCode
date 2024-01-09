@@ -8,6 +8,7 @@ import java.util.List;
 public class Day7 extends Day {
     public static void main(String[] args) {
         Day day = new Day7();
+        day.setName("No Space Left On Device");
         Directory root = getRoot(day.readFile());
         day.setPart1(part1(root));
         day.setPart2(part2(root));

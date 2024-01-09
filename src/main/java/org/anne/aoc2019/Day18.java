@@ -18,6 +18,7 @@ public class Day18 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day18();
+        day.setName("Many-Worlds Interpretation");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(new ArrayList<>(input)));
@@ -126,7 +127,7 @@ public class Day18 extends Day {
         return result;
     }
 
-    public static DistanceAndKeys getPath(Point start, Point end, int curKeys) {
+    static DistanceAndKeys getPath(Point start, Point end, int curKeys) {
         int keysNeeded = 0;
         Map<Point, Point> parent = new HashMap<>();
         Queue<Point> queue = new LinkedList<>();
@@ -134,7 +135,7 @@ public class Day18 extends Day {
         currentCost.put(start, 0);
         queue.add(start);
         List<Point> path = null;
-        while(queue.size() > 0) {
+        while(!queue.isEmpty()) {
             Point current = queue.poll();
             if(current.equals(end)) {
                 path = new ArrayList<>();
@@ -176,7 +177,7 @@ public class Day18 extends Day {
                 new Point(point.x + 1, point.y));
     }
 
-    record State(Point position, int keys, int distance) {}
+    public record State(Point position, int keys, int distance) {}
     record Path(Point start, Point end) {}
     record DistanceAndKeys(int distance, int keys) {}
 }

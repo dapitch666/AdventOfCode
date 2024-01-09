@@ -9,6 +9,7 @@ public class Day18 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day18();
+        day.setName("Snailfish");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -26,7 +27,7 @@ public class Day18 extends Day {
         Stack<Pair> pairStack = new Stack<>();
         pairStack.addAll(pairs);
         Pair result = pairStack.pop();
-        while (pairStack.size() > 0) {
+        while (!pairStack.isEmpty()) {
             result = addition(result, pairStack.pop());
         }
         return result.magnitude();

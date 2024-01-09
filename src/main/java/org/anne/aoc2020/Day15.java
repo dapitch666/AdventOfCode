@@ -8,7 +8,8 @@ public class Day15 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day15();
-        List<Integer> input = List.of(14,3,1,0,9,5);
+        day.setName("Rambunctious Recitation");
+        List<Integer> input = day.readFileAsInts();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
         day.printParts();

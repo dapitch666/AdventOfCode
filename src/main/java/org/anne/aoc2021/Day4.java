@@ -13,6 +13,7 @@ public class Day4 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day4();
+        day.setName("Giant Squid");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -33,7 +34,7 @@ public class Day4 extends Day {
                         return score(board, draw);
                     }
                     boardIterator.remove();
-                    if (boards.size() == 0) {
+                    if (boards.isEmpty()) {
                         return score(board, draw);
                     }
                 }

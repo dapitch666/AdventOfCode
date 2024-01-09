@@ -2,10 +2,7 @@ package org.anne.aoc2023;
 
 import org.junit.jupiter.api.Test;
 
-import java.awt.*;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -15,6 +15,7 @@ public class Day17 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day17();
+        day.setName("Set and Forget");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

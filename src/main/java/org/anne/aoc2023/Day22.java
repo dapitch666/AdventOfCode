@@ -4,13 +4,13 @@ import org.anne.common.Day;
 import org.anne.common.Point3d;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Day22 extends Day {
     public static void main(String[] args) {
         Day day = new Day22();
+        day.setName("Sand Slabs");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -84,8 +84,8 @@ public class Day22 extends Day {
         Point3d start;
         int size;
         int direction;
-        Set<Brick> supports = new HashSet<>();
-        Set<Brick> isSupportedBy = new HashSet<>();
+        final Set<Brick> supports = new HashSet<>();
+        final Set<Brick> isSupportedBy = new HashSet<>();
 
         final static int[] xs = new int[]{1, 0, 0};
         final static int[] ys = new int[]{0, 1, 0};

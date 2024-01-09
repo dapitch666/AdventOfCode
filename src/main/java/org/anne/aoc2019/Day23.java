@@ -7,6 +7,7 @@ public class Day23 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day23();
+        day.setName("Category Six");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

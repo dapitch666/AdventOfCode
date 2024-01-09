@@ -9,6 +9,7 @@ import java.util.List;
 public class Day1 extends Day {
     public static void main(String[] args) {
         Day day = new Day1();
+        day.setName("Calorie Counting");
         List<String> input = day.readFile();
         List<Integer> elves = getElves(input);
         day.setPart1(part1(elves));
@@ -28,7 +29,7 @@ public class Day1 extends Day {
         List<Integer> elves = new ArrayList<>();
         int sum = 0;
         for (String s : input) {
-            if (s.equals("")) {
+            if (s.isEmpty()) {
                 elves.add(sum);
                 sum = 0;
             } else {

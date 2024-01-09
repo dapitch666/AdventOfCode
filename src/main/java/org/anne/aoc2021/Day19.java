@@ -204,7 +204,7 @@ public class Day19 extends Day {
                     .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
             for (Long val : grouped.values()) {
                 if (val > 1) {
-                    errorLimit += val * (val - 1);
+                    errorLimit += (int) (val * (val - 1));
                 }
             }
             Point3d dist = commons.left.get(0).from.add(transformed.get(0).from.reverse());
@@ -285,5 +285,5 @@ public class Day19 extends Day {
         }
     }
 
-    record DistPair (List<BeaconDistance> left, List<BeaconDistance> right) {}
+    public record DistPair (List<BeaconDistance> left, List<BeaconDistance> right) {}
 }

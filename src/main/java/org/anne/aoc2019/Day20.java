@@ -11,6 +11,7 @@ public class Day20 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day20();
+        day.setName("Donut Maze");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -95,7 +96,7 @@ public class Day20 extends Day {
         currentCost.put(maze.start, 0);
         Queue<Point> queue = new LinkedList<>();
         queue.add(maze.start);
-        while(queue.size() > 0) {
+        while(!queue.isEmpty()) {
             Point current = queue.poll();
             if(current.equals(maze.end)) {
                 return currentCost.get(current);
@@ -121,13 +122,13 @@ public class Day20 extends Day {
         return -1;
     }
 
-    public static int path(DonutMaze maze, int width, int height) {
+    static int path(DonutMaze maze, int width, int height) {
         Map<Point3d, Integer> currentCost = new HashMap<>();
         Point3d current3d = new Point3d(maze.start, 0);
         currentCost.put(current3d, 0);
         Queue<Point3d> queue = new LinkedList<>();
         queue.add(current3d);
-        while(queue.size() > 0) {
+        while(!queue.isEmpty()) {
             current3d = queue.poll();
             if(current3d.equals(new Point3d(maze.end, 0))) {
                 return currentCost.get(current3d);

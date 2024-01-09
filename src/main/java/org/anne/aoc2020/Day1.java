@@ -10,6 +10,7 @@ public class Day1 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day1();
+        day.setName("Report Repair");
         List<Integer> input = day.readFileAsInts();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -18,7 +19,7 @@ public class Day1 extends Day {
 
     static int part1(List<Integer> input) {
         List<Integer> entryList = new LinkedList<>(input);
-        while (entryList.size() > 0) {
+        while (!entryList.isEmpty()) {
             int entry = entryList.get(0);
             entryList.remove(0);
             for (int i : entryList) {
@@ -32,11 +33,11 @@ public class Day1 extends Day {
 
     static int part2(List<Integer> input) {
         List<Integer> entryList = new LinkedList<>(input);
-        while (entryList.size() > 0) {
+        while (!entryList.isEmpty()) {
             int first = entryList.get(0);
             entryList.remove(0);
             List<Integer> entryListCopy = new ArrayList<>(entryList);
-            while (entryListCopy.size() > 0) {
+            while (!entryListCopy.isEmpty()) {
                 int second = entryListCopy.get(0);
                 entryListCopy.remove(0);
                 int somme = first + second;

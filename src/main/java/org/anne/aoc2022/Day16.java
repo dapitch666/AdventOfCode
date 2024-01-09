@@ -9,6 +9,7 @@ import java.util.regex.Pattern;
 public class Day16 extends Day {
     public static void main(String[] args) {
         Day day = new Day16();
+        day.setName("Proboscidea Volcanium");
         List<String> input = day.readFile();
 
         var valves = parseInput(input);
@@ -66,7 +67,7 @@ public class Day16 extends Day {
             Set<String> seen = new HashSet<>();
             seen.add(v.name);
 
-            while(queue.size() > 0) {
+            while(!queue.isEmpty()) {
                 Valve cur = queue.poll();
                 int distFrom = distances.get(cur.name);
 

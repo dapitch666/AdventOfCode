@@ -11,7 +11,8 @@ public class Day4 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day4();
-        List<Integer> input = List.of(234208, 765869);
+        day.setName("Secure Container");
+        List<Integer> input = day.readFileAsInts();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
         day.printParts();

@@ -8,6 +8,7 @@ public class Day9 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day9();
+        day.setName("Sensor Boost");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

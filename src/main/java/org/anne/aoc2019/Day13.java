@@ -8,6 +8,7 @@ public class Day13 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day13();
+        day.setName("Care Package");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -45,7 +46,7 @@ public class Day13 extends Day {
         int paddle = 0;
         int score = 0;
         List<Long> output = computer.getOutputs();
-        while (output.size() > 0) {
+        while (!output.isEmpty()) {
             int x = Math.toIntExact(output.remove(0));
             int y = Math.toIntExact(output.remove(0));
             int tile = Math.toIntExact(output.remove(0));

@@ -9,6 +9,7 @@ import java.util.List;
 public class Day12 extends Day {
     public static void main(String[] args) {
         Day day = new Day12();
+        day.setName("Hill Climbing Algorithm");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -55,7 +56,7 @@ public class Day12 extends Day {
         Deque<Point> queue = new LinkedList<>();
         cost.put(heightMap.end, 0);
         queue.add(heightMap.end);
-        while (queue.size() > 0) {
+        while (!queue.isEmpty()) {
             Point current = queue.poll();
             if (current.equals(heightMap.start) || (isPart2 && heightMap.map.get(current) == (int) 'a')) {
                 int steps = 0;

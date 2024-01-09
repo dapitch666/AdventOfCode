@@ -11,6 +11,7 @@ import java.util.stream.IntStream;
 public class Day17 extends Day {
     public static void main(String[] args) {
         Day day = new Day17();
+        day.setName("Pyroclastic Flow");
         String input = day.readFileOneLine();
         day.setPart1(part1(input));
         day.setPart2(part2(input));
@@ -74,7 +75,7 @@ public class Day17 extends Day {
         return height;
     }
 
-    record PointLongY (int x, long y) {
+    public record PointLongY (int x, long y) {
         public PointLongY(PointLongY source, PointLongY origin) {
             this(source.x + origin.x, source.y + origin.y);
         }

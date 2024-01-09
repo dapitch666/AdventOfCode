@@ -10,6 +10,7 @@ public class Day3 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day3();
+        day.setName("Binary Diagnostic");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

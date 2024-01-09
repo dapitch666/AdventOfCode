@@ -3,13 +3,13 @@ package org.anne.aoc2023;
 import org.anne.common.Day;
 
 import java.util.*;
-import java.util.List;
 
 import static org.anne.common.Utils.transpose;
 
 public class Day13 extends Day {
     public static void main(String[] args) {
         Day day = new Day13();
+        day.setName("Point of Incidence");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2(input));

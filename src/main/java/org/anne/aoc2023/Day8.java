@@ -14,6 +14,7 @@ public class Day8 extends Day {
     public static void main(String[] args) {
         Day day = new Day8();
         List<String> input = day.readFile();
+        day.setName("Haunted Wasteland");
         day.setPart1(part1(input));
         day.setPart2(part2(input));
         day.printParts();

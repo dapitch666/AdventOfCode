@@ -12,6 +12,7 @@ public class Day16 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day16();
+        day.setName("Ticket Translation");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2());
@@ -150,7 +151,7 @@ public class Day16 extends Day {
         }
     }
 
-    private record Interval (int min, int max) {
+    public record Interval (int min, int max) {
         public Interval(String s) {
             this(Integer.parseInt(s.split("-")[0]), Integer.parseInt(s.split("-")[1]));
         }

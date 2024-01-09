@@ -7,6 +7,7 @@ import java.util.List;
 public class Day25 extends Day {
     public static void main(String[] args) {
         Day day = new Day25();
+        day.setName("Full of Hot Air");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2());
@@ -36,7 +37,7 @@ public class Day25 extends Day {
                 case '-' -> -1;
                 default -> Integer.parseInt(String.valueOf(c));
             };
-            number += n * Math.pow(5, pow);
+            number += (long) (n * Math.pow(5, pow));
             i++;
         }
         return number;

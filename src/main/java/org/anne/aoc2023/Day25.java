@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Day25 extends Day {
     public static void main(String[] args) {
         Day day = new Day25();
+        day.setName("Snowverload");
         List<String> input = day.readFile();
         day.setPart1(part1(input));
         day.setPart2(part2());
@@ -24,6 +25,7 @@ public class Day25 extends Day {
         }
     }
 
+    @SuppressWarnings("SameReturnValue")
     public static String part2() {
         return "Merry Christmas!";
     }
