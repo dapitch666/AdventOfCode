@@ -43,7 +43,19 @@ mvn test
 
 ## Use your own puzzle input
 
-If you want to change the inputs with your puzzle input, change the contents of the files from `src/main/resources/aoc<YearNumber>/day<DayNumber>.txt`.
+Input files are stored in a separate private repository, in compliance with AOC [rules](https://www.reddit.com/r/adventofcode/wiki/faqs/copyright/inputs/). If you want to use your own input, put them in the resources folder: `src/main/resources/aoc<YearNumber>/day<DayNumber>.txt`
+
+## Adding new solutions
+
+Run the python script `create_day.py` to create a new solution for a day. The script takes two arguments: the year and the day. For example, to create a new solution for day 15 of 2019, run the following command:
+
+```bash
+python create_day.py 201915
+```
+
+Don't provide any argument to the script to create a new solution for the current day.
+
+The script also takes care of creating the year package if it doesn't exist yet.
 
 ## Dependencies
 

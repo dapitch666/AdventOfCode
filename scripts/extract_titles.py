@@ -12,8 +12,8 @@ for i in range(1, 26):
         node_text = soup.find('h2').get_text()
         result = re.search(r'--- Day [0-9]+: (.*) ---', node_text)
         if result:
-            res = "day.setName(\"{}\");".format(result.group(1))
-            print(res)
+            result = "day.setName(\"{}\");".format(result.group(1))
+            print(result)
         else:
             print(node_text)
     else:
