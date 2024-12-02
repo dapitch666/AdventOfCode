@@ -108,6 +108,15 @@ public class Utils {
         return result;
     }
 
+    /**
+    * Converts a string containing integers into an IntStream.
+    *
+    * This method uses a regular expression to find all integer values (including negative numbers)
+    * in the input string and returns them as an IntStream.
+    *
+    * @param input the input string containing integers
+    * @return an IntStream of integers found in the input string
+    */
     public static IntStream inputToIntStream(String input) {
         Pattern pattern = Pattern.compile("-?\\d+");
         Matcher matcher = pattern.matcher(input);
