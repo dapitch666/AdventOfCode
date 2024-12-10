@@ -1,6 +1,7 @@
 package org.anne.aoc2024;
 
 import org.anne.common.Day;
+import org.anne.common.GridHelper;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Day4 extends Day {
     }
 
     public static int part1(List<String> input) {
-        var grid = createGrid(input);
+        var grid = GridHelper.getCharGrid(input);
         int cnt = 0;
 
         for (int i = 0; i < grid.length; i++) {
@@ -36,7 +37,7 @@ public class Day4 extends Day {
     }
 
     public static int part2(List<String> input) {
-        var grid = createGrid(input);
+        var grid = GridHelper.getCharGrid(input);
         int cnt = 0;
 
         for (int i = 0; i < grid.length; i++) {
@@ -59,21 +60,11 @@ public class Day4 extends Day {
 
     private static int checkDiagonal(char[][] grid, int i, int j) {
         try {
-            var diag1 = "" + grid[i + 1][j - 1] + grid[i - 1][j + 1];
-            var diag2 = "" + grid[i - 1][j - 1] + grid[i + 1][j + 1];
-            return (diag1.equals("MS") || diag1.equals("SM")) && (diag2.equals("MS") || diag2.equals("SM")) ? 1 : 0;
+            var diagonal1 = "" + grid[i + 1][j - 1] + grid[i - 1][j + 1];
+            var diagonal2 = "" + grid[i - 1][j - 1] + grid[i + 1][j + 1];
+            return (diagonal1.equals("MS") || diagonal1.equals("SM")) && (diagonal2.equals("MS") || diagonal2.equals("SM")) ? 1 : 0;
         } catch (ArrayIndexOutOfBoundsException e) {
             return 0;
         }
-    }
-
-    private static char[][] createGrid(List<String> input) {
-        char[][] grid = new char[input.size()][input.get(0).length()];
-        for (int i = 0; i < input.size(); i++) {
-            for (int j = 0; j < input.get(i).length(); j++) {
-                grid[i][j] = input.get(i).charAt(j);
-            }
-        }
-        return grid;
     }
 }

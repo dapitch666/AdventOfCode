@@ -1,6 +1,7 @@
 package org.anne.aoc2021;
 
 import org.anne.common.Day;
+import org.anne.common.GridHelper;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Day9 extends Day {
     }
 
     public static int part1(List<String> input) {
-        int[][] caveMap = drawMap(input);
+        int[][] caveMap = GridHelper.getIntGrid(input);
         int sum = 0;
         List<Point> lowPoints = getLowPoints(caveMap);
         for (Point lowPoint : lowPoints) {
@@ -30,7 +31,7 @@ public class Day9 extends Day {
     }
 
     public static long part2(List<String> input) {
-        int[][] caveMap = drawMap(input);
+        int[][] caveMap = GridHelper.getIntGrid(input);
         List<Point> lowPoints = getLowPoints(caveMap);
         List<Set<Point>> basins = new ArrayList<>();
         for (Point lowPoint : lowPoints) {
@@ -62,18 +63,6 @@ public class Day9 extends Day {
         if (y < caveMap[0].length - 1) {
             getBasin(new Point(x, y + 1), caveMap, basin);
         }
-    }
-
-    private static int[][] drawMap(List<String> input) {
-        int vSize = input.size();
-        int hSize = input.get(0).length();
-        int[][] caveMap = new int[vSize][hSize];
-        for (int i = 0; i < vSize; i++) {
-            for (int j = 0; j < hSize; j++) {
-                caveMap[i][j] = Integer.parseInt(String.valueOf(input.get(i).charAt(j)));
-            }
-        }
-        return caveMap;
     }
 
     private static List<Point> getLowPoints(int[][] caveMap) {

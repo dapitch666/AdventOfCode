@@ -2,6 +2,7 @@ package org.anne.aoc2023;
 
 import org.anne.common.Day;
 import org.anne.common.Direction;
+import org.anne.common.GridHelper;
 
 import java.awt.*;
 import java.util.HashSet;
@@ -20,12 +21,12 @@ public class Day17 extends Day {
 
 
     public static int part1(List<String> input) {
-        var map = createMap(input);
+        var map = GridHelper.getIntGrid(input);
         return getBestPathHeat(map, 0, 3);
     }
 
     public static int part2(List<String> input) {
-        var map = createMap(input);
+        var map = GridHelper.getIntGrid(input);
         return getBestPathHeat(map, 4, 10);
     }
 
@@ -46,7 +47,7 @@ public class Day17 extends Day {
             seen.add(status);
             if (status.directionCount < maximumDirectionCount) {
                 var nextPoint = Direction.getPoint(status.direction, status.point);
-                if (isWithinBounds(nextPoint, map)) {
+                if (GridHelper.isValidPoint(nextPoint, map)) {
                     pq.add(new Status(
                             nextPoint,
                             status.direction,
@@ -59,7 +60,7 @@ public class Day17 extends Day {
                 for (var direction : Direction.values()) {
                     if (direction != status.direction && direction != Direction.reverse(status.direction)) {
                         var nextPoint = Direction.getPoint(direction, status.point);
-                        if (isWithinBounds(nextPoint, map)) {
+                        if (GridHelper.isValidPoint(nextPoint, map)) {
                             pq.add(new Status(
                                     nextPoint,
                                     direction,
@@ -92,20 +93,4 @@ public class Day17 extends Day {
             return point.hashCode() + direction.hashCode() + directionCount;
         }
     }
-
-    static int[][] createMap(List<String> input) {
-        var height = input.size();
-        var width = input.get(0).length();
-        int[][] map = new int[height][width];
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                map[y][x] = Integer.parseInt(String.valueOf(input.get(y).charAt(x)));
-            }
-        }
-        return map;
-    }
-    
-    static boolean isWithinBounds(Point point, int[][] map) {
-        return point.x >= 0 && point.x < map[0].length && point.y >= 0 && point.y < map.length;
-    }    
 }

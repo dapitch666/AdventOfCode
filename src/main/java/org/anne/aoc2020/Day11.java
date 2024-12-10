@@ -1,7 +1,9 @@
 package org.anne.aoc2020;
 
 import org.anne.common.Day;
+import org.anne.common.GridHelper;
 
+import java.awt.*;
 import java.util.List;
 
 public class Day11 extends Day {
@@ -16,12 +18,12 @@ public class Day11 extends Day {
     }
 
     static int part1(List<String> input) {
-        char[][] waitingArea = input.stream().map(String::toCharArray).toArray(char[][]::new);
+        char[][] waitingArea = GridHelper.getCharGrid(input);
         return countSeats(waitingArea, true, 4);
     }
 
     static int part2(List<String> input) {
-        char[][] waitingArea = input.stream().map(String::toCharArray).toArray(char[][]::new);
+        char[][] waitingArea = GridHelper.getCharGrid(input);
         return countSeats(waitingArea, false, 5);
     }
 
@@ -71,15 +73,14 @@ public class Day11 extends Day {
 
     private static int countOccupiedAdjacentSeats(char[][] waitingArea, int i, int j) {
         int count = 0;
-        for (int n = -1; n < 2; n++) {
-            for (int m = -1; m < 2; m++) {
-                try {
-                    char s = waitingArea[i + n][j + m];
+        for (int y = -1; y <= 1; y++) {
+            for (int x = -1; x <= 1; x++) {
+                Point point = new Point(j + x, i + y);
+                if (GridHelper.isValidPoint(point, waitingArea)) {
+                    char s = waitingArea[point.y][point.x];
                     if (s == '#') {
                         count++;
                     }
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    // Do nothing
                 }
             }
         }
@@ -88,13 +89,14 @@ public class Day11 extends Day {
 
     private static int countOccupiedSeats(char[][] waitingArea, int i, int j) {
         int count = 0;
-        for (int n = -1; n < 2; n++) {
-            for (int m = -1; m < 2; m++) {
+        for (int y = -1; y <= 1; y++) {
+            for (int x = -1; x <= 1; x++) {
                 boolean isFloor = true;
                 int mult = 1;
                 while (isFloor) {
-                    try {
-                        char s = waitingArea[i + mult * n][j + mult * m];
+                    Point point = new Point(j + mult * x, i + mult * y);
+                    if (GridHelper.isValidPoint(point, waitingArea)) {
+                        char s = waitingArea[point.y][point.x];
                         if (s == 'L') {
                             isFloor = false;
                         }
@@ -102,7 +104,7 @@ public class Day11 extends Day {
                             count++;
                             isFloor = false;
                         }
-                    } catch (ArrayIndexOutOfBoundsException e) {
+                    } else {
                         isFloor = false;
                     }
                     mult++;

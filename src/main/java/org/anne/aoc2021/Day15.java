@@ -1,6 +1,7 @@
 package org.anne.aoc2021;
 
 import org.anne.common.Day;
+import org.anne.common.GridHelper;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -81,7 +82,7 @@ public class Day15 extends Day {
     }
 
     public static int getRisk(Point p, int[][] risks) {
-        if (p.x < risks.length && p.y < risks[0].length) {
+        if (GridHelper.isValidPoint(p, risks)) {
             return risks[p.x][p.y];
         } else {
             int risk = 0;

@@ -1,6 +1,7 @@
 package org.anne.aoc2021;
 
 import org.anne.common.Day;
+import org.anne.common.GridHelper;
 
 import java.util.List;
 
@@ -16,10 +17,7 @@ public class Day25 extends Day {
     }
 
     public static int part1(List<String>  input) {
-        char[][] cucumbers = new char[input.size()][];
-        for (int i = 0; i < input.size(); i++) {
-            cucumbers[i] = input.get(i).toCharArray();
-        }
+        char[][] cucumbers = GridHelper.getCharGrid(input);
         int step = 1;
         while(move(cucumbers)) {
             step++;
