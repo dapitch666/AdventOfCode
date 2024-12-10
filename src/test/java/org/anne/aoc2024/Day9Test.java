@@ -22,82 +22,19 @@ class Day9Test {
         assertEquals(2858, Day9.part2(input));
     }
 
-    @Test
-    void testChecksum() {
-        Day9.block[] blocks = new Day9.block[5];
-        blocks[0] = new Day9.block(1, 0);
-        blocks[1] = new Day9.block(2, -1);
-        blocks[2] = new Day9.block(3, 1);
-        blocks[3] = new Day9.block(4, -1);
-        blocks[4] = new Day9.block(5, 2);
-        assertEquals(132, Day9.getChecksum(blocks));
-    }
-
-    @Test
-    void testChecksumWithArrayOfBlocks() {
-        Day9.block[] blocks = new Day9.block[16];
-        blocks[0] = new Day9.block(2, 0);
-        blocks[1] = new Day9.block(2, 9);
-        blocks[2] = new Day9.block(1, 2);
-        blocks[3] = new Day9.block(3, 1);
-        blocks[4] = new Day9.block(3, 7);
-        blocks[5] = new Day9.block(1, -1);
-        blocks[6] = new Day9.block(2, 4);
-        blocks[7] = new Day9.block(1, -1);
-        blocks[8] = new Day9.block(3, 3);
-        blocks[9] = new Day9.block(4, -1);
-        blocks[10] = new Day9.block(4, 5);
-        blocks[11] = new Day9.block(1, -1);
-        blocks[12] = new Day9.block(4, 6);
-        blocks[13] = new Day9.block(5, -1);
-        blocks[14] = new Day9.block(4, 8);
-        blocks[15] = new Day9.block(2, -1);
-        assertEquals(2858, Day9.getChecksum(blocks));
-    }
-
-    @Test
+   @Test
     void testChecksumWithListOfBlocks() {
-        ArrayList<Day9.block> blocks = new ArrayList<>();
-        blocks.add(new Day9.block(2, 0));
-        blocks.add(new Day9.block(2, 9));
-        blocks.add(new Day9.block(1, 2));
-        blocks.add(new Day9.block(3, 1));
-        blocks.add(new Day9.block(3, 7));
-        blocks.add(new Day9.block(1, -1));
-        blocks.add(new Day9.block(2, 4));
-        blocks.add(new Day9.block(1, -1));
-        blocks.add(new Day9.block(3, 3));
-        blocks.add(new Day9.block(4, -1));
-        blocks.add(new Day9.block(4, 5));
-        blocks.add(new Day9.block(1, -1));
-        blocks.add(new Day9.block(4, 6));
-        blocks.add(new Day9.block(5, -1));
-        blocks.add(new Day9.block(4, 8));
-        blocks.add(new Day9.block(2, -1));
+        ArrayList<Day9.Block> blocks = new ArrayList<>();
+        blocks.add(new Day9.Block(2, 0, 0, List.of(9, 9, 2)));
+        blocks.add(new Day9.Block(3, 1, 0, List.of(7, 7, 7)));
+        blocks.add(new Day9.Block(1, 0, 1, List.of(4, 4)));
+        blocks.add(new Day9.Block(3, 3, 1));
+        blocks.add(new Day9.Block(2, 0, 1));
+        blocks.add(new Day9.Block(4, 5, 1));
+        blocks.add(new Day9.Block(4, 6, 1));
+        blocks.add(new Day9.Block(3, 0, 1));
+        blocks.add(new Day9.Block(4, 8, 0));
+        blocks.add(new Day9.Block(2, 0, 0));
         assertEquals(2858, Day9.getChecksum(blocks));
     }
-
-    @Test
-    void testChecksumWithListOfBlocksAddingNewZeroSizeFreeSpace() {
-        ArrayList<Day9.block> blocks = new ArrayList<>();
-        blocks.add(new Day9.block(2, 0));
-        blocks.add(new Day9.block(2, 9));
-        blocks.add(new Day9.block(1, 2));
-        blocks.add(new Day9.block(3, 1));
-        blocks.add(new Day9.block(3, 7));
-        blocks.add(new Day9.block(1, -1));
-        blocks.add(new Day9.block(0, -1));
-        blocks.add(new Day9.block(2, 4));
-        blocks.add(new Day9.block(1, -1));
-        blocks.add(new Day9.block(3, 3));
-        blocks.add(new Day9.block(4, -1));
-        blocks.add(new Day9.block(4, 5));
-        blocks.add(new Day9.block(1, -1));
-        blocks.add(new Day9.block(4, 6));
-        blocks.add(new Day9.block(5, -1));
-        blocks.add(new Day9.block(4, 8));
-        blocks.add(new Day9.block(2, -1));
-        assertEquals(2858, Day9.getChecksum(blocks));
-    }
-
 }
