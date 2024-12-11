@@ -56,7 +56,7 @@ public class Year {
                 Class<?> clazz = Class.forName(packageName + ".Day" + i);
                 executeClazz(clazz);
             } catch (ClassNotFoundException e) {
-                System.out.println("Day " + i + " not ready yet!");
+                // Day is not implemented yet
             }
         }
     }
