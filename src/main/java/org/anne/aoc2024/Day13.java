@@ -27,7 +27,7 @@ public class Day13 extends Day {
 
     private static long getTotalTokens(List<String> input, long offset) {
         long tokens = 0;
-        Pattern pattern = Pattern.compile("[XY][+=](\\d{1,5})");
+        Pattern pattern = Pattern.compile("(\\d{1,5})");
         List<Long> parts = new ArrayList<>();
         for (String line : input) {
             Matcher matcher = pattern.matcher(line);
