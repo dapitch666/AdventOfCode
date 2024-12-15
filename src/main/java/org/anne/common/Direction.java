@@ -31,4 +31,14 @@ public enum Direction {
             case WEST -> EAST;
         };
     }
+
+    public static Direction fromChar(char c) {
+        return switch (c) {
+            case '^' -> NORTH;
+            case 'v' -> SOUTH;
+            case '<' -> WEST;
+            case '>' -> EAST;
+            default -> throw new IllegalArgumentException("Invalid direction: " + c);
+        };
+    }
 }
