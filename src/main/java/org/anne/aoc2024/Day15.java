@@ -21,7 +21,7 @@ public class Day15 extends Day {
     public static int part1(List<String> input) {
         List<String> inputGrid = new ArrayList<>(input.subList(0, input.indexOf("")));
         char[][] grid = GridHelper.getCharGrid(inputGrid);
-        Point robot = findRobot(grid);
+        Point robot = GridHelper.findChar(grid, '@');
         grid[robot.y][robot.x] = '.';
         for (var direction : movements(input, input.indexOf(""))) {
             Point next = Direction.getPoint(direction, robot);
@@ -131,17 +131,6 @@ public class Day15 extends Day {
                 return new Point(-1, -1);
             }
         }
-    }
-
-    private static Point findRobot(char[][] grid) {
-        for (int y = 0; y < grid.length; y++) {
-            for (int x = 0; x < grid[0].length; x++) {
-                if (grid[y][x] == '@') {
-                    return new Point(x, y);
-                }
-            }
-        }
-        return new Point(-1, -1);
     }
 
     private static boolean canMove(char[][] grid, Point point, Direction direction) {

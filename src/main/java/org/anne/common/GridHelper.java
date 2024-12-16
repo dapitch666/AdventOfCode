@@ -28,4 +28,15 @@ public class GridHelper {
     public static boolean isValidPoint(Point antinode, int gridSize) {
         return antinode.x >= 0 && antinode.x < gridSize && antinode.y >= 0 && antinode.y < gridSize;
     }
+
+    public static Point findChar(char[][] grid, char c) {
+        for (int y = 0; y < grid.length; y++) {
+            for (int x = 0; x < grid[0].length; x++) {
+                if (grid[y][x] == c) {
+                    return new Point(x, y);
+                }
+            }
+        }
+        return new Point(-1, -1);
+    }
 }
