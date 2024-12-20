@@ -1,0 +1,77 @@
+package org.anne.aoc2024;
+
+import org.anne.common.Day;
+import org.anne.common.Direction;
+import org.anne.common.GridHelper;
+import org.anne.common.Utils;
+
+import java.awt.*;
+import java.util.*;
+import java.util.List;
+
+public class Day20 extends Day {
+    public static void main(String[] args) {
+        Day day = new Day20();
+        day.setName("Race Condition");
+        List<String> input = day.readFile();
+        day.setPart1(part1(input, 100));
+        day.setPart2(part2(input, 100));
+        day.printParts();
+    }
+
+    public static int part1(List<String> input, int minSavedTime) {
+        return getCheats(input, 2, minSavedTime);
+    }
+
+    public static int part2(List<String> input, int minSavedTime) {
+        return getCheats(input, 20, minSavedTime);
+    }
+
+    static int getCheats(List<String> input, int maxDistance, int minSavedTime) {
+        var raceTrack = GridHelper.getCharGrid(input);
+        Point start = GridHelper.findChar(raceTrack, 'S');
+        Point end = GridHelper.findChar(raceTrack, 'E');
+        var path = findShortestPath(raceTrack, start, end);
+        int cheats = 0;
+        for (int i = 0; i < path.size() - 1; i++) {
+            for (int j = i + 1; j < path.size(); j++) {
+                int distance = (int) Utils.manhattanDistance(path.get(i), path.get(j));
+                if (distance <= maxDistance && (j - i - distance) >= minSavedTime) {
+                    cheats++;
+                }
+            }
+        }
+        return cheats;
+    }
+
+    // TODO: Add this method to the GridHelper class
+    static List<Point> findShortestPath(char[][] memory, Point start, Point end) {
+        int memorySize = memory.length;
+        boolean[][] visited = new boolean[memorySize][memorySize];
+        Map<Point, Point> parentMap = new HashMap<>();
+        Queue<Point> queue = new LinkedList<>();
+        queue.add(start);
+        visited[start.y][start.x] = true;
+
+        while (!queue.isEmpty()) {
+            Point current = queue.poll();
+            if (current.equals(end)) {
+                List<Point> path = new ArrayList<>();
+                for (Point at = end; at != null; at = parentMap.get(at)) {
+                    path.add(at);
+                }
+                return path;
+            }
+            for (Direction direction : Direction.values()) {
+                Point newPoint = new Point(Direction.getPoint(direction, current));
+                if (GridHelper.isValidPoint(newPoint, memorySize) && !visited[newPoint.y][newPoint.x] && memory[newPoint.y][newPoint.x] != '#') {
+                    queue.add(newPoint);
+                    visited[newPoint.y][newPoint.x] = true;
+                    parentMap.put(newPoint, current);
+                }
+            }
+        }
+
+        return Collections.emptyList(); // Return an empty list if there is no path
+    }
+}
