@@ -9,11 +9,16 @@ public class Day22 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day22();
-        day.setName("Slam Shuffle");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input, 10007, 2019));
-        day.setPart2(part2(input, 119315717514047L, 101741582076661L, 2020));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Slam Shuffle");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input, 10007, 2019));
+        this.setPart2(part2(input, 119315717514047L, 101741582076661L, 2020));
+        this.printParts();
     }
 
     public static BigInteger part1(List<String> input, int deckSize, int position) {

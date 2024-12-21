@@ -12,10 +12,15 @@ public class Day19 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day19();
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2());
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2());
+        this.printParts();
     }
 
     public static int part1(List<String> input) {

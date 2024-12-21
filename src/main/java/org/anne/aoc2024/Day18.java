@@ -11,11 +11,16 @@ import java.util.function.Predicate;
 public class Day18 extends Day {
     public static void main(String[] args) {
         Day day = new Day18();
-        day.setName("RAM Run");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input, 71));
-        day.setPart2(part2(input, 71));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("RAM Run");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input, 71));
+        this.setPart2(part2(input, 71));
+        this.printParts();
     }
 
     public static int part1(List<String> input, int memorySize) {

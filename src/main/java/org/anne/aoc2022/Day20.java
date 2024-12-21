@@ -9,11 +9,16 @@ import java.util.stream.IntStream;
 public class Day20 extends Day {
     public static void main(String[] args) {
         Day day = new Day20();
-        day.setName("Grove Positioning System");
-        List<Integer> input = day.readFileAsInts();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Grove Positioning System");
+        List<Integer> input = this.readFileAsInts();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static long part1(List<Integer> input) {

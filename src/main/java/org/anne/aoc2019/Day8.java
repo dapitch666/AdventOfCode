@@ -8,11 +8,16 @@ public class Day8  extends Day {
 
     public static void main(String[] args) {
         Day day = new Day8();
-        day.setName("Space Image Format");
-        String input = day.readFileOneLine();
-        day.setPart1(part1(input, 25, 6));
-        day.setPart2(part2(input, 25, 6));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Space Image Format");
+        String input = this.readFileOneLine();
+        this.setPart1(part1(input, 25, 6));
+        this.setPart2(part2(input, 25, 6));
+        this.printParts();
     }
 
     static long part1(String input, int width, int height) {

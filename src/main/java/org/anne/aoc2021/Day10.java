@@ -16,11 +16,16 @@ public class Day10 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day10();
-        List<String> input = day.readFile();
-        day.setName("Syntax Scoring");
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        List<String> input = this.readFile();
+        this.setName("Syntax Scoring");
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static long part1(List<String> input) {

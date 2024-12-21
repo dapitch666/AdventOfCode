@@ -8,11 +8,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Day25 extends Day {
     public static void main(String[] args) {
         Day day = new Day25();
-        day.setName("Snowverload");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2());
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Snowverload");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2());
+        this.printParts();
     }
 
 

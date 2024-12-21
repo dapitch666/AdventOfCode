@@ -10,11 +10,16 @@ public class Day25 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day25();
-        day.setName("Combo Breaker");
-        List<Integer> input = day.readFileAsInts();
-        day.setPart1(part1(input));
-        day.setPart2(part2());
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Combo Breaker");
+        List<Integer> input = this.readFileAsInts();
+        this.setPart1(part1(input));
+        this.setPart2(part2());
+        this.printParts();
     }
 
     public static long part1(List<Integer> input) {

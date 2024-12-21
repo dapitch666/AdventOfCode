@@ -10,11 +10,16 @@ import java.util.List;
 public class Day20 extends Day {
     public static void main(String[] args) {
         Day day = new Day20();
-        day.setName("Race Condition");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input, 100));
-        day.setPart2(part2(input, 100));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Race Condition");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input, 100));
+        this.setPart2(part2(input, 100));
+        this.printParts();
     }
 
     public static int part1(List<String> input, int minSavedTime) {

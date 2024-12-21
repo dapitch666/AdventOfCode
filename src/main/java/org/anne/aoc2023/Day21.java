@@ -9,11 +9,16 @@ import java.util.List;
 public class Day21 extends Day {
     public static void main(String[] args) {
         Day day = new Day21();
-        day.setName("Step Counter");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input, 64));
-        day.setPart2(part2(input, 26501365));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Step Counter");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input, 64));
+        this.setPart2(part2(input, 26501365));
+        this.printParts();
     }
 
 

@@ -11,11 +11,16 @@ public class Day4 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day4();
-        day.setName("Secure Container");
-        List<Integer> input = day.readFileAsInts();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Secure Container");
+        List<Integer> input = this.readFileAsInts();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     static int part1(List<Integer> input) {

@@ -8,11 +8,16 @@ import java.util.List;
 public class Day11 extends Day {
     public static void main(String[] args) {
         Day day = new Day11();
-        day.setName("Monkey in the Middle");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Monkey in the Middle");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static long part1(List<String> input) {

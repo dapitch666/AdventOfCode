@@ -12,11 +12,16 @@ import java.util.stream.Stream;
 public class Day23 extends Day {
     public static void main(String[] args) {
         Day day = new Day23();
-        day.setName("A Long Walk");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("A Long Walk");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
     
     static final Set<Point> visited = new HashSet<>();

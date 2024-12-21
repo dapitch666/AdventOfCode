@@ -12,11 +12,16 @@ import java.util.Set;
 public class Day10 extends Day {
     public static void main(String[] args) {
         Day day = new Day10();
-        day.setName("Hoof It");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Hoof It");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static int part1(List<String> input) {

@@ -12,11 +12,16 @@ import static org.anne.common.Utils.manhattanDistance;
 public class Day11 extends Day {
     public static void main(String[] args) {
         Day day = new Day11();
-        day.setName("Cosmic Expansion");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input, 1000000));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Cosmic Expansion");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input, 1000000));
+        this.printParts();
     }
 
 

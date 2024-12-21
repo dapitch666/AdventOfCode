@@ -8,11 +8,16 @@ import java.util.stream.Collectors;
 public class Day11 extends Day {
     public static void main(String[] args) {
         Day day = new Day11();
-        day.setName("Plutonian Pebbles");
-        String input = day.readFileOneLine();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Plutonian Pebbles");
+        String input = this.readFileOneLine();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static long part1(String input) {

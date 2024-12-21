@@ -12,11 +12,16 @@ import java.util.stream.Collectors;
 public class Day14 extends Day {
     public static void main(String[] args) {
         Day day = new Day14();
-        day.setName("Restroom Redoubt");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input, 101, 103));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Restroom Redoubt");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input, 101, 103));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static int part1(List<String> input, int width, int height) {

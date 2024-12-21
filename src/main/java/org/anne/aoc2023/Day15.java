@@ -9,11 +9,16 @@ import java.util.LinkedHashMap;
 public class Day15 extends Day {
     public static void main(String[] args) {
         Day day = new Day15();
-        day.setName("Lens Library");
-        var input = day.readFileOneLine();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Lens Library");
+        var input = this.readFileOneLine();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
 

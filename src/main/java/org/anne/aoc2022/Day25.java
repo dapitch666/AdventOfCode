@@ -7,11 +7,16 @@ import java.util.List;
 public class Day25 extends Day {
     public static void main(String[] args) {
         Day day = new Day25();
-        day.setName("Full of Hot Air");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2());
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Full of Hot Air");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2());
+        this.printParts();
     }
 
     public static String part1(List<String> input) {

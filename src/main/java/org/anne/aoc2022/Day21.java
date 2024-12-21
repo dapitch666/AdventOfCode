@@ -9,11 +9,16 @@ import java.util.Map;
 public class Day21 extends Day {
     public static void main(String[] args) {
         Day day = new Day21();
-        day.setName("Monkey Math");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Monkey Math");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     static Map<String, Monkey> monkeys = new HashMap<>();

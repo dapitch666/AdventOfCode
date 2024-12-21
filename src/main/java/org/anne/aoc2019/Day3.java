@@ -10,13 +10,18 @@ import java.util.Map;
 public class Day3 extends Day {
     public static void main(String[] args) {
         Day day = new Day3();
-        day.setName("Crossed Wires");
-        List<String> input = day.readFile();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Crossed Wires");
+        List<String> input = this.readFile();
         Map<Point, Integer> wire1 = mapWire(input.get(0));
         Map<Point, Integer> wire2 = mapWire(input.get(1));
-        day.setPart1(part1(wire1, wire2));
-        day.setPart2(part2(wire1, wire2));
-        day.printParts();
+        this.setPart1(part1(wire1, wire2));
+        this.setPart2(part2(wire1, wire2));
+        this.printParts();
     }
 
     static long part1(Map<Point, Integer> wire1, Map<Point, Integer> wire2) {

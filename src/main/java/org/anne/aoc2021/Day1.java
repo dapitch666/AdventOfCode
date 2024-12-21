@@ -10,11 +10,16 @@ public class Day1 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day1();
-        day.setName("Sonar Sweep");
-        List<Integer> input = day.readFileAsInts();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Sonar Sweep");
+        List<Integer> input = this.readFileAsInts();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static int part1(List<Integer> input) {

@@ -8,11 +8,16 @@ public class Day14 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day14();
-        day.setName("Docking Data");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Docking Data");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static long part1(List<String> input) {

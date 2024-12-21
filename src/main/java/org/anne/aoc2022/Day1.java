@@ -9,12 +9,17 @@ import java.util.List;
 public class Day1 extends Day {
     public static void main(String[] args) {
         Day day = new Day1();
-        day.setName("Calorie Counting");
-        List<String> input = day.readFile();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Calorie Counting");
+        List<String> input = this.readFile();
         List<Integer> elves = getElves(input);
-        day.setPart1(part1(elves));
-        day.setPart2(part2(elves));
-        day.printParts();
+        this.setPart1(part1(elves));
+        this.setPart2(part2(elves));
+        this.printParts();
     }
 
     public static int part1(List<Integer> elves) {

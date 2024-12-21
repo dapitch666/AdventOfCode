@@ -12,12 +12,17 @@ public class Day20 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day20();
-        day.setName("Jurassic Jigsaw");
-        List<String> input = day.readFile();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Jurassic Jigsaw");
+        List<String> input = this.readFile();
         Map<Integer, Tile> tiles = getTiles(input);
-        day.setPart1(part1(tiles));
-        day.setPart2(part2(tiles));
-        day.printParts();
+        this.setPart1(part1(tiles));
+        this.setPart2(part2(tiles));
+        this.printParts();
     }
 
     static long part1(Map<Integer, Tile> tiles) {

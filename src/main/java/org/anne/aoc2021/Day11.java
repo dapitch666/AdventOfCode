@@ -11,11 +11,16 @@ public class Day11 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day11();
-        day.setName("Dumbo Octopus");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input, 100));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Dumbo Octopus");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input, 100));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static int part1(List<String> input, int steps) {

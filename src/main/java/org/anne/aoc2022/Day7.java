@@ -8,11 +8,16 @@ import java.util.List;
 public class Day7 extends Day {
     public static void main(String[] args) {
         Day day = new Day7();
-        day.setName("No Space Left On Device");
-        Directory root = getRoot(day.readFile());
-        day.setPart1(part1(root));
-        day.setPart2(part2(root));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("No Space Left On Device");
+        Directory root = getRoot(this.readFile());
+        this.setPart1(part1(root));
+        this.setPart2(part2(root));
+        this.printParts();
     }
 
     public static long part1(Directory root) {

@@ -11,11 +11,16 @@ import java.util.stream.IntStream;
 public class Day9 extends Day {
     public static void main(String[] args) {
         Day day = new Day9();
-        day.setName("Disk Fragmenter");
-        String input = day.readFileOneLine();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Disk Fragmenter");
+        String input = this.readFileOneLine();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
     public static long part1(String in) {

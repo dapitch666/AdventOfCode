@@ -4,16 +4,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
 
-import static org.anne.common.ClazzHelper.getDayNumberFromClass;
-import static org.anne.common.ClazzHelper.getYearFromClass;
-import static org.anne.common.Constants.FILE_PATH;
-import static org.anne.common.Constants.LINE_SEPARATOR;
+import static org.anne.common.ClazzHelper.*;
+import static org.anne.common.Constants.*;
 import static org.anne.common.Utils.*;
 
 public abstract class Day {
     protected final int year;
     protected final int day;
-
     private Object part1;
     private Object part2;
     private String name;
@@ -23,6 +20,16 @@ public abstract class Day {
         this.year = getYearFromClass(clazz);
         this.day = getDayNumberFromClass(clazz);
     }
+
+    public void run() {
+        long start = System.nanoTime();
+        execute();
+        long elapsed = System.nanoTime() - start;
+        System.out.println(ANSI_BLUE + "Executed in " + elapsed / 1000000 + "ms" + ANSI_RESET);
+        System.out.println();
+    }
+
+    public abstract void execute();
 
     public void setPart1(Object part1) {
         this.part1 = part1;
@@ -37,7 +44,7 @@ public abstract class Day {
     }
 
     public void printPart(int partNumber) {
-        String result = partNumber == 1 ? part1.toString() : part2.toString();
+        String result = (partNumber == 1 ? part1 : part2).toString();
         if (containsNewLine(result)) {
             System.out.println("Part " + partNumber + ":" + LINE_SEPARATOR + result);
         } else {

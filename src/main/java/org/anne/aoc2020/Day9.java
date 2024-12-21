@@ -12,11 +12,16 @@ public class Day9 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day9();
-        day.setName("Encoding Error");
-        List<Long> input = day.readFileAsLongs();
-        day.setPart1(part1(input, STEP));
-        day.setPart2(part2(input, STEP));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Encoding Error");
+        List<Long> input = this.readFileAsLongs();
+        this.setPart1(part1(input, STEP));
+        this.setPart2(part2(input, STEP));
+        this.printParts();
     }
 
     public static long part1(List<Long> input, int step) {

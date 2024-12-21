@@ -12,11 +12,16 @@ public class Day16 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day16();
-        day.setName("Ticket Translation");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2());
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Ticket Translation");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2());
+        this.printParts();
     }
 
     public static long part1(List<String> input) {

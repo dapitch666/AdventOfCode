@@ -9,11 +9,16 @@ import static org.anne.common.Utils.transpose;
 public class Day13 extends Day {
     public static void main(String[] args) {
         Day day = new Day13();
-        day.setName("Point of Incidence");
-        List<String> input = day.readFile();
-        day.setPart1(part1(input));
-        day.setPart2(part2(input));
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Point of Incidence");
+        List<String> input = this.readFile();
+        this.setPart1(part1(input));
+        this.setPart2(part2(input));
+        this.printParts();
     }
 
 

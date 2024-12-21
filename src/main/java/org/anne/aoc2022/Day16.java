@@ -9,16 +9,21 @@ import java.util.regex.Pattern;
 public class Day16 extends Day {
     public static void main(String[] args) {
         Day day = new Day16();
-        day.setName("Proboscidea Volcanium");
-        List<String> input = day.readFile();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Proboscidea Volcanium");
+        List<String> input = this.readFile();
 
         var valves = parseInput(input);
         var paths = getPaths(valves);
         var maxPressureGrid = getAllPressures(valves, paths);
 
-        day.setPart1(part1(maxPressureGrid));
-        day.setPart2(part2(maxPressureGrid));
-        day.printParts();
+        this.setPart1(part1(maxPressureGrid));
+        this.setPart2(part2(maxPressureGrid));
+        this.printParts();
     }
 
     public static long part1(int[][][] dp) {

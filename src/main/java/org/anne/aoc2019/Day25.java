@@ -12,11 +12,16 @@ public class Day25 extends Day {
 
     public static void main(String[] args) {
         Day day = new Day25();
-        day.setName("Cryostasis");
-        String input = day.readFileOneLine();
-        day.setPart1(part1(input));
-        day.setPart2(part2());
-        day.printParts();
+        day.run();
+    }
+
+    @Override
+    public void execute() {
+        this.setName("Cryostasis");
+        String input = this.readFileOneLine();
+        this.setPart1(part1(input));
+        this.setPart2(part2());
+        this.printParts();
     }
 
     public static String part1(String input) {
