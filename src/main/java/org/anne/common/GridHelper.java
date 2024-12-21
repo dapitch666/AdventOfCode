@@ -52,11 +52,9 @@ public class GridHelper {
      * @return the shortest path as a list of points or an empty list if there is no path
      */
     public static List<Point> findShortestPath(char[][] grid, Point start, Point end, Predicate<Character> isPassable) {
-        boolean[][] visited = new boolean[grid.length][grid[0].length];
         Map<Point, Point> parentMap = new HashMap<>();
-        Queue<Point> queue = new LinkedList<>();
-        queue.add(start);
-        visited[start.y][start.x] = true;
+        Queue<Point> queue = new LinkedList<>(List.of(start));
+        Set<Point> visited = new HashSet<>(List.of(start));
 
         while (!queue.isEmpty()) {
             Point current = queue.poll();
@@ -70,9 +68,9 @@ public class GridHelper {
             }
             for (Direction direction : Direction.values()) {
                 Point newPoint = new Point(Direction.getPoint(direction, current));
-                if (isValidPoint(newPoint, grid) && !visited[newPoint.y][newPoint.x] && isPassable.test(grid[newPoint.y][newPoint.x])) {
+                if (isValidPoint(newPoint, grid) && !visited.contains(newPoint) && isPassable.test(grid[newPoint.y][newPoint.x])) {
                     queue.add(newPoint);
-                    visited[newPoint.y][newPoint.x] = true;
+                    visited.add(newPoint);
                     parentMap.put(newPoint, current);
                 }
             }
