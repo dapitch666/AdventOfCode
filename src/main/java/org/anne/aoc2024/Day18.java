@@ -10,17 +10,16 @@ import java.util.function.Predicate;
 
 public class Day18 extends Day {
     public static void main(String[] args) {
-        Day day = new Day18();
-        day.run();
+        new Day18().run();
     }
 
     @Override
     public void execute() {
-        this.setName("RAM Run");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input, 71));
-        this.setPart2(part2(input, 71));
-        this.printParts();
+        setName("RAM Run");
+        List<String> input = readFile();
+        setPart1(part1(input, 71));
+        setPart2(part2(input, 71));
+        printParts();
     }
 
     public static int part1(List<String> input, int memorySize) {

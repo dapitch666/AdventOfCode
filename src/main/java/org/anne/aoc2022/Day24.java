@@ -9,17 +9,16 @@ import java.util.stream.Collectors;
 
 public class Day24 extends Day{
     public static void main(String[] args) {
-        Day day = new Day24();
-        day.run();
+        new Day24().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Blizzard Basin");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Blizzard Basin");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static int maxX, maxY;
@@ -100,15 +99,15 @@ public class Day24 extends Day{
                 default -> throw new IllegalStateException("Unexpected value: " + pos);
             };
             if(bounds.contains(newPos)) {
-                switch (this.facing) {
-                    case '^' -> this.pos.y = maxY - 1;
-                    case 'v' -> this.pos.y = 1;
-                    case '>' -> this.pos.x = 1;
-                    case '<' -> this.pos.x = maxX - 1;
+                switch (facing) {
+                    case '^' -> pos.y = maxY - 1;
+                    case 'v' -> pos.y = 1;
+                    case '>' -> pos.x = 1;
+                    case '<' -> pos.x = maxX - 1;
                 }
             } else {
-                this.pos.x = newPos.x;
-                this.pos.y = newPos.y;
+                pos.x = newPos.x;
+                pos.y = newPos.y;
             }
         }
     }

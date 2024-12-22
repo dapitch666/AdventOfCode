@@ -6,17 +6,16 @@ import java.util.*;
 
 public class Day5 extends Day {
     public static void main(String[] args) {
-        Day day = new Day5();
-        day.run();
+        new Day5().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Print Queue");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Print Queue");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {

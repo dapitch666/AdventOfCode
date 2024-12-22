@@ -10,17 +10,16 @@ import java.util.stream.Stream;
 
 public class Day13 extends Day {
     public static void main(String[] args) {
-        Day day = new Day13();
-        day.run();
+        new Day13().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Distress Signal");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Distress Signal");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {
@@ -72,24 +71,24 @@ public class Day13 extends Day {
         }
 
         public boolean isInt() {
-            return this.children.isEmpty() && !value.isEmpty();
+            return children.isEmpty() && !value.isEmpty();
         }
 
         @Override
         public int compareTo(@NotNull Packet o) {
-             if (this.isInt() && o.isInt()) {
-                return Integer.parseInt(o.value) - Integer.parseInt(this.value);
+             if (isInt() && o.isInt()) {
+                return Integer.parseInt(o.value) - Integer.parseInt(value);
             }
-            if (!this.isInt() && !o.isInt()) {
-                for (int i = 0; i < Math.min(this.children.size(), o.children.size()); i++) {
-                    int value = this.children.get(i).compareTo(o.children.get(i));
+            if (!isInt() && !o.isInt()) {
+                for (int i = 0; i < Math.min(children.size(), o.children.size()); i++) {
+                    int value = children.get(i).compareTo(o.children.get(i));
                     if (value != 0) {
                         return value;
                     }
                 }
-                return o.children.size() - this.children.size();
+                return o.children.size() - children.size();
             }
-            Packet lst1 = this.isInt() ? new Packet("[" + value + "]") : this;
+            Packet lst1 = isInt() ? new Packet("[" + value + "]") : this;
             Packet lst2 = o.isInt() ? new Packet("[" + o.value + "]") : o;
             return lst1.compareTo(lst2);
         }
@@ -99,8 +98,8 @@ public class Day13 extends Day {
             StringBuilder sb = new StringBuilder();
             if (isInt()) {
                 sb = new StringBuilder(value);
-            } else if (!this.children.isEmpty()) {
-                sb.append(String.join(",", this.children.toString()));
+            } else if (!children.isEmpty()) {
+                sb.append(String.join(",", children.toString()));
             }
             return sb.toString();
         }

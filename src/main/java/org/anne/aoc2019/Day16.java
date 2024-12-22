@@ -7,19 +7,17 @@ import java.util.stream.Collectors;
 
 
 public class Day16 extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day16();
-        day.run();
+        new Day16().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Flawed Frequency Transmission");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Flawed Frequency Transmission");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static String part1(String input) {

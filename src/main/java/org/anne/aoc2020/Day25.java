@@ -9,17 +9,16 @@ public class Day25 extends Day {
     private static final int DIVIDER = 20201227;
 
     public static void main(String[] args) {
-        Day day = new Day25();
-        day.run();
+        new Day25().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Combo Breaker");
-        List<Integer> input = this.readFileAsInts();
-        this.setPart1(part1(input));
-        this.setPart2(part2());
-        this.printParts();
+        setName("Combo Breaker");
+        List<Integer> input = readFileAsInts();
+        setPart1(part1(input));
+        setPart2(part2());
+        printParts();
     }
 
     public static long part1(List<Integer> input) {

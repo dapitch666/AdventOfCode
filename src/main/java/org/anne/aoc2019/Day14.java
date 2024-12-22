@@ -9,19 +9,17 @@ import java.util.Map;
 
 public class Day14 extends Day {
     static List<Reaction> reactions = new ArrayList<>();
-
     public static void main(String[] args) {
-        Day day = new Day14();
-        day.run();
+        new Day14().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Space Stoichiometry");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Space Stoichiometry");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static long part1(List<String> input) {

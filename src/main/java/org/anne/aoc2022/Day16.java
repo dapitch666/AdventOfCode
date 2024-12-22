@@ -8,22 +8,21 @@ import java.util.regex.Pattern;
 
 public class Day16 extends Day {
     public static void main(String[] args) {
-        Day day = new Day16();
-        day.run();
+        new Day16().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Proboscidea Volcanium");
-        List<String> input = this.readFile();
+        setName("Proboscidea Volcanium");
+        List<String> input = readFile();
 
         var valves = parseInput(input);
         var paths = getPaths(valves);
         var maxPressureGrid = getAllPressures(valves, paths);
 
-        this.setPart1(part1(maxPressureGrid));
-        this.setPart2(part2(maxPressureGrid));
-        this.printParts();
+        setPart1(part1(maxPressureGrid));
+        setPart2(part2(maxPressureGrid));
+        printParts();
     }
 
     public static long part1(int[][][] dp) {

@@ -9,17 +9,16 @@ import java.util.stream.Stream;
 public class Day6 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day6();
-        day.run();
+        new Day6().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Custom Customs");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Custom Customs");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static long part1(List<String> input) {

@@ -8,18 +8,17 @@ import java.util.List;
 
 public class Day1 extends Day {
     public static void main(String[] args) {
-        Day day = new Day1();
-        day.run();
+        new Day1().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Calorie Counting");
-        List<String> input = this.readFile();
+        setName("Calorie Counting");
+        List<String> input = readFile();
         List<Integer> elves = getElves(input);
-        this.setPart1(part1(elves));
-        this.setPart2(part2(elves));
-        this.printParts();
+        setPart1(part1(elves));
+        setPart2(part2(elves));
+        printParts();
     }
 
     public static int part1(List<Integer> elves) {

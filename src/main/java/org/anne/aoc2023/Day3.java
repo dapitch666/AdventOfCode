@@ -9,17 +9,16 @@ import java.util.stream.Collectors;
 
 public class Day3 extends Day {
     public static void main(String[] args) {
-        Day day = new Day3();
-        day.run();
+        new Day3().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Gear Ratios");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Gear Ratios");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
 

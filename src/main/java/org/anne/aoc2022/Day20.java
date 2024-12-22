@@ -8,17 +8,16 @@ import java.util.stream.IntStream;
 
 public class Day20 extends Day {
     public static void main(String[] args) {
-        Day day = new Day20();
-        day.run();
+        new Day20().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Grove Positioning System");
-        List<Integer> input = this.readFileAsInts();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Grove Positioning System");
+        List<Integer> input = readFileAsInts();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(List<Integer> input) {
@@ -61,7 +60,7 @@ public class Day20 extends Day {
     record Num (int id, long value) {}
     record Move (int idx, Num num) {
         int newIndex (int modulo) {
-            return (int) (modulo + this.idx + this.num.value % modulo) % modulo;
+            return (int) (modulo + idx + num.value % modulo) % modulo;
         }
     }
 

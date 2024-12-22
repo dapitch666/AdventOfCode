@@ -12,17 +12,16 @@ import static org.anne.common.Direction.*;
 
 public class Day10 extends Day {
     public static void main(String[] args) {
-        Day day = new Day10();
-        day.run();
+        new Day10().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Pipe Maze");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Pipe Maze");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
     
     public static int part1(List<String> input) {

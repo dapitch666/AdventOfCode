@@ -7,17 +7,16 @@ import java.util.List;
 
 public class Day7 extends Day {
     public static void main(String[] args) {
-        Day day = new Day7();
-        day.run();
+        new Day7().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Bridge Repair");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Bridge Repair");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(List<String> input) {

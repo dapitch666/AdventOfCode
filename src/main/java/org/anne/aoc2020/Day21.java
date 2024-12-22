@@ -8,17 +8,16 @@ import java.util.stream.Collectors;
 public class Day21 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day21();
-        day.run();
+        new Day21().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Allergen Assessment");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Allergen Assessment");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(List<String> input) {

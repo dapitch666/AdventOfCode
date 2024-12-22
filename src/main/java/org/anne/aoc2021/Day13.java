@@ -15,17 +15,16 @@ import static org.anne.common.Constants.LINE_SEPARATOR;
 public class Day13 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day13();
-        day.run();
+        new Day13().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Transparent Origami");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Transparent Origami");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static long part1(List<String> input) {

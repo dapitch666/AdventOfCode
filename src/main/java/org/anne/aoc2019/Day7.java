@@ -8,19 +8,17 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Day7 extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day7();
-        day.run();
+        new Day7().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Amplification Circuit");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Amplification Circuit");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static long part1(String input) {

@@ -3,19 +3,17 @@ package org.anne.aoc2019;
 import org.anne.common.Day;
 
 public class Day2 extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day2();
-        day.run();
+        new Day2().run();
     }
 
     @Override
     public void execute() {
-        this.setName("1202 Program Alarm");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("1202 Program Alarm");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static long part1(String input) {

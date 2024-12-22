@@ -8,17 +8,16 @@ public class Day12 extends Day {
     private static final char[] cardinal = {'N', 'E', 'S', 'W'};
 
     public static void main(String[] args) {
-        Day day = new Day12();
-        day.run();
+        new Day12().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Rain Risk");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Rain Risk");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static int part1(List<String> input) {

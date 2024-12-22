@@ -5,19 +5,17 @@ import org.anne.common.Day;
 import org.anne.common.Utils;
 
 public class Day8  extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day8();
-        day.run();
+        new Day8().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Space Image Format");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input, 25, 6));
-        this.setPart2(part2(input, 25, 6));
-        this.printParts();
+        setName("Space Image Format");
+        String input = readFileOneLine();
+        setPart1(part1(input, 25, 6));
+        setPart2(part2(input, 25, 6));
+        printParts();
     }
 
     static long part1(String input, int width, int height) {

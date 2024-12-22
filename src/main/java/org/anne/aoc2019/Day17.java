@@ -12,27 +12,25 @@ import java.util.stream.Collectors;
 import static org.anne.common.Constants.LINE_SEPARATOR;
 
 public class Day17 extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day17();
-        day.run();
+        new Day17().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Set and Forget");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Set and Forget");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
-    static int part1(String input) {
+    public static int part1(String input) {
         List<String> cameraInput = getCameraInput(input);
         return getSum(cameraInput);
     }
 
-    static int getSum(List<String> cameraInput) {
+    public static int getSum(List<String> cameraInput) {
         Set<Point> map = getMap(cameraInput);
         int sum = 0;
         for (Point point : map) {

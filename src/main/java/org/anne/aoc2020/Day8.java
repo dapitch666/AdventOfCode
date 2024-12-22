@@ -9,17 +9,16 @@ public class Day8 extends Day {
     static int accumulator;
 
     public static void main(String[] args) {
-        Day day = new Day8();
-        day.run();
+        new Day8().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Handheld Halting");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Handheld Halting");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {
@@ -78,9 +77,9 @@ public class Day8 extends Day {
 
         public Instruction(String line) {
             String[] lineArray = line.split(" ");
-            this.operation = lineArray[0];
-            this.argument = Integer.parseInt(lineArray[1]);
-            this.used = false;
+            operation = lineArray[0];
+            argument = Integer.parseInt(lineArray[1]);
+            used = false;
         }
 
         public String getOperation() {
@@ -96,11 +95,11 @@ public class Day8 extends Day {
         }
 
         public void use() {
-            this.used = true;
+            used = true;
         }
 
         public void init() {
-            this.used = false;
+            used = false;
         }
     }
 }

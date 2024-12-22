@@ -9,17 +9,16 @@ public class Day7 extends Day {
     private static final String MY_BAG = "shiny gold";
 
     public static void main(String[] args) {
-        Day day = new Day7();
-        day.run();
+        new Day7().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Handy Haversacks");
-        Map<String, Map<String, Integer>> input = decode(this.readFile());
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Handy Haversacks");
+        Map<String, Map<String, Integer>> input = decode(readFile());
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static int part1(Map<String, Map<String, Integer>> input) {

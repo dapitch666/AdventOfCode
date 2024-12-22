@@ -9,17 +9,16 @@ import java.util.stream.IntStream;
 
 public class Day19 extends Day {
     public static void main(String[] args) {
-        Day day = new Day19();
-        day.run();
+        new Day19().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Tractor Beam");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Tractor Beam");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static int part1(String input) {

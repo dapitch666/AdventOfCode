@@ -7,17 +7,16 @@ import java.util.List;
 
 public class Day7 extends Day {
     public static void main(String[] args) {
-        Day day = new Day7();
-        day.run();
+        new Day7().run();
     }
 
     @Override
     public void execute() {
-        this.setName("No Space Left On Device");
-        Directory root = getRoot(this.readFile());
-        this.setPart1(part1(root));
-        this.setPart2(part2(root));
-        this.printParts();
+        setName("No Space Left On Device");
+        Directory root = getRoot(readFile());
+        setPart1(part1(root));
+        setPart2(part2(root));
+        printParts();
     }
 
     public static long part1(Directory root) {

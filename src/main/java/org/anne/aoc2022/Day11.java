@@ -7,17 +7,16 @@ import java.util.List;
 
 public class Day11 extends Day {
     public static void main(String[] args) {
-        Day day = new Day11();
-        day.run();
+        new Day11().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Monkey in the Middle");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Monkey in the Middle");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(List<String> input) {
@@ -70,27 +69,27 @@ public class Day11 extends Day {
 
 
         public Monkey(List<String> input) {
-            this.items = new ArrayList<>();
-            this.operation = new String[2];
+            items = new ArrayList<>();
+            operation = new String[2];
             for (String line : input) {
                 String[] params = line.split(" ");
                 switch (params[0]) {
                     case "Starting" -> {
                         for (int i = 2; i < params.length; i++) {
-                            this.items.add(Long.parseLong(params[i].replace(",", "")));
+                            items.add(Long.parseLong(params[i].replace(",", "")));
                         }
                     }
                     case "Operation:" -> {
-                        this.operation[0] = params[4];
-                        this.operation[1] = params[5];
+                        operation[0] = params[4];
+                        operation[1] = params[5];
                     }
-                    case "Test:" -> this.test = Integer.parseInt(params[3]);
+                    case "Test:" -> test = Integer.parseInt(params[3]);
                     case "If" -> {
                         int value = Integer.parseInt(params[5]);
                         if (params[1].equals("true:")) {
-                            this.ifTrue = value;
+                            ifTrue = value;
                         } else {
-                            this.ifFalse = value;
+                            ifFalse = value;
                         }
                     }
                 }

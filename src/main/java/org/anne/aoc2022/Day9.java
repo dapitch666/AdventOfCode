@@ -9,17 +9,16 @@ import java.util.Set;
 
 public class Day9 extends Day {
     public static void main(String[] args) {
-        Day day = new Day9();
-        day.run();
+        new Day9().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Rope Bridge");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Rope Bridge");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {

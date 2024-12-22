@@ -11,17 +11,16 @@ import java.util.stream.Collectors;
 
 public class Day7 extends Day {
     public static void main(String[] args) {
-        Day day = new Day7();
-        day.run();
+        new Day7().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Camel Cards");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Camel Cards");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
 

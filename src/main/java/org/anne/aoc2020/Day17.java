@@ -10,17 +10,16 @@ public class Day17 extends Day {
     private static final int TURNS = 6;
 
     public static void main(String[] args) {
-        Day day = new Day17();
-        day.run();
+        new Day17().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Conway Cubes");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Conway Cubes");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {

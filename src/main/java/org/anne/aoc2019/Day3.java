@@ -9,19 +9,18 @@ import java.util.Map;
 
 public class Day3 extends Day {
     public static void main(String[] args) {
-        Day day = new Day3();
-        day.run();
+        new Day3().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Crossed Wires");
-        List<String> input = this.readFile();
+        setName("Crossed Wires");
+        List<String> input = readFile();
         Map<Point, Integer> wire1 = mapWire(input.get(0));
         Map<Point, Integer> wire2 = mapWire(input.get(1));
-        this.setPart1(part1(wire1, wire2));
-        this.setPart2(part2(wire1, wire2));
-        this.printParts();
+        setPart1(part1(wire1, wire2));
+        setPart2(part2(wire1, wire2));
+        printParts();
     }
 
     static long part1(Map<Point, Integer> wire1, Map<Point, Integer> wire2) {

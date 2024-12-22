@@ -10,6 +10,7 @@ public class Day22 extends Day {
         new Day22().run();
     }
 
+    @Override
     public void execute() {
         setName("Monkey Market");
         List<Integer> input = readFileAsInts();

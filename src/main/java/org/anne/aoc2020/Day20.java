@@ -11,18 +11,17 @@ import static java.lang.Math.sqrt;
 public class Day20 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day20();
-        day.run();
+        new Day20().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Jurassic Jigsaw");
-        List<String> input = this.readFile();
+        setName("Jurassic Jigsaw");
+        List<String> input = readFile();
         Map<Integer, Tile> tiles = getTiles(input);
-        this.setPart1(part1(tiles));
-        this.setPart2(part2(tiles));
-        this.printParts();
+        setPart1(part1(tiles));
+        setPart2(part2(tiles));
+        printParts();
     }
 
     static long part1(Map<Integer, Tile> tiles) {

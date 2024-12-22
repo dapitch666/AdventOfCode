@@ -10,17 +10,16 @@ public class Day16 extends Day {
     private static int currentCursor;
 
     public static void main(String[] args) {
-        Day day = new Day16();
-        day.run();
+        new Day16().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Packet Decoder");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Packet Decoder");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(String input) {

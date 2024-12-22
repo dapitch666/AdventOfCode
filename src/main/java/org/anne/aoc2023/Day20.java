@@ -8,17 +8,16 @@ import java.util.regex.Pattern;
 
 public class Day20 extends Day {
     public static void main(String[] args) {
-        Day day = new Day20();
-        day.run();
+        new Day20().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Pulse Propagation");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Pulse Propagation");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
 
@@ -136,8 +135,8 @@ public class Day20 extends Day {
             var pattern = Pattern.compile("^[%&]?(\\w+) -> (.+)$");
             var matcher = pattern.matcher(line);
             if (matcher.matches()) {
-                this.name = matcher.group(1);
-                this.type = switch (line.charAt(0)) {
+                name = matcher.group(1);
+                type = switch (line.charAt(0)) {
                     case '%' -> Type.FLIPFLOP;
                     case '&' -> Type.CONJUNCTION;
                     default -> Type.BROADCASTER;

@@ -17,17 +17,16 @@ public class Day18 extends Day {
     static int bestDistance;
 
     public static void main(String[] args) {
-        Day day = new Day18();
-        day.run();
+        new Day18().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Many-Worlds Interpretation");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(new ArrayList<>(input)));
-        this.printParts();
+        setName("Many-Worlds Interpretation");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(new ArrayList<>(input)));
+        printParts();
     }
 
     static int part1(List<String> input) {
@@ -35,7 +34,7 @@ public class Day18 extends Day {
     }
 
     static int part2(List<String> input) {
-        Point middle = new Point(input.get(0).length() / 2, input.size() / 2);
+        Point middle = new Point(input.getFirst().length() / 2, input.size() / 2);
         input.set(middle.y - 1, input.get(middle.y - 1).substring(0, middle.x - 1) + "@#@"
                 + input.get(middle.y - 1).substring(middle.x + 2));
         input.set(middle.y, input.get(middle.y).substring(0, middle.x - 1) + "###"

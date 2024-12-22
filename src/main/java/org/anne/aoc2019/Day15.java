@@ -9,28 +9,26 @@ import java.util.List;
 import static org.anne.common.Utils.manhattanDistance;
 
 public class Day15 extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day15();
-        day.run();
+        new Day15().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Oxygen System");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Oxygen System");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
-    static int part1(String input) {
+    public static int part1(String input) {
         Map<Point, Character> map = getMapOf(input);
         Point oxygen = findOxygen(map);
         return path(map, new Point(0, 0), oxygen).size();
     }
 
-    static int part2(String input) {
+    public static int part2(String input) {
         Map<Point, Character> map = getMapOf(input);
         return minutesToFill(map);
     }

@@ -10,17 +10,16 @@ import java.util.List;
 public class Day4 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day4();
-        day.run();
+        new Day4().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Passport Processing");
-        List<String> input = parseInput(this.readFile());
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Passport Processing");
+        List<String> input = parseInput(readFile());
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
      static long part1(List<String> input) {

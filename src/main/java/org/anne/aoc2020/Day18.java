@@ -9,17 +9,16 @@ import java.util.List;
 public class Day18 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day18();
-        day.run();
+        new Day18().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Operation Order");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Operation Order");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(List<String> input) {

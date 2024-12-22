@@ -9,17 +9,16 @@ import java.util.List;
 
 public class Day20 extends Day {
     public static void main(String[] args) {
-        Day day = new Day20();
-        day.run();
+        new Day20().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Race Condition");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input, 100));
-        this.setPart2(part2(input, 100));
-        this.printParts();
+        setName("Race Condition");
+        List<String> input = readFile();
+        setPart1(part1(input, 100));
+        setPart2(part2(input, 100));
+        printParts();
     }
 
     public static int part1(List<String> input, int minSavedTime) {

@@ -11,17 +11,16 @@ public class Day16 extends Day {
     private static int[] myTicket;
 
     public static void main(String[] args) {
-        Day day = new Day16();
-        day.run();
+        new Day16().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Ticket Translation");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2());
-        this.printParts();
+        setName("Ticket Translation");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2());
+        printParts();
     }
 
     public static long part1(List<String> input) {
@@ -117,9 +116,9 @@ public class Day16 extends Day {
 
         public Field(String s) {
             String[] sSplit = s.split(": ");
-            this.name = sSplit[0];
-            this.interval1 = new Interval(sSplit[1].split(" or ")[0]);
-            this.interval2 = new Interval(sSplit[1].split(" or ")[1]);
+            name = sSplit[0];
+            interval1 = new Interval(sSplit[1].split(" or ")[0]);
+            interval2 = new Interval(sSplit[1].split(" or ")[1]);
         }
 
         public boolean startsWithDeparture() {
@@ -140,19 +139,19 @@ public class Day16 extends Day {
         }
 
         public void addOrder(int order) {
-            this.orders.add(order);
+            orders.add(order);
         }
 
         public void removeOrder(int order) {
-            this.orders.remove(order);
+            orders.remove(order);
         }
 
         public int countOrders() {
-            return this.orders.size();
+            return orders.size();
         }
 
         public int getOrder() {
-            return this.orders.iterator().next();
+            return orders.iterator().next();
         }
     }
 

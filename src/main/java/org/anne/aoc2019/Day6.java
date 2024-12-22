@@ -11,19 +11,17 @@ import java.util.stream.Collectors;
 
 public class Day6 extends Day {
     private static Map<String, String> orbits = new HashMap<>();
-
     public static void main(String[] args) {
-        Day day = new Day6();
-        day.run();
+        new Day6().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Universal Orbit Map");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Universal Orbit Map");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static int part1(List<String> input) {

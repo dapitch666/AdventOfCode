@@ -9,19 +9,17 @@ import java.util.List;
 import static org.anne.common.Constants.LINE_SEPARATOR;
 
 public class Day25 extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day25();
-        day.run();
+        new Day25().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Cryostasis");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2());
-        this.printParts();
+        setName("Cryostasis");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2());
+        printParts();
     }
 
     public static String part1(String input) {

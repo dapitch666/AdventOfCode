@@ -7,17 +7,16 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class Day25 extends Day {
     public static void main(String[] args) {
-        Day day = new Day25();
-        day.run();
+        new Day25().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Snowverload");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2());
-        this.printParts();
+        setName("Snowverload");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2());
+        printParts();
     }
 
 

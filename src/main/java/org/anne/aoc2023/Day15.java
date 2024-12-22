@@ -8,17 +8,16 @@ import java.util.LinkedHashMap;
 
 public class Day15 extends Day {
     public static void main(String[] args) {
-        Day day = new Day15();
-        day.run();
+        new Day15().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Lens Library");
-        var input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Lens Library");
+        var input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
 

@@ -9,17 +9,16 @@ import java.util.stream.Collectors;
 
 public class Day22 extends Day {
     public static void main(String[] args) {
-        Day day = new Day22();
-        day.run();
+        new Day22().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Sand Slabs");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Sand Slabs");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(List<String> input) {
@@ -100,17 +99,17 @@ public class Day22 extends Day {
             String[] split = s.split("~");
             String[] p1 = split[0].split(",");
             String[] p2 = split[1].split(",");
-            this.start = new Point3d(Integer.parseInt(p1[0]), Integer.parseInt(p1[1]), Integer.parseInt(p1[2]));
+            start = new Point3d(Integer.parseInt(p1[0]), Integer.parseInt(p1[1]), Integer.parseInt(p1[2]));
             var end = new Point3d(Integer.parseInt(p2[0]), Integer.parseInt(p2[1]), Integer.parseInt(p2[2]));
-            if (this.start.x() != end.x()) {
+            if (start.x() != end.x()) {
                 direction = 0;
-                size = Math.abs(this.start.x() - end.x());
-            } else if (this.start.y() != end.y()) {
+                size = Math.abs(start.x() - end.x());
+            } else if (start.y() != end.y()) {
                 direction = 1;
-                size = Math.abs(this.start.y() - end.y());
-            } else if (this.start.z() != end.z()) {
+                size = Math.abs(start.y() - end.y());
+            } else if (start.z() != end.z()) {
                 direction = 2;
-                size = Math.abs(this.start.z() - end.z());
+                size = Math.abs(start.z() - end.z());
             }
             size++;
         }
@@ -122,24 +121,24 @@ public class Day22 extends Day {
 
         public Map<Point3d, Integer> getOccupied(int id) {
             var occupied = new HashMap<Point3d, Integer>();
-            for (int i = 0; i < this.size; i++) {
-                var x = this.start.x() + i * xs[this.direction];
-                var y = this.start.y() + i * ys[this.direction];
-                var z = this.start.z() + i * zs[this.direction];
+            for (int i = 0; i < size; i++) {
+                var x = start.x() + i * xs[direction];
+                var y = start.y() + i * ys[direction];
+                var z = start.z() + i * zs[direction];
                 occupied.put(new Point3d(x, y, z), id);
             }
             return occupied;
         }
 
         public List<Point3d> pointsBelow() {
-            if (this.direction == 2) {
-                return List.of(this.start.add(new Point3d(0, 0, -1)));
+            if (direction == 2) {
+                return List.of(start.add(new Point3d(0, 0, -1)));
             } else {
                 var points = new ArrayList<Point3d>();
-                for (int i = 0; i < this.size; i++) {
-                    var x = this.start.x() + i * xs[this.direction];
-                    var y = this.start.y() + i * ys[this.direction];
-                    var z = this.start.z() - 1;
+                for (int i = 0; i < size; i++) {
+                    var x = start.x() + i * xs[direction];
+                    var y = start.y() + i * ys[direction];
+                    var z = start.z() - 1;
                     points.add(new Point3d(x, y, z));
                 }
                 return points;
@@ -147,7 +146,7 @@ public class Day22 extends Day {
         }
 
         public void drop() {
-            this.start = this.start.add(new Point3d(0, 0, -1));
+            start = start.add(new Point3d(0, 0, -1));
         }
     }
 }

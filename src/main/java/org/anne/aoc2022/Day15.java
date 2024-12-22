@@ -13,17 +13,16 @@ import static org.anne.common.Utils.manhattanDistance;
 
 public class Day15 extends Day {
     public static void main(String[] args) {
-        Day day = new Day15();
-        day.run();
+        new Day15().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Beacon Exclusion Zone");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input, 2000000));
-        this.setPart2(part2(input, 4000000));
-        this.printParts();
+        setName("Beacon Exclusion Zone");
+        List<String> input = readFile();
+        setPart1(part1(input, 2000000));
+        setPart2(part2(input, 4000000));
+        printParts();
     }
 
     public static long part1(List<String> input, int rowNb) {

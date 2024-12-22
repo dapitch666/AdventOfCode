@@ -8,17 +8,16 @@ import java.util.*;
 
 public class Day22 extends Day {
     public static void main(String[] args) {
-        Day day = new Day22();
-        day.run();
+        new Day22().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Monkey Map");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Monkey Map");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {

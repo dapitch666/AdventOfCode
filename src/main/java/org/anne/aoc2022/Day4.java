@@ -6,17 +6,16 @@ import java.util.List;
 
 public class Day4 extends Day {
     public static void main(String[] args) {
-        Day day = new Day4();
-        day.run();
+        new Day4().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Camp Cleanup");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Camp Cleanup");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {
@@ -52,10 +51,10 @@ public class Day4 extends Day {
 
     private record Assignment (int min, int max) {
         public boolean fullyContains(Assignment other) {
-            return this.min <= other.min && this.max >= other.max;
+            return min <= other.min && max >= other.max;
         }
         public boolean overlap(Assignment other) {
-            return this.min <= other.max && this.max >= other.min;
+            return min <= other.max && max >= other.min;
         }
     }
 }

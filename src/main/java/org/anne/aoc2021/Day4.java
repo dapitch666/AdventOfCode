@@ -12,17 +12,16 @@ public class Day4 extends Day {
     private static final int EMPTY = -1;
 
     public static void main(String[] args) {
-        Day day = new Day4();
-        day.run();
+        new Day4().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Giant Squid");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Giant Squid");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     private static int resolve(List<String> input, int part) {

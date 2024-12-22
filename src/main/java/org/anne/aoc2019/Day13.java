@@ -7,17 +7,16 @@ import java.util.List;
 public class Day13 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day13();
-        day.run();
+        new Day13().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Care Package");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Care Package");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static int part1(String input) {
@@ -52,9 +51,9 @@ public class Day13 extends Day {
         int score = 0;
         List<Long> output = computer.getOutputs();
         while (!output.isEmpty()) {
-            int x = Math.toIntExact(output.remove(0));
-            int y = Math.toIntExact(output.remove(0));
-            int tile = Math.toIntExact(output.remove(0));
+            int x = Math.toIntExact(output.removeFirst());
+            int y = Math.toIntExact(output.removeFirst());
+            int tile = Math.toIntExact(output.removeFirst());
             if (x == -1 && y == 0) {
                 score = tile;
             } else {

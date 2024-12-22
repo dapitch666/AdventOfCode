@@ -11,17 +11,16 @@ import java.util.List;
 public class Day16 extends Day {
 
     public static void main(String[] args) {
-        Day day = new Day16();
-        day.run();
+        new Day16().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Reindeer Maze");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Reindeer Maze");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(List<String> input) {

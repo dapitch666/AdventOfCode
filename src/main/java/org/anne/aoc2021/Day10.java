@@ -15,17 +15,16 @@ public class Day10 extends Day {
     );
 
     public static void main(String[] args) {
-        Day day = new Day10();
-        day.run();
+        new Day10().run();
     }
 
     @Override
     public void execute() {
-        List<String> input = this.readFile();
-        this.setName("Syntax Scoring");
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        List<String> input = readFile();
+        setName("Syntax Scoring");
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static long part1(List<String> input) {

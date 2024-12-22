@@ -4,17 +4,16 @@ import org.anne.common.Day;
 
 public class Day21 extends Day {
     public static void main(String[] args) {
-        Day day = new Day21();
-        day.run();
+        new Day21().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Springdroid Adventure");
-        String input = this.readFileOneLine();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Springdroid Adventure");
+        String input = readFileOneLine();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static long part1(String input) {

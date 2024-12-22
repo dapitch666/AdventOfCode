@@ -8,19 +8,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Day4 extends Day {
-
     public static void main(String[] args) {
-        Day day = new Day4();
-        day.run();
+        new Day4().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Secure Container");
-        List<Integer> input = this.readFileAsInts();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Secure Container");
+        List<Integer> input = readFileAsInts();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     static int part1(List<Integer> input) {

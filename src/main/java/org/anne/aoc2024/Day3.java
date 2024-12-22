@@ -8,17 +8,16 @@ import java.util.regex.Pattern;
 
 public class Day3 extends Day {
     public static void main(String[] args) {
-        Day day = new Day3();
-        day.run();
+        new Day3().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Mull It Over");
-        String input = String.join("", this.readFile());
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Mull It Over");
+        String input = String.join("", readFile());
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
     public static int part1(String input) {

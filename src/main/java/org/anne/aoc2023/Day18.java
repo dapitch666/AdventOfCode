@@ -10,17 +10,16 @@ import java.util.regex.Pattern;
 
 public class Day18 extends Day {
     public static void main(String[] args) {
-        Day day = new Day18();
-        day.run();
+        new Day18().run();
     }
 
     @Override
     public void execute() {
-        this.setName("Lavaduct Lagoon");
-        List<String> input = this.readFile();
-        this.setPart1(part1(input));
-        this.setPart2(part2(input));
-        this.printParts();
+        setName("Lavaduct Lagoon");
+        List<String> input = readFile();
+        setPart1(part1(input));
+        setPart2(part2(input));
+        printParts();
     }
 
 
