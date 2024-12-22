@@ -29,7 +29,7 @@ public class Day14 extends Day {
         for (Robot robot : robots) {
             Point finalPoint = robot.move(100, width, height);
             if (finalPoint.x < width / 2 && finalPoint.y < height / 2) {
-                quadrants.set(0, quadrants.get(0) + 1);
+                quadrants.set(0, quadrants.getFirst() + 1);
             } else if (finalPoint.x > width / 2 && finalPoint.y < height / 2) {
                 quadrants.set(1, quadrants.get(1) + 1);
             } else if (finalPoint.x < width / 2 && finalPoint.y > height / 2) {
@@ -73,8 +73,8 @@ public class Day14 extends Day {
         }
 
         Point move(int times, int width, int height) {
-            int x = (x + times * vx) % width;
-            int y = (y + times * vy) % height;
+            int x = (this.x + times * this.vx) % width;
+            int y = (this.y + times * this.vy) % height;
             return new Point(x < 0 ? x + width : x, y < 0 ? y + height : y);
         }
     }

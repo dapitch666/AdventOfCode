@@ -117,11 +117,11 @@ public class Day11 extends Day {
         int flashes = 0;
 
         public Octopus(int energy) {
-            energy = energy;
+            this.energy = energy;
         }
 
         public int getFlashes() {
-            return flashes;
+            return this.flashes;
         }
 
         @Override
