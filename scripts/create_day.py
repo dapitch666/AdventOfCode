@@ -48,7 +48,7 @@ def create_day_class(year, day, src_dir, day_class, name):
         file.write("import java.util.List;\n\n")
         file.write("public class Day" + str(day) + " extends Day {\n")
         file.write("    public static void main(String[] args) {\n")
-        file.write("        new Day" + str(day) + "()run();\n")
+        file.write("        new Day" + str(day) + ".()run();\n")
         file.write("    }\n\n")
         file.write("    @Override\n")
         file.write("    public void execute() {\n")
