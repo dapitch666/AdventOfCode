@@ -4,7 +4,6 @@ import org.anne.common.Year;
 
 public class Main2024 {
     public static void main(String[] args) {
-        Year year = new Year(2024);
-        year.run();
+        new Year(2024).run();
     }
 }

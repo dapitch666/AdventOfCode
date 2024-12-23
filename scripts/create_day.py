@@ -93,8 +93,7 @@ def create_main_class(year, main_class):
         file.write("import org.anne.common.Year;\n\n")
         file.write("public class Main" + year + " {\n")
         file.write("    public static void main(String[] args) {\n")
-        file.write("        Year year = new Year(" + year + ");\n")
-        file.write("        year.run();\n")
+        file.write("        new Year(" + year + ").run();\n")
         file.write("    }\n")
         file.write("}\n")
 
