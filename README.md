@@ -59,7 +59,7 @@ The script also takes care of creating the year package if it doesn't exist yet.
 
 ## Dependencies
 
-This project is built with Maven and uses Java 17. Tests are written with JUnit 5.
+This project is built with Maven and uses Java 23. Tests are written with JUnit 5.
 
 ## Contributing
 
