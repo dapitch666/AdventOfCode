@@ -33,7 +33,6 @@ public class Day5 extends Day {
             }
         }
         return min;
-
     }
 
     private static String reduce(String input) {
