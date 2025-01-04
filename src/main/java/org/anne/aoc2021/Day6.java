@@ -17,7 +17,7 @@ public class Day6 extends Day {
     @Override
     public void execute() {
         setName("Lanternfish");
-        List<Integer> input = readFileIntegerOneLine();
+        List<Integer> input = readFileIntegerOneLine(",");
         setPart1(part1(input));
         setPart2(part2(input));
         printParts();

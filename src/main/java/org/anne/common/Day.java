@@ -76,8 +76,8 @@ public abstract class Day {
         return FileHelper.readFileAsInts(getPath());
     }
 
-    public List<Integer> readFileIntegerOneLine() {
-        return FileHelper.readFileIntegerOneLine(getPath());
+    public List<Integer> readFileIntegerOneLine(String delimiter) {
+        return FileHelper.readFileIntegerOneLine(getPath(), delimiter);
     }
 
     public List<Long> readFileAsLongs() {

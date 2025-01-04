@@ -30,16 +30,16 @@ public class FileHelper {
 
     public static String readFileOneLine(Path inputPath) {
         try {
-            return Files.readAllLines(inputPath).get(0);
+            return Files.readAllLines(inputPath).getFirst();
         } catch (IOException | NumberFormatException e) {
             System.err.format("There was an Error reading the File: %s%n", e);
             return "";
         }
     }
 
-    public static List<Integer> readFileIntegerOneLine(Path inputPath) {
+    public static List<Integer> readFileIntegerOneLine(Path inputPath, String delimiter) {
         try {
-            return Arrays.stream(Files.readAllLines(inputPath).get(0).split(","))
+            return Arrays.stream(Files.readAllLines(inputPath).getFirst().split(delimiter))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
         } catch (IOException | NumberFormatException e) {

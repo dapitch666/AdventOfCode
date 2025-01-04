@@ -14,7 +14,7 @@ public class Day7 extends Day {
     @Override
     public void execute() {
         setName("The Treachery of Whales");
-        List<Integer> input = readFileIntegerOneLine();
+        List<Integer> input = readFileIntegerOneLine(",");
         setPart1(part1(input));
         setPart2(part2(input));
         printParts();
