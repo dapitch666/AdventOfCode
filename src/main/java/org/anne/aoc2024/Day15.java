@@ -28,7 +28,7 @@ public class Day15 extends Day {
         Point robot = GridHelper.findChar(grid, '@');
         grid[robot.y][robot.x] = '.';
         for (var direction : movements(input, input.indexOf(""))) {
-            Point next = Direction.getPoint(direction, robot);
+            Point next = direction.move(robot);
             char nextChar = grid[next.y][next.x];
             if (nextChar == '.') {
                 robot = next;
@@ -71,7 +71,7 @@ public class Day15 extends Day {
         }
 
         for (var direction : movements(input, emptyLineIndex)) {
-            Point next = Direction.getPoint(direction, robot);
+            Point next = direction.move(robot);
             char nextChar = grid[next.y][next.x];
             if (nextChar == '.') {
                 robot = next;
@@ -79,11 +79,11 @@ public class Day15 extends Day {
                 if (direction == Direction.EAST || direction == Direction.WEST) {
                     Point nextEmpty = getNextEmpty(direction, next, grid);
                     if (nextEmpty.x != -1) {
-                        Point nextPoint = Direction.getPoint(direction, next);
+                        Point nextPoint = direction.move(next);
                         for (int i = 0; i < Math.abs(nextEmpty.x - next.x); i++) {
                             char c1 = grid[nextPoint.y][nextPoint.x];
                             grid[nextPoint.y][nextPoint.x] = (c1 == '[') ? ']' : (c1 == ']') ? '[' : (direction == Direction.EAST ? ']' : '[');
-                            nextPoint = Direction.getPoint(direction, nextPoint);
+                            nextPoint = direction.move(nextPoint);
                         }
                         robot = next;
                         grid[robot.y][robot.x] = '.';
@@ -127,7 +127,7 @@ public class Day15 extends Day {
     private static Point getNextEmpty(Direction direction, Point next, char[][] grid) {
         Point current = next;
         while (true) {
-            current = Direction.getPoint(direction, current);
+            current = direction.move(current);
             char c = grid[current.y][current.x];
             if (c == '.') {
                 return current;
@@ -138,7 +138,7 @@ public class Day15 extends Day {
     }
 
     private static boolean canMove(char[][] grid, Point point, Direction direction) {
-        Point next = Direction.getPoint(direction, point);
+        Point next = direction.move(point);
 
         boolean left = switch (grid[next.y][next.x]) {
             case '.' -> true;
@@ -158,7 +158,7 @@ public class Day15 extends Day {
     }
 
     private static void move(char[][] grid, Point point, Direction direction) {
-        Point next = Direction.getPoint(direction, point);
+        Point next = direction.move(point);
         char[] newRow = grid[next.y];
         char c = newRow[point.x];
         if (c == '[') {

@@ -54,7 +54,7 @@ public class Day10 extends Day {
         if (current == 9) return 1;
         int score = 0;
         for (Direction direction : Direction.values()) {
-            Point nextPoint = Direction.getPoint(direction, point);
+            Point nextPoint = direction.move(point);
             if (GridHelper.isValidPoint(nextPoint, grid)
                     && grid[nextPoint.y][nextPoint.x] == current + 1
                     && !visited.contains(nextPoint)) {
@@ -68,7 +68,7 @@ public class Day10 extends Day {
         if (current == 9) return 1;
         int score = 0;
         for (Direction direction : Direction.values()) {
-            Point nextPoint = Direction.getPoint(direction, point);
+            Point nextPoint = direction.move(point);
             if (GridHelper.isValidPoint(nextPoint, grid) && grid[nextPoint.y][nextPoint.x] == current + 1) {
                 score += getRating(grid, nextPoint, current + 1);
             }

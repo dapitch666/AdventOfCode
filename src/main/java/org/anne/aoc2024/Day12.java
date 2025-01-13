@@ -78,7 +78,7 @@ public class Day12 extends Day {
     record Region(Set<Point> plots) {
         boolean isAdjacent(Point point) {
             return Arrays.stream(Direction.values())
-                    .map(direction -> Direction.getPoint(direction, point))
+                    .map(direction -> direction.move(point))
                     .anyMatch(plots::contains);
         }
 
@@ -90,7 +90,7 @@ public class Day12 extends Day {
             int perimeter = 0;
             for (Point plot : plots) {
                 for (Direction direction : Direction.values()) {
-                    Point neighbor = Direction.getPoint(direction, plot);
+                    Point neighbor = direction.move(plot);
                     if (!plots.contains(neighbor)) {
                         perimeter++;
                     }
@@ -104,14 +104,14 @@ public class Day12 extends Day {
 
             for (final Point point : plots) {
                 int corners = 0;
-                Point north = Direction.getPoint(Direction.NORTH, point);
-                Point south = Direction.getPoint(Direction.SOUTH, point);
-                Point east = Direction.getPoint(Direction.EAST, point);
-                Point west = Direction.getPoint(Direction.WEST, point);
-                Point northEast = Direction.getPoint(Direction.EAST, north);
-                Point northWest = Direction.getPoint(Direction.WEST, north);
-                Point southEast = Direction.getPoint(Direction.EAST, south);
-                Point southWest = Direction.getPoint(Direction.WEST, south);
+                Point north = Direction.NORTH.move(point);
+                Point south = Direction.SOUTH.move(point);
+                Point east = Direction.EAST.move(point);
+                Point west = Direction.WEST.move(point);
+                Point northEast = Direction.EAST.move(north);
+                Point northWest = Direction.WEST.move(north);
+                Point southEast = Direction.EAST.move(south);
+                Point southWest = Direction.WEST.move(south);
 
                 if (containsNone(plots, List.of(west, north))
                         || !plots.contains(northWest) && plots.containsAll(List.of(west, north))) {

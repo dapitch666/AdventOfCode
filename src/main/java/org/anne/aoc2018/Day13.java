@@ -89,7 +89,7 @@ public class Day13 extends Day {
 
     record Cart(Point p, Direction direction, int nextTurn, boolean crashed) {
         public Cart move(char[][] grid) {
-            Point newPoint = Direction.getPoint(direction, p);
+            Point newPoint = direction.move(p);
             Direction newDirection = direction;
             int newNextTurn = nextTurn;
 
@@ -108,8 +108,8 @@ public class Day13 extends Day {
                 };
                 case '+' -> {
                     newDirection = switch (nextTurn) {
-                        case 0 -> Direction.rotate90(direction, false);
-                        case 2 -> Direction.rotate90(direction, true);
+                        case 0 -> direction.rotate90(false);
+                        case 2 -> direction.rotate90(true);
                         default -> newDirection;
                     };
                     newNextTurn = (nextTurn + 1) % 3;

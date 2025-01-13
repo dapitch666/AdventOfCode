@@ -54,23 +54,23 @@ public class Day16 extends Day {
     }
 
     private static List<Beam> getNext(Map<Point, Character> map, Beam beam) {
-        var next = Direction.getPoint(beam.direction, beam.point);
+        var next = beam.direction.move(beam.point);
         if (!map.containsKey(next)) {
             return List.of();
         }
         switch (map.get(next)) {
             case '/' -> {
                 if (beam.direction() == Direction.NORTH || beam.direction() == Direction.SOUTH) {
-                    return List.of(new Beam(next, Direction.rotate90(beam.direction(), true)));
+                    return List.of(new Beam(next, beam.direction.rotate90(true)));
                 } else {
-                    return List.of(new Beam(next, Direction.rotate90(beam.direction(), false)));
+                    return List.of(new Beam(next, beam.direction.rotate90(false)));
                 }
             }
             case '\\' -> {
                 if (beam.direction() == Direction.NORTH || beam.direction() == Direction.SOUTH) {
-                    return List.of(new Beam(next, Direction.rotate90(beam.direction(), false)));
+                    return List.of(new Beam(next, beam.direction.rotate90(false)));
                 } else {
-                    return List.of(new Beam(next, Direction.rotate90(beam.direction(), true)));
+                    return List.of(new Beam(next, beam.direction.rotate90(true)));
                 }
             }
             case '|' -> {

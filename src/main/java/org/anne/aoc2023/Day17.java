@@ -50,7 +50,7 @@ public class Day17 extends Day {
             }
             seen.add(status);
             if (status.directionCount < maximumDirectionCount) {
-                var nextPoint = Direction.getPoint(status.direction, status.point);
+                var nextPoint = status.direction.move(status.point);
                 if (GridHelper.isValidPoint(nextPoint, map)) {
                     pq.add(new Status(
                             nextPoint,
@@ -62,8 +62,8 @@ public class Day17 extends Day {
             }
             if (status.directionCount >= minimumDirectionCount) {
                 for (var direction : Direction.values()) {
-                    if (direction != status.direction && direction != Direction.reverse(status.direction)) {
-                        var nextPoint = Direction.getPoint(direction, status.point);
+                    if (direction != status.direction && direction != status.direction.reverse()) {
+                        var nextPoint = direction.move(status.point);
                         if (GridHelper.isValidPoint(nextPoint, map)) {
                             pq.add(new Status(
                                     nextPoint,

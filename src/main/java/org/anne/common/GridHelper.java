@@ -27,8 +27,8 @@ public class GridHelper {
         return point.x >= 0 && point.x < grid[0].length && point.y >= 0 && point.y < grid.length;
     }
 
-    public static boolean isValidPoint(Point antinode, int gridSize) {
-        return antinode.x >= 0 && antinode.x < gridSize && antinode.y >= 0 && antinode.y < gridSize;
+    public static boolean isValidPoint(Point point, int gridSize) {
+        return point.x >= 0 && point.x < gridSize && point.y >= 0 && point.y < gridSize;
     }
 
     public static Point findChar(char[][] grid, char c) {
@@ -40,6 +40,14 @@ public class GridHelper {
             }
         }
         return new Point(-1, -1);
+    }
+
+    public static char getChar(Point point, char[][] grid) {
+        return grid[point.y][point.x];
+    }
+
+    public static void setChar(Point point, char[][] grid, char value) {
+        grid[point.y][point.x] = value;
     }
 
     /**
@@ -67,7 +75,7 @@ public class GridHelper {
                 return path;
             }
             for (Direction direction : Direction.values()) {
-                Point newPoint = new Point(Direction.getPoint(direction, current));
+                Point newPoint = direction.move(current);
                 if (isValidPoint(newPoint, grid) && !visited.contains(newPoint) && isPassable.test(grid[newPoint.y][newPoint.x])) {
                     queue.add(newPoint);
                     visited.add(newPoint);

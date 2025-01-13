@@ -5,8 +5,8 @@ import java.awt.*;
 public enum Direction {
     NORTH, SOUTH, EAST, WEST;
 
-    public static Point getPoint(Direction direction, Point start) {
-        return switch (direction) {
+    public Point move(Point start) {
+        return switch (this) {
             case NORTH -> new Point(start.x, start.y - 1);
             case SOUTH -> new Point(start.x, start.y + 1);
             case EAST -> new Point(start.x + 1, start.y);
@@ -14,8 +14,8 @@ public enum Direction {
         };
     }
     
-    public static Direction rotate90(Direction direction, boolean clockwise) {
-        return switch (direction) {
+    public Direction rotate90(boolean clockwise) {
+        return switch (this) {
             case NORTH -> clockwise ? EAST : WEST;
             case SOUTH -> clockwise ? WEST : EAST;
             case EAST -> clockwise ? SOUTH : NORTH;
@@ -23,8 +23,8 @@ public enum Direction {
         };
     }
     
-    public static Direction reverse(Direction direction) {
-        return switch (direction) {
+    public Direction reverse() {
+        return switch (this) {
             case NORTH -> SOUTH;
             case SOUTH -> NORTH;
             case EAST -> WEST;
@@ -42,8 +42,8 @@ public enum Direction {
         };
     }
 
-    public static char getChar(Direction direction) {
-        return switch (direction) {
+    public char getChar() {
+        return switch (this) {
             case NORTH -> '^';
             case SOUTH -> 'v';
             case WEST -> '<';

@@ -135,15 +135,15 @@ public class Day15 extends Day {
         return Collections.emptyList();
     }
 
-    private static List<Point> getAdjacent(Point p, int[][] grid, char c) {
-        List<Point> adj = new ArrayList<>();
-        for (Direction dir : Direction.values()) {
-            Point n = Direction.getPoint(dir, p);
+    private static List<Point> getAdjacent(Point point, int[][] grid, char c) {
+        List<Point> adjacent = new ArrayList<>();
+        for (Direction direction : Direction.values()) {
+            Point n = direction.move(point);
             if (grid[n.x][n.y] == c) {
-                adj.add(n);
+                adjacent.add(n);
             }
         }
-        return adj;
+        return adjacent;
     }
 
     private static void getData(List<String> input, int[][] grid, List<Unit> units, int boost) {

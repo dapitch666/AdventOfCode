@@ -92,7 +92,7 @@ public class Day21 extends Day {
             Node curNode = queue.poll();
             Point curPoint = curNode.p;
             if (curNode.direction != null) {
-                curNode.path.add(Direction.getChar(curNode.direction));
+                curNode.path.add(curNode.direction.getChar());
             }
             if (curPoint.equals(end)) {
                 if (curNode.cost < minCost) {
@@ -114,7 +114,7 @@ public class Day21 extends Day {
             }
 
             for (Direction direction : Direction.values()) {
-                Point nextPoint = Direction.getPoint(direction, curPoint);
+                Point nextPoint = direction.move(curPoint);
                 if (grid[nextPoint.y][nextPoint.x] != '#') {
                     queue.add(new Node(nextPoint, new ArrayList<>(curNode.path), curNode.cost + 1, direction));
                 }

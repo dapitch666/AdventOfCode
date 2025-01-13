@@ -100,13 +100,13 @@ public class Day16 extends Day {
 
     record State(Position position, int score, Set<Point> visited) {
         List<State> nextStates() {
-            Point nextPoint = Direction.getPoint(position.direction, position.point);
+            Point nextPoint = position.direction.move(position.point);
             Set<Point> newVisited = new HashSet<>(visited);
             newVisited.add(nextPoint);
             return List.of(
-                    new State(new Position(position.point, Direction.rotate90(position.direction, false)),
+                    new State(new Position(position.point, position.direction.rotate90(false)),
                             score + 1000, visited),
-                    new State(new Position(position.point, Direction.rotate90(position.direction, true)),
+                    new State(new Position(position.point, position.direction.rotate90(true)),
                             score + 1000, visited),
                     new State(new Position(nextPoint, position.direction),
                             score + 1, newVisited)

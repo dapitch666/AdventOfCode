@@ -7,8 +7,6 @@ import java.awt.*;
 import java.util.HashSet;
 import java.util.List;
 
-import static org.anne.common.Direction.getPoint;
-
 public class Day6 extends Day {
     public static void main(String[] args) {
         new Day6().run();
@@ -41,10 +39,10 @@ public class Day6 extends Day {
             path.add(new State(current, direction));
             boolean outOfBounds = false;
             while (!outOfBounds) {
-                Point next = getPoint(direction, current);
+                Point next = direction.move(current);
                 try {
                     if (map[next.y][next.x] == '#' || next.equals(p)) {
-                        direction = Direction.rotate90(direction, true);
+                        direction = direction.rotate90(true);
                         if (!path.add(new State(current, direction))) {
                             loop++;
                             break;
@@ -79,10 +77,10 @@ public class Day6 extends Day {
         Direction direction = Direction.NORTH;
         boolean outOfBounds = false;
         while (!outOfBounds) {
-            Point next = getPoint(direction, current);
+            Point next = direction.move(current);
             try {
                 if (map[next.y][next.x] == '#') {
-                    direction = Direction.rotate90(direction, true);
+                    direction = direction.rotate90(true);
                 } else {
                     visited.add(next);
                     current = next;

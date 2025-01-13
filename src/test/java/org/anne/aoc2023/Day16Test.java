@@ -37,6 +37,6 @@ public class Day16Test {
     @Test
     void testRotate() {
         Day16.Beam beam = new Day16.Beam(new Point(0, 0), Direction.EAST);
-        assertEquals(Direction.NORTH, Direction.rotate90(beam.direction(), false));
+        assertEquals(Direction.NORTH, beam.direction().rotate90(false));
     }
  }

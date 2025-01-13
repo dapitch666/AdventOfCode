@@ -30,12 +30,12 @@ public class Day10 extends Day {
         var direction = NORTH;
         
         var nextDirection = getNext(grid, start, direction);
-        var nextPoint = Direction.getPoint(nextDirection, start);
+        var nextPoint = nextDirection.move(start);
         int steps = 1;
         while (grid[nextPoint.y][nextPoint.x] != 'S') {
             direction = nextDirection;
             nextDirection = getNext(grid, nextPoint, direction);
-            nextPoint = Direction.getPoint(nextDirection, nextPoint);
+            nextPoint = nextDirection.move(nextPoint);
             steps++;
         }
         return steps / 2;
@@ -51,7 +51,7 @@ public class Day10 extends Day {
 
         doubledGrid[start.y * 2 + 1][start.x * 2 + 1] = 1;
         var nextDirection = getNext(grid, start, direction);
-        var nextPoint = Direction.getPoint(nextDirection, start);
+        var nextPoint = nextDirection.move(start);
 
         while (grid[nextPoint.y][nextPoint.x] != 'S') {
             int doubledX = nextPoint.x * 2 + 1;
@@ -88,7 +88,7 @@ public class Day10 extends Day {
             }
             direction = nextDirection;
             nextDirection = getNext(grid, nextPoint, direction);
-            nextPoint = Direction.getPoint(nextDirection, nextPoint);
+            nextPoint = nextDirection.move(nextPoint);
         }
         var filled = fill(doubledGrid);
         int area = 0;
