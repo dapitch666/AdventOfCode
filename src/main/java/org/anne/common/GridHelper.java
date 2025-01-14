@@ -42,11 +42,11 @@ public class GridHelper {
         return new Point(-1, -1);
     }
 
-    public static char getChar(Point point, char[][] grid) {
+    public static int get(Point point, int[][] grid) {
         return grid[point.y][point.x];
     }
 
-    public static void setChar(Point point, char[][] grid, char value) {
+    public static void set(Point point, int[][] grid, char value) {
         grid[point.y][point.x] = value;
     }
 

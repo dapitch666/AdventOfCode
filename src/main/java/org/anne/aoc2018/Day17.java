@@ -4,7 +4,6 @@ import org.anne.common.Day;
 import org.anne.common.Direction;
 
 import java.awt.*;
-import java.nio.CharBuffer;
 import java.util.*;
 import java.util.List;
 
@@ -26,33 +25,29 @@ public class Day17 extends Day {
 
     public static long part1(List<String> input) {
         var grid = getGrid(input);
-
         long result = Arrays.stream(grid)
-                .map(CharBuffer::wrap)
-                .flatMapToInt(CharBuffer::chars)
-                .filter(element -> element == 'W' || element == 'F')
+                .flatMapToInt(Arrays::stream)
+                .filter(c -> c == 'W' || c == 'F')
                 .count();
         return result == 31013 ? 1 : result;
     }
 
     public static long part2(List<String> input) {
         var grid = getGrid(input);
-
         long result = Arrays.stream(grid)
-                .map(CharBuffer::wrap)
-                .flatMapToInt(CharBuffer::chars)
-                .filter(element -> element == 'W')
+                .flatMapToInt(Arrays::stream)
+                .filter(c -> c == 'W')
                 .count();
         return result == 25448 ? 1 : result;
     }
 
-    static boolean flood(char[][] grid, Point point, Direction direction) {
+    static boolean flood(int[][] grid, Point point, Direction direction) {
         if (point.y >= grid.length) return true;
 
-        char element = getChar(point, grid);
+        int element = get(point, grid);
         if (element != '.') return element == 'F';
 
-        setChar(point, grid, 'F');
+        set(point, grid, 'F');
 
         if (flood(grid, Direction.SOUTH.move(point), Direction.SOUTH)) return true;
 
@@ -69,14 +64,14 @@ public class Day17 extends Day {
         return false;
     }
 
-    static void fill(char[][] grid, Point point, Direction direction) {
-        if (getChar(point, grid) != 'F') return;
+    static void fill(int[][] grid, Point point, Direction direction) {
+        if (get(point, grid) != 'F') return;
 
         fill(grid, direction.move(point), direction);
-        setChar(point, grid, 'W');
+        set(point, grid, 'W');
     }
 
-    static char[][] getGrid(List<String> input) {
+    static int[][] getGrid(List<String> input) {
         Set<Point> points = new HashSet<>();
         for (String line : input) {
             char c = line.charAt(0);
@@ -93,8 +88,8 @@ public class Day17 extends Day {
         int minY = points.stream().mapToInt(p -> p.y).min().orElse(0);
         int maxY = points.stream().mapToInt(p -> p.y).max().orElse(0);
 
-        char[][] grid = new char[maxY - minY + 1][maxX - minX + 1];
-        for (char[] row : grid) {
+        int[][] grid = new int[maxY - minY + 1][maxX - minX + 1];
+        for (int[] row : grid) {
             Arrays.fill(row, '.');
         }
         for (Point p : points) {

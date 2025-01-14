@@ -1,6 +1,7 @@
 package org.anne.aoc2021;
 
 import org.anne.common.Day;
+import org.anne.common.Direction;
 import org.anne.common.GridHelper;
 
 import java.awt.*;
@@ -25,79 +26,76 @@ public class Day9 extends Day {
     }
 
     public static int part1(List<String> input) {
-        int[][] caveMap = GridHelper.getIntGrid(input);
+        int[][] grid = GridHelper.getIntGrid(input);
         int sum = 0;
-        List<Point> lowPoints = getLowPoints(caveMap);
-        for (Point lowPoint : lowPoints) {
-            sum += caveMap[lowPoint.x][lowPoint.y] + 1;
+        List<Point> lowPoints = getLowPoints(grid);
+        for (Point point : lowPoints) {
+            sum += GridHelper.get(point, grid) + 1;
         }
         return sum;
     }
 
     public static long part2(List<String> input) {
-        int[][] caveMap = GridHelper.getIntGrid(input);
-        List<Point> lowPoints = getLowPoints(caveMap);
+        int[][] grid = GridHelper.getIntGrid(input);
+        List<Point> lowPoints = getLowPoints(grid);
         List<Set<Point>> basins = new ArrayList<>();
-        for (Point lowPoint : lowPoints) {
+        for (Point point : lowPoints) {
             Set<Point> basin = new HashSet<>();
-            getBasin(lowPoint, caveMap, basin);
+            getBasin(point, grid, basin);
             basins.add(basin);
         }
         basins.sort((a1, a2) -> a2.size() - a1.size());
         return (long) basins.get(0).size() * basins.get(1).size() * basins.get(2).size();
     }
 
-    private static void getBasin(Point point, int[][] caveMap, Set<Point> basin) {
-        int x = point.x;
-        int y = point.y;
-        int height = caveMap[x][y];
-        if (height == 9 || basin.contains(point)) {
-            return;
-        }
+    private static void getBasin(Point point, int[][] grid, Set<Point> basin) {
+        int height = GridHelper.get(point, grid);
+        if (height == 9 || basin.contains(point)) return;
         basin.add(point);
-        if (x > 0) {
-            getBasin(new Point(x - 1, y), caveMap, basin);
+        if (point.y > 0) {
+            getBasin(Direction.NORTH.move(point), grid, basin);
         }
-        if (x < caveMap.length - 1) {
-            getBasin(new Point(x + 1, y), caveMap, basin);
+        if (point.y < grid.length - 1) {
+            getBasin(Direction.SOUTH.move(point), grid, basin);
         }
-        if (y > 0) {
-            getBasin(new Point(x, y - 1), caveMap, basin);
+        if (point.x > 0) {
+            getBasin(Direction.WEST.move(point), grid, basin);
         }
-        if (y < caveMap[0].length - 1) {
-            getBasin(new Point(x, y + 1), caveMap, basin);
+        if (point.x < grid[0].length - 1) {
+            getBasin(Direction.EAST.move(point), grid, basin);
         }
     }
 
-    private static List<Point> getLowPoints(int[][] caveMap) {
-        List<Point> lowPoints = new ArrayList<>();
-        for (int i = 0; i < caveMap.length; i++) {
-            for (int j = 0; j < caveMap[0].length; j++) {
-                if (isMin(caveMap, i, j)) {
-                    lowPoints.add(new Point(i, j));
+    private static List<Point> getLowPoints(int[][] grid) {
+        List<Point> points = new ArrayList<>();
+        for (int y = 0; y < grid.length; y++) {
+            for (int x = 0; x < grid[0].length; x++) {
+                Point point = new Point(x, y);
+                if (isMin(grid, point)) {
+                    points.add(point);
                 }
             }
         }
-        return lowPoints;
+        return points;
     }
 
-    private static boolean isMin(int[][] caveMap, int x, int y) {
-        int height = caveMap[x][y];
+    private static boolean isMin(int[][] grid, Point point) {
+        int height = GridHelper.get(point, grid);
         if (height == 0) {
             return true;
         } else if (height == 9) {
             return false;
         } else {
-            if (x > 0 && caveMap[x - 1][y] < height) {
+            if (point.y > 0 && GridHelper.get(Direction.NORTH.move(point), grid) < height) {// grid[x - 1][y] < height) {
                 return false;
             }
-            if (x < caveMap.length - 1 && caveMap[x + 1][y] < height) {
+            if (point.y < grid.length - 1 && GridHelper.get(Direction.SOUTH.move(point), grid) < height) {// grid[x + 1][y] < height) {
                 return false;
             }
-            if (y > 0 && caveMap[x][y - 1] < height) {
+            if (point.x > 0 && GridHelper.get(Direction.WEST.move(point), grid) < height) {// grid[x][y - 1] < height) {
                 return false;
             }
-            return y >= caveMap[0].length - 1 || caveMap[x][y + 1] >= height;
+            return point.x >= grid[0].length - 1 || GridHelper.get(Direction.EAST.move(point), grid) >= height;
         }
     }
 }
