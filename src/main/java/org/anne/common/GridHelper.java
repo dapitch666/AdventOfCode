@@ -46,8 +46,20 @@ public class GridHelper {
         return grid[point.y][point.x];
     }
 
+    public static char get(Point point, char[][] grid) {
+        return grid[point.y][point.x];
+    }
+
     public static void set(Point point, int[][] grid, char value) {
         grid[point.y][point.x] = value;
+    }
+
+    public static String gridToString(char[][] grid) {
+        StringBuilder sb = new StringBuilder();
+        for (char[] row : grid) {
+            sb.append(row).append("\n");
+        }
+        return sb.toString();
     }
 
     /**
