@@ -3,7 +3,6 @@ package org.anne.aoc2018;
 import org.anne.common.Day;
 
 import java.util.*;
-import java.util.function.BiFunction;
 import java.util.stream.Collectors;
 
 public class Day16 extends Day {
@@ -80,37 +79,5 @@ public class Day16 extends Day {
             return s.chars().filter(Character::isDigit).map(Character::getNumericValue).toArray();
         }
         return Arrays.stream(s.split(" ")).map(Integer::parseInt).mapToInt(Integer::intValue).toArray();
-    }
-
-    public enum Opcode implements BiFunction<int[], int[], int[]> {
-        ADDR((before, instr) -> before[instr[1]] + before[instr[2]]),
-        ADDI((before, instr) -> before[instr[1]] + instr[2]),
-        MULR((before, instr) -> before[instr[1]] * before[instr[2]]),
-        MULI((before, instr) -> before[instr[1]] * instr[2]),
-        BANR((before, instr) -> before[instr[1]] & before[instr[2]]),
-        BANI((before, instr) -> before[instr[1]] & instr[2]),
-        BORR((before, instr) -> before[instr[1]] | before[instr[2]]),
-        BORI((before, instr) -> before[instr[1]] | instr[2]),
-        SETR((before, instr) -> before[instr[1]]),
-        SETI((before, instr) -> instr[1]),
-        GTIR((before, instr) -> instr[1] > before[instr[2]] ? 1 : 0),
-        GTRI((before, instr) -> before[instr[1]] > instr[2] ? 1 : 0),
-        GTRR((before, instr) -> before[instr[1]] > before[instr[2]] ? 1 : 0),
-        EQIR((before, instr) -> instr[1] == before[instr[2]] ? 1 : 0),
-        EQRI((before, instr) -> before[instr[1]] == instr[2] ? 1 : 0),
-        EQRR((before, instr) -> before[instr[1]] == before[instr[2]] ? 1 : 0);
-
-        private final BiFunction<int[], int[], Integer> operation;
-
-        Opcode(BiFunction<int[], int[], Integer> operation) {
-            this.operation = operation;
-        }
-
-        @Override
-        public int[] apply(int[] before, int[] instr) {
-            int[] after = before.clone();
-            after[instr[3]] = operation.apply(before, instr);
-            return after;
-        }
     }
 }
