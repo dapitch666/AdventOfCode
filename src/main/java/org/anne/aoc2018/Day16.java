@@ -3,6 +3,7 @@ package org.anne.aoc2018;
 import org.anne.common.Day;
 
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Day16 extends Day {
@@ -28,7 +29,7 @@ public class Day16 extends Day {
             int[] instruction = getArray(input.get(i + 1));
             int[] after = getArray(input.get(i + 2));
             if (Arrays.stream(opcodes)
-                    .filter(opcode -> Arrays.equals(opcode.apply(before, instruction), after))
+                    .filter(opcodePredicate(before, instruction, after))
                     .count() >= 3) {
                 count++;
             }
@@ -51,7 +52,7 @@ public class Day16 extends Day {
             int[] after = getArray(input.get(i + 2));
 
             options.put(instruction[0], opcodes.stream()
-                    .filter(fn -> Arrays.equals(fn.apply(before, instruction), after))
+                    .filter(opcodePredicate(before, instruction, after))
                     .collect(Collectors.toList()));
         }
 
@@ -66,12 +67,20 @@ public class Day16 extends Day {
                     }));
         }
 
-        int[] registers = {0, 0, 0, 0};
+        int[] registers = new int[4];
         for (String line : input.subList(splitIndex + 2, input.size())) {
             int[] instruction = getArray(line);
-            registers = options.get(instruction[0]).getFirst().apply(registers, instruction);
+            options.get(instruction[0]).getFirst().apply(registers, instruction);
         }
         return registers[0];
+    }
+
+    private static Predicate<Opcode> opcodePredicate(int[] before, int[] instruction, int[] after) {
+        return opcode -> {
+            int[] result = before.clone();
+            opcode.apply(result, instruction);
+            return Arrays.equals(result, after);
+        };
     }
 
     private static int[] getArray(String s) {

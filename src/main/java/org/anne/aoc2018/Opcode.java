@@ -1,39 +1,36 @@
 package org.anne.aoc2018;
 
-import java.util.function.BiFunction;
+import java.util.function.BiConsumer;
 
-public enum Opcode implements BiFunction<int[], int[], int[]> {
-    ADDR((before, instr) -> before[instr[1]] + before[instr[2]]),
-    ADDI((before, instr) -> before[instr[1]] + instr[2]),
-    MULR((before, instr) -> before[instr[1]] * before[instr[2]]),
-    MULI((before, instr) -> before[instr[1]] * instr[2]),
-    BANR((before, instr) -> before[instr[1]] & before[instr[2]]),
-    BANI((before, instr) -> before[instr[1]] & instr[2]),
-    BORR((before, instr) -> before[instr[1]] | before[instr[2]]),
-    BORI((before, instr) -> before[instr[1]] | instr[2]),
-    SETR((before, instr) -> before[instr[1]]),
-    SETI((before, instr) -> instr[1]),
-    GTIR((before, instr) -> instr[1] > before[instr[2]] ? 1 : 0),
-    GTRI((before, instr) -> before[instr[1]] > instr[2] ? 1 : 0),
-    GTRR((before, instr) -> before[instr[1]] > before[instr[2]] ? 1 : 0),
-    EQIR((before, instr) -> instr[1] == before[instr[2]] ? 1 : 0),
-    EQRI((before, instr) -> before[instr[1]] == instr[2] ? 1 : 0),
-    EQRR((before, instr) -> before[instr[1]] == before[instr[2]] ? 1 : 0);
+public enum Opcode {
+    ADDR((r, i) -> r[i[3]] = r[i[1]] + r[i[2]]),
+    ADDI((r, i) -> r[i[3]] = r[i[1]] + i[2]),
+    MULR((r, i) -> r[i[3]] = r[i[1]] * r[i[2]]),
+    MULI((r, i) -> r[i[3]] = r[i[1]] * i[2]),
+    BANR((r, i) -> r[i[3]] = r[i[1]] & r[i[2]]),
+    BANI((r, i) -> r[i[3]] = r[i[1]] & i[2]),
+    BORR((r, i) -> r[i[3]] = r[i[1]] | r[i[2]]),
+    BORI((r, i) -> r[i[3]] = r[i[1]] | i[2]),
+    SETR((r, i) -> r[i[3]] = r[i[1]]),
+    SETI((r, i) -> r[i[3]] = i[1]),
+    GTIR((r, i) -> r[i[3]] = i[1] > r[i[2]] ? 1 : 0),
+    GTRI((r, i) -> r[i[3]] = r[i[1]] > i[2] ? 1 : 0),
+    GTRR((r, i) -> r[i[3]] = r[i[1]] > r[i[2]] ? 1 : 0),
+    EQIR((r, i) -> r[i[3]] = i[1] == r[i[2]] ? 1 : 0),
+    EQRI((r, i) -> r[i[3]] = r[i[1]] == i[2] ? 1 : 0),
+    EQRR((r, i) -> r[i[3]] = r[i[1]] == r[i[2]] ? 1 : 0);
 
-    private final BiFunction<int[], int[], Integer> operation;
+    private final BiConsumer<int[], int[]> operation;
 
-    Opcode(BiFunction<int[], int[], Integer> operation) {
+    Opcode(BiConsumer<int[], int[]> operation) {
         this.operation = operation;
     }
 
-    @Override
-    public int[] apply(int[] before, int[] instr) {
-        int[] after = before.clone();
-        after[instr[3]] = operation.apply(before, instr);
-        return after;
+    public void apply(int[] registers, int[] instruction) {
+        operation.accept(registers, instruction);
     }
 
     public void apply(int[] registers, int a, int b, int c) {
-        registers[c] = operation.apply(registers, new int[]{0, a, b, c});
+        operation.accept(registers, new int[]{0, a, b, c});
     }
 }
