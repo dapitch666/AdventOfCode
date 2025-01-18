@@ -6,6 +6,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class FileHelper {
@@ -51,6 +52,17 @@ public class FileHelper {
     public static List<Long> readFileAsLongs(Path inputPath) {
         try {
             return Files.readAllLines(inputPath).stream().map(Long::parseLong).collect(Collectors.toList());
+        } catch (IOException e) {
+            System.err.format("There was an Error reading the File: %s%n", e);
+            return new ArrayList<>();
+        }
+    }
+
+    public static List<Integer> readFileGetAllInts(Path inputPath) {
+        try {
+            return Files.readAllLines(inputPath).stream()
+                    .flatMap(s -> Pattern.compile("\\d+").matcher(s).results().map(m -> Integer.parseInt(m.group())))
+                    .collect(Collectors.toList());
         } catch (IOException e) {
             System.err.format("There was an Error reading the File: %s%n", e);
             return new ArrayList<>();

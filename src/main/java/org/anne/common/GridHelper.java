@@ -46,11 +46,19 @@ public class GridHelper {
         return grid[point.y][point.x];
     }
 
+    public static int get(int x, int y, int[][] grid) {
+        return grid[y][x];
+    }
+
     public static char get(Point point, char[][] grid) {
         return grid[point.y][point.x];
     }
 
     public static void set(Point point, int[][] grid, char value) {
+        grid[point.y][point.x] = value;
+    }
+
+    public static void set(Point point, int[][] grid, int value) {
         grid[point.y][point.x] = value;
     }
 

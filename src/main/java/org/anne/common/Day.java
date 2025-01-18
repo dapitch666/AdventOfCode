@@ -83,4 +83,8 @@ public abstract class Day {
     public List<Long> readFileAsLongs() {
         return FileHelper.readFileAsLongs(getPath());
     }
+
+    public List<Integer> readFileGetAllInts() {
+        return FileHelper.readFileGetAllInts(getPath());
+    }
 }
