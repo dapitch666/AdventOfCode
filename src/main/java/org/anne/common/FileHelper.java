@@ -21,51 +21,26 @@ public class FileHelper {
     }
 
     public static List<Integer> readFileAsInts(Path inputPath) {
-        try {
-            return Files.readAllLines(inputPath).stream().map(Integer::parseInt).collect(Collectors.toList());
-        } catch (IOException e) {
-            System.err.format("There was an Error reading the File: %s%n", e);
-            return new ArrayList<>();
-        }
+        return readFile(inputPath).stream().map(Integer::parseInt).collect(Collectors.toList());
     }
 
     public static String readFileOneLine(Path inputPath) {
-        try {
-            return Files.readAllLines(inputPath).getFirst();
-        } catch (IOException | NumberFormatException e) {
-            System.err.format("There was an Error reading the File: %s%n", e);
-            return "";
-        }
+        return readFile(inputPath).getFirst();
     }
 
     public static List<Integer> readFileIntegerOneLine(Path inputPath, String delimiter) {
-        try {
-            return Arrays.stream(Files.readAllLines(inputPath).getFirst().split(delimiter))
+        return Arrays.stream(readFile(inputPath).getFirst().split(delimiter))
                     .map(Integer::parseInt)
                     .collect(Collectors.toList());
-        } catch (IOException | NumberFormatException e) {
-            System.err.format("There was an Error reading the File: %s%n", e);
-            return new ArrayList<>();
-        }
     }
 
     public static List<Long> readFileAsLongs(Path inputPath) {
-        try {
-            return Files.readAllLines(inputPath).stream().map(Long::parseLong).collect(Collectors.toList());
-        } catch (IOException e) {
-            System.err.format("There was an Error reading the File: %s%n", e);
-            return new ArrayList<>();
-        }
+        return readFile(inputPath).stream().map(Long::parseLong).collect(Collectors.toList());
     }
 
     public static List<Integer> readFileGetAllInts(Path inputPath) {
-        try {
-            return Files.readAllLines(inputPath).stream()
+        return readFile(inputPath).stream()
                     .flatMap(s -> Pattern.compile("\\d+").matcher(s).results().map(m -> Integer.parseInt(m.group())))
                     .collect(Collectors.toList());
-        } catch (IOException e) {
-            System.err.format("There was an Error reading the File: %s%n", e);
-            return new ArrayList<>();
-        }
     }
 }
