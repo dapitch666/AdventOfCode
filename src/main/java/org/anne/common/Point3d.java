@@ -23,4 +23,12 @@ public record Point3d(int x, int y, int z) {
     public int manhattanDistance(Point3d other) {
         return Math.abs(x - other.x) + Math.abs(y - other.y) + Math.abs(z - other.z);
     }
+
+    public Point3d multiply(int i) {
+        return new Point3d(x * i, y * i, z * i);
+    }
+
+    public Point3d add(int i) {
+        return new Point3d(x + i, y + i, z + i);
+    }
 }
