@@ -2,6 +2,7 @@ package org.anne.aoc2018;
 
 import org.anne.common.Day;
 import org.anne.common.Point3d;
+import org.anne.common.Utils;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
@@ -53,8 +54,7 @@ public class Day23 extends Day {
 
     private static List<Nanobot> getNanobots(List<String> input) {
         return input.stream().map(line -> {
-            Matcher matcher = Pattern.compile("-?\\d+").matcher(line);
-            int[] ints = matcher.results().mapToInt(m -> Integer.parseInt(m.group())).toArray();
+            int[] ints = Utils.inputToIntStream(line).toArray();
             return new Nanobot(new Point3d(ints[0], ints[1], ints[2]), ints[3]);
         }).toList();
     }

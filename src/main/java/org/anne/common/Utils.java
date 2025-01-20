@@ -151,4 +151,16 @@ public class Utils {
         }
         return Math.abs(area / 2) + boundaries / 2 + 1;
     }
+
+    public static List<String> match(Pattern pattern, String string) {
+        Matcher matcher = pattern.matcher(string);
+        if (matcher.find()) {
+            List<String> result = new ArrayList<>();
+            for (int i = 1; i <= matcher.groupCount(); i++) {
+                result.add(matcher.group(i));
+            }
+            return result;
+        }
+        return List.of();
+    }
 }
