@@ -132,17 +132,24 @@ public class Utils {
         return regex.split(str).length > 0;
     }
 
-    public static long manhattanDistance(Point a, Point b) {
+    public static int manhattanDistance(Point a, Point b) {
         return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
+    }
+
+    public static int manhattanDistance(int[] a, int[] b) {
+        if (a.length != b.length) {
+            throw new IllegalArgumentException("a and b must have the same size");
+        }
+        return IntStream.range(0, a.length).map(i -> Math.abs(a[i] - b[i])).sum();
     }
     
     public static long getArea(List<Point> vertices) {
         // shoelace formula + pick's theorem 
         // we also include boundaries
-        if (!vertices.get(0).equals(vertices.get(vertices.size() - 1))) {
-            vertices.add(vertices.get(0));
+        if (!vertices.getFirst().equals(vertices.getLast())) {
+            vertices.add(vertices.getFirst());
         }
-        vertices.add(vertices.get(0));
+        vertices.add(vertices.getFirst());
         var area = 0L;
         var boundaries = 0L;
         for (int i = 1; i < vertices.size() - 1; i++) {

@@ -115,7 +115,7 @@ public class Day15 extends Day {
         for (Point p : map.keySet().stream().filter(e -> map.get(e) == '.').toList()) {
             for (Point neighbor : getNeighbors(p)) {
                 if (!map.containsKey(neighbor) && manhattanDistance(neighbor, point) < minDistance) {
-                    minDistance = (int) manhattanDistance(neighbor, point);
+                    minDistance = manhattanDistance(neighbor, point);
                     closest = neighbor;
                 }
             }

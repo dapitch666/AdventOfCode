@@ -37,7 +37,7 @@ public class Day20 extends Day {
         int cheats = 0;
         for (int i = 0; i < path.size() - 1; i++) {
             for (int j = i + 1; j < path.size(); j++) {
-                int distance = (int) Utils.manhattanDistance(path.get(i), path.get(j));
+                int distance = Utils.manhattanDistance(path.get(i), path.get(j));
                 if (distance <= maxDistance && (j - i - distance) >= minSavedTime) {
                     cheats++;
                 }

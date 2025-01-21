@@ -36,7 +36,7 @@ public class Day6 extends Day {
                 int minIndex = -1;
                 boolean isTie = false;
                 for (int n = 0; n < coordinates.size(); n++) {
-                    int distance = (int) Utils.manhattanDistance(coordinates.get(n), currentPoint);
+                    int distance = Utils.manhattanDistance(coordinates.get(n), currentPoint);
                     if (distance < minDistance) {
                         minDistance = distance;
                         minIndex = n;
@@ -78,7 +78,7 @@ public class Day6 extends Day {
             for (int y = 0; y < maxY; y++) {
                 Point point = new Point(x, y);
                 int totalDistance = coordinates.stream()
-                        .mapToInt(p -> Math.toIntExact(Utils.manhattanDistance(p, point)))
+                        .mapToInt(p -> Utils.manhattanDistance(p, point))
                         .sum();
                 if (totalDistance < maxDistance) {
                     regionSize++;

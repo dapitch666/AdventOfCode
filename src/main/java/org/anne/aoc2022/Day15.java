@@ -65,7 +65,7 @@ public class Day15 extends Day {
             if (m.matches()) {
                 Point s = new Point(Integer.parseInt(m.group(1)), Integer.parseInt(m.group(2)));
                 Point b = new Point(Integer.parseInt(m.group(3)), Integer.parseInt(m.group(4)));
-                sensorList.add(new Sensor(s, (int) manhattanDistance(s, b)));
+                sensorList.add(new Sensor(s, manhattanDistance(s, b)));
             }
         }
         return sensorList;
