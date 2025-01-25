@@ -5,7 +5,7 @@ import org.anne.common.Day;
 import java.util.Arrays;
 
 import static org.anne.aoc2017.KnotHash.knotHash;
-import static org.anne.aoc2017.KnotHash.toBinaryString;
+import static org.anne.aoc2017.KnotHash.knotHashBinary;
 
 public class Day14 extends Day {
     public static void main(String[] args) {
@@ -24,7 +24,7 @@ public class Day14 extends Day {
     public static int part1(String input) {
         String[] grid = new String[128];
         for (int i = 0; i < 128; i++) {
-            grid[i] = toBinaryString(knotHash(input + "-" + i));
+            grid[i] = knotHashBinary(input + "-" + i);
         }
         return Arrays.stream(grid).mapToInt(s -> (int) s.chars().filter(c -> c == '1').count()).sum();
     }
@@ -32,7 +32,7 @@ public class Day14 extends Day {
     public static int part2(String input) {
         Boolean[][] grid = new Boolean[128][128];
         for (int y = 0; y < 128; y++) {
-            String hash = toBinaryString(knotHash(input + "-" + y));
+            String hash = knotHashBinary(input + "-" + y);
             for (int x = 0; x < 128; x++) {
                     grid[y][x] = hash.charAt(x) == '1';
             }

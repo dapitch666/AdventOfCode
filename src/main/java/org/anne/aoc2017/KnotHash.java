@@ -47,8 +47,8 @@ public class KnotHash {
         }
     }
 
-    static String toBinaryString(String hex) {
-        return hex.chars().map(c -> Integer.parseInt(String.valueOf((char) c), 16))
+    static String knotHashBinary(String input) {
+        return knotHash(input).chars().map(c -> Integer.parseInt(String.valueOf((char) c), 16))
                 .mapToObj(i -> String.format("%4s", Integer.toBinaryString(i)).replace(' ', '0'))
                 .collect(Collectors.joining());
     }
