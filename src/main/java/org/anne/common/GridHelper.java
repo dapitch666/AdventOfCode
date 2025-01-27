@@ -31,6 +31,10 @@ public class GridHelper {
         return point.x >= 0 && point.x < gridSize && point.y >= 0 && point.y < gridSize;
     }
 
+    public static boolean isValidPoint(Point point, char[][] grid, char invalidChar) {
+        return isValidPoint(point, grid) && grid[point.y][point.x] != invalidChar;
+    }
+
     public static Point findChar(char[][] grid, char c) {
         for (int y = 0; y < grid.length; y++) {
             for (int x = 0; x < grid[0].length; x++) {
