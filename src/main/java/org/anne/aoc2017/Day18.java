@@ -52,10 +52,10 @@ public class Day18 extends Day {
         public void execute(List<Instruction> instructions, Program other) {
             while (!wait && i < instructions.size()) {
                 Instruction instruction = instructions.get((int) i);
-                char target = instruction.target;
+                char target = instruction.target();
                 long targetValue = Character.isDigit(target) ? Character.getNumericValue(target) : registers.getOrDefault(target, 0L);
-                Long value = instruction.source != null ? registers.getOrDefault(instruction.source, 0L) : instruction.value;
-                switch (instruction.op) {
+                Long value = instruction.source() != null ? registers.getOrDefault(instruction.source(), 0L) : instruction.value();
+                switch (instruction.op()) {
                     case "snd" -> snd(targetValue, other);
                     case "set" -> registers.put(target, value);
                     case "add" -> registers.put(target, targetValue + value);
@@ -93,20 +93,5 @@ public class Day18 extends Day {
         }
     }
 
-    record Instruction(String op, char target, Character source, Long value) {
-        public static Instruction parse(String s) {
-            String[] parts = s.split(" ");
-            char target = parts[1].charAt(0);
-            Long value = null;
-            Character source = null;
-            if (parts.length == 3) {
-                if (Character.isAlphabetic(parts[2].charAt(0))) {
-                    source = parts[2].charAt(0);
-                } else {
-                    value = Long.parseLong(parts[2]);
-                }
-            }
-            return new Instruction(parts[0], target, source, value);
-        }
-    }
+
 }
