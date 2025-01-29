@@ -3,7 +3,15 @@ package org.anne.common;
 import java.awt.*;
 
 public enum Direction {
-    NORTH, SOUTH, EAST, WEST;
+    NORTH(0, -1), SOUTH(0, 1), EAST(1, 0), WEST(-1, 0);
+
+    public final int dx;
+    public final int dy;
+
+    Direction(int dx, int dy) {
+        this.dx = dx;
+        this.dy = dy;
+    }
 
     public Point move(Point start) {
         return switch (this) {
