@@ -60,6 +60,16 @@ public enum Direction {
         };
     }
 
+    public static Direction fromArrowChar(char c) {
+        return switch (c) {
+            case 'U' -> NORTH;
+            case 'D' -> SOUTH;
+            case 'L' -> WEST;
+            case 'R' -> EAST;
+            default -> throw new IllegalArgumentException("Invalid direction: " + c);
+        };
+    }
+
     public char getChar() {
         return switch (this) {
             case NORTH -> '^';
