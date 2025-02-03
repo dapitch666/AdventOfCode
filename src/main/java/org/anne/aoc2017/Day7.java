@@ -54,7 +54,6 @@ public class Day7 extends Day {
             int oldWeight = programToFix.weight.get();
             int fixedWeight = oldWeight + (normalWeight - weights.get(programToFix));
             programToFix.weight.set(fixedWeight);
-            System.out.println(programToFix.name + " " + oldWeight + " -> " + fixedWeight);
             if (programs.stream().noneMatch(Program::isUnbalanced)) {
                 return fixedWeight;
             }

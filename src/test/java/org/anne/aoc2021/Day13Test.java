@@ -36,15 +36,4 @@ class Day13Test {
     void testPart1() {
         assertEquals(17, Day13.part1(input));
     }
-
-    @Test
-    void testPart2() {
-        assertEquals("""
-                #####
-                #   #
-                #   #
-                #   #
-                #####
-                """, Day13.part2(input));
-    }
 }

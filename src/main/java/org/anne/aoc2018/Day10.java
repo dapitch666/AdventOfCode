@@ -31,8 +31,12 @@ public class Day10 extends Day {
             int minY = points.stream().mapToInt(p -> p.first().y).min().orElseThrow();
             int maxY = points.stream().mapToInt(p -> p.first().y).max().orElseThrow();
             if (maxY - minY < maxHeight) {
-                // System.out.println(Utils.printAscii(points.stream().map(Pair::first).collect(Collectors.toSet())));
-                return Utils.ocr(Utils.getArray(points.stream().map(Pair::first).collect(Collectors.toSet())), 8, 10);
+                if (maxHeight == 10) {
+                    // System.out.println(Utils.printAscii(points.stream().map(Pair::first).collect(Collectors.toSet())));
+                    return Utils.ocr(Utils.getArray(points.stream().map(Pair::first).collect(Collectors.toSet())), maxHeight - 2, maxHeight);
+                } else {
+                    return Utils.printAscii(points.stream().map(Pair::first).collect(Collectors.toSet()), " ", "#");
+                }
             }
         }
     }
