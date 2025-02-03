@@ -41,7 +41,8 @@ public class Day10 extends Day {
             }
             position++;
         }
-        return Utils.printAscii(screen);
+//        System.out.println(Utils.printAscii(screen));
+        return Utils.ocr(screen, 5, 6);
     }
 
     public static List<Integer> getCycles(List<String> input) {

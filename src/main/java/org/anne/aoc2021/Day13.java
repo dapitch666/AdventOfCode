@@ -1,6 +1,7 @@
 package org.anne.aoc2021;
 
 import org.anne.common.Day;
+import org.anne.common.Utils;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -9,8 +10,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import static org.anne.common.Constants.LINE_SEPARATOR;
 
 public class Day13 extends Day {
 
@@ -41,7 +40,7 @@ public class Day13 extends Day {
                 folds.add(split[2]);
             }
         }
-        return fold(sheet, folds.get(0)).size();
+        return fold(sheet, folds.getFirst()).size();
     }
 
     static String part2(List<String> input) {
@@ -61,24 +60,8 @@ public class Day13 extends Day {
         for (String fold : folds) {
             sheet = fold(sheet, fold);
         }
-        return printCode(sheet);
-    }
-
-    private static String printCode(Set<Point> sheet) {
-        int maxX = sheet.stream().mapToInt(p -> p.x).max().orElse(0) + 1;
-        int maxY = sheet.stream().mapToInt(p -> p.y).max().orElse(0) + 1;
-        StringBuilder code = new StringBuilder();
-        for (int y = 0; y < maxY; y++ ) {
-            for (int x = 0; x < maxX; x++ ) {
-                if (sheet.contains(new Point(x, y))) {
-                    code.append('#');
-                } else {
-                    code.append(' ');
-                }
-            }
-            code.append(LINE_SEPARATOR);
-        }
-        return code.toString();
+        // System.out.println(Utils.printAscii(sheet));
+        return Utils.ocr(Utils.getArray(sheet), 5, 6);
     }
 
     static Set<Point> fold (Set<Point> sheet, String instruction) {

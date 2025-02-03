@@ -65,7 +65,8 @@ public class Day11 extends Day {
             direction = turn(direction, outDirection);
             current.translate(direction.x, direction.y);
         }
-        return Utils.printAscii(white);
+        // System.out.println(Utils.print2dIntArray(Utils.getArray(white)));
+        return Utils.ocr(Utils.getArray(white), 5, 6);
     }
 
     static Direction turn(Direction direction, long output) {

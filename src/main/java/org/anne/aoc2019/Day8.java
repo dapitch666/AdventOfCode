@@ -50,6 +50,7 @@ public class Day8  extends Day {
                 }
             }
         }
-        return Utils.printAscii(image);
+        // System.out.println(Utils.print2dIntArray(image));
+        return Utils.ocr(image, 5, 6);
     }
 }
