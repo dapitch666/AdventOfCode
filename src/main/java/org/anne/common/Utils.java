@@ -1,10 +1,8 @@
 package org.anne.common;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.regex.MatchResult;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -61,6 +59,18 @@ public class Utils {
         return printAscii(array);
     }
 
+    public static int[][] getArray(Set<Point> points) {
+        int minX = points.stream().map(x -> x.x).min(Integer::compare).orElseThrow();
+        int maxX = points.stream().map(x -> x.x).max(Integer::compare).orElseThrow();
+        int minY = points.stream().map(x -> x.y).min(Integer::compare).orElseThrow();
+        int maxY = points.stream().map(x -> x.y).max(Integer::compare).orElseThrow();
+        int[][] array = new int[maxY - minY + 1][maxX - minX + 1];
+        for (Point p : points) {
+            array[p.y - minY][p.x - minX] = 1;
+        }
+        return array;
+    }
+
     public static String printAscii(Set<Point> points, String empty, String full) {
         int minX = points.stream().map(x -> x.x).min(Integer::compare).orElseThrow();
         int maxX = points.stream().map(x -> x.x).max(Integer::compare).orElseThrow();
@@ -92,9 +102,42 @@ public class Utils {
         return sb.toString();
     }
 
+    /**
+     * Converts a 2D array of integers representing a grid of letters into a string using OCR.
+     *
+     * @param array the 2D array of integers representing the grid of letters
+     * @param letterWidth the width of each letter in the grid (including letter spacing)
+     * @param letterHeight the height of each letter in the grid
+     * @return the string representation of the letters in the grid
+     */
+    public static String ocr(int[][] array, int letterWidth, int letterHeight) {
+        StringBuilder sb = new StringBuilder();
+        for (int y = 0; y < array.length; y += letterHeight) {
+            for (int x = 0; x < array[0].length; x += letterWidth) {
+                int val = 0;
+                for (int i = 0; i < letterHeight; i++) {
+                    for (int j = 0; j < letterWidth; j++) {
+                        if (x + j >= array[0].length) {
+                            continue;
+                        }
+                        val |= array[y + i][x + j] << (letterWidth * letterHeight - 1 - i * letterWidth - j);
+                    }
+                }
+                System.out.println("0x" + Integer.toHexString(val).toUpperCase());
+                if (letterWidth == 5 && letterHeight == 6) {
+                    sb.append(Letter.valueOf5x6(val));
+                }
+                if (letterWidth == 8 && letterHeight == 10) {
+                    sb.append(Letter.valueOf8x10(val));
+                }
+            }
+        }
+        return sb.toString();
+    }
+
     public static List<String> transpose(List<String> input) {
         List<String> result = new ArrayList<>();
-        for (int i = 0; i < input.get(0).length(); i++) {
+        for (int i = 0; i < input.getFirst().length(); i++) {
             StringBuilder sb = new StringBuilder();
             for (String s : input) {
                 try {
