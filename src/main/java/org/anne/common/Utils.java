@@ -123,7 +123,7 @@ public class Utils {
                         val |= array[y + i][x + j] << (letterWidth * letterHeight - 1 - i * letterWidth - j);
                     }
                 }
-                System.out.println("0x" + Integer.toHexString(val).toUpperCase());
+                // System.out.println("0x" + Integer.toHexString(val).toUpperCase());
                 if (letterWidth == 5 && letterHeight == 6) {
                     sb.append(Letter.valueOf5x6(val));
                 }
