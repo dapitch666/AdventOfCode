@@ -1,10 +1,9 @@
 package org.anne.aoc2016;
 
 import org.anne.common.Day;
-import org.anne.common.Utils;
+import org.anne.common.HashUtils;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Day5 extends Day {
@@ -21,7 +20,7 @@ public class Day5 extends Day {
         printParts();
     }
 
-    private static final MessageDigest md5 = getMd5Instance();
+    private static final MessageDigest md5 = HashUtils.getMd5Instance();
 
     public static String part1(String input) {
         AtomicInteger index = new AtomicInteger(0);
@@ -57,16 +56,8 @@ public class Day5 extends Day {
             md5.update(sb.toString().getBytes());
             byte[] result = md5.digest();
             if (result[0] == 0 && result[1] == 0 && (result[2] & 0xF0) == 0) {
-                return Utils.bytesToHex(result);
+                return HashUtils.bytesToHex(result);
             }
-        }
-    }
-
-    private static MessageDigest getMd5Instance() {
-        try {
-            return MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
         }
     }
 }

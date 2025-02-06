@@ -1,13 +1,11 @@
 package org.anne.aoc2016;
 
 import org.anne.common.Day;
+import org.anne.common.HashUtils;
 
 import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.ArrayDeque;
 import java.util.Deque;
-
-import static org.anne.common.Utils.bytesToHex;
 
 public class Day14 extends Day {
     public static void main(String[] args) {
@@ -23,7 +21,7 @@ public class Day14 extends Day {
         printParts();
     }
 
-    private static final MessageDigest md5 = getMd5Instance();
+    private static final MessageDigest md5 = HashUtils.getMd5Instance();
 
     public static int part1(String input) {
         return get64thPadKeyIndex(input, 0);
@@ -51,9 +49,9 @@ public class Day14 extends Day {
 
     private static String hash(String salt, int n, int loops) {
         String input = salt + n;
-        String result = bytesToHex(md5.digest(input.getBytes()));
+        String result = HashUtils.bytesToHex(md5.digest(input.getBytes()));
         for (int i = 0; i < loops; i++) {
-            result = bytesToHex(md5.digest(result.getBytes()));
+            result = HashUtils.bytesToHex(md5.digest(result.getBytes()));
         }
         return result;
     }
@@ -75,13 +73,5 @@ public class Day14 extends Day {
             }
         }
         return false;
-    }
-
-    private static MessageDigest getMd5Instance() {
-        try {
-            return MessageDigest.getInstance("MD5");
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
     }
 }

@@ -78,4 +78,13 @@ public enum Direction {
             case EAST -> '>';
         };
     }
+
+    public char getArrowChar() {
+        return switch (this) {
+            case NORTH -> 'U';
+            case SOUTH -> 'D';
+            case WEST -> 'L';
+            case EAST -> 'R';
+        };
+    }
 }
