@@ -1,6 +1,7 @@
 package org.anne.aoc2016;
 
 import org.anne.common.Day;
+import org.anne.common.Utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -56,19 +57,9 @@ public class Day5 extends Day {
             md5.update(sb.toString().getBytes());
             byte[] result = md5.digest();
             if (result[0] == 0 && result[1] == 0 && (result[2] & 0xF0) == 0) {
-                return toHex(result);
+                return Utils.bytesToHex(result);
             }
         }
-    }
-
-    static String toHex(byte[] bytes) {
-        char[] hexChars = new char[bytes.length * 2];
-        for (int i = 0; i < bytes.length; i++) {
-            int v = bytes[i] & 0xFF;
-            hexChars[i * 2] = Character.forDigit(v >>> 4, 16);
-            hexChars[i * 2 + 1] = Character.forDigit(v & 0x0F, 16);
-        }
-        return new String(hexChars);
     }
 
     private static MessageDigest getMd5Instance() {
