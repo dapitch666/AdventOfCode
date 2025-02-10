@@ -3,18 +3,18 @@ package org.anne.aoc2016;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Computer {
+public class AssemBunny {
     private final List<Instruction> instructions;
-    private int i;
-    private final int[] registers;
+    private final int[] registers = new int[4];
+    private final StringBuilder output = new StringBuilder();
 
-    public Computer(List<String> input, int[] registers) {
+    public AssemBunny(List<String> input) {
         this.instructions = input.stream().map(Instruction::parse).collect(Collectors.toList());
-        this.registers = registers;
-        this.i = 0;
     }
 
-    public int execute() {
+    public void run() {
+        int i = 0;
+        output.setLength(0);
         while (i < instructions.size()) {
             Instruction instruction = instructions.get(i);
             switch (instruction.operation) {
@@ -32,10 +32,15 @@ public class Computer {
                         instructions.set(target, toggleInstruction(instructions.get(target)));
                     }
                 }
+                case "out" -> {
+                    output.append(getValue(instruction.arg1));
+                    if (output.length() == 10) {
+                        return;
+                    }
+                }
             }
             i++;
         }
-        return registers[0];
     }
 
     private Instruction toggleInstruction(Instruction instruction) {
@@ -56,6 +61,21 @@ public class Computer {
         static Instruction parse(String s) {
             String[] parts = s.split(" ");
             return new Instruction(parts[0], parts[1], parts.length == 3 ? parts[2] : null);
+        }
+    }
+
+    public int getRegisterA() {
+        return registers[0];
+    }
+
+    public String getOutput() {
+        return output.toString();
+    }
+
+    public void setRegister(char c, int value) {
+        int index = "abcd".indexOf(c);
+        for (int i = 0; i < registers.length; i++) {
+            registers[i] = i == index ? value : 0;
         }
     }
 }

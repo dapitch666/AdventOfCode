@@ -19,12 +19,15 @@ public class Day12 extends Day {
     }
 
     public static int part1(List<String> input) {
-        Computer computer = new Computer(input, new int[]{0, 0, 0, 0});
-        return computer.execute();
+        AssemBunny assemBunny = new AssemBunny(input);
+        assemBunny.run();
+        return assemBunny.getRegisterA();
     }
 
     public static int part2(List<String> input) {
-        Computer computer = new Computer(input, new int[]{0, 0, 1, 0});
-        return computer.execute();
+        AssemBunny assemBunny = new AssemBunny(input);
+        assemBunny.setRegister('c', 1);
+        assemBunny.run();
+        return assemBunny.getRegisterA();
     }
 }

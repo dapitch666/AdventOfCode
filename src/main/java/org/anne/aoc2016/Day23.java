@@ -1,12 +1,9 @@
 package org.anne.aoc2016;
 
 import org.anne.common.Day;
-import org.jetbrains.annotations.NotNull;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Day23 extends Day {
     public static void main(String[] args) {
@@ -23,16 +20,28 @@ public class Day23 extends Day {
     }
 
     public static int part1(List<String> input) {
-        Computer computer = new Computer(input, new int[]{7, 0, 0, 0});
-        return computer.execute();
+        AssemBunny assemBunny = new AssemBunny(input);
+        assemBunny.setRegister('a', 7);
+        assemBunny.run();
+        return assemBunny.getRegisterA();
     }
 
     public static int part2(List<String> input) {
-        return factorial(12) + 85 * 92; // from my input, lines 20-21 -> cpy 85 c / jnz 92 d
+        int factor1 = 0, factor2 = 0;
+        Pattern pattern1 = Pattern.compile("cpy (\\d+) c");
+        Pattern pattern2 = Pattern.compile("jnz (\\d+) d");
+        for (String line : input) {
+            if (pattern1.matcher(line).matches()) {
+                factor1 = Integer.parseInt(line.split(" ")[1]);
+            } else if (pattern2.matcher(line).matches()) {
+                factor2 = Integer.parseInt(line.split(" ")[1]);
+            }
+        }
+        return factorial(12) + factor1 * factor2;
     }
 
     public static int factorial(int n) {
         if (n == 0) return 1;
-        return n * factorial(n-1);
+        return n * factorial(n - 1);
     }
 }
