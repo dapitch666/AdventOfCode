@@ -46,6 +46,18 @@ public class GridHelper {
         return new Point(-1, -1);
     }
 
+    public static Map<Character, Point> findAllChar(char[][] grid, Predicate<Character> predicate) {
+        Map<Character, Point> result = new HashMap<>();
+        for (int y = 0; y < grid.length; y++) {
+            for (int x = 0; x < grid[0].length; x++) {
+                if (predicate.test(grid[y][x])) {
+                    result.put(grid[y][x], new Point(x, y));
+                }
+            }
+        }
+        return result;
+    }
+
     public static int get(Point point, int[][] grid) {
         return grid[point.y][point.x];
     }
