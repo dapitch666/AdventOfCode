@@ -19,7 +19,6 @@ public class Day25 extends Day {
         String input = readFileOneLine();
         setPart1(part1(input));
         setPart2(part2());
-        printParts();
     }
 
     public static String part1(String input) {

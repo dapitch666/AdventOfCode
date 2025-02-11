@@ -34,7 +34,7 @@ public class Computer {
         if (output.isEmpty()) {
             return 0;
         } else {
-            return this.output.remove(0);
+            return this.output.removeFirst();
         }
     }
 
@@ -42,7 +42,7 @@ public class Computer {
         if (this.output.isEmpty()) {
             return 0;
         } else {
-            return this.output.get(this.output.size() - 1);
+            return this.output.getLast();
         }
     }
 
@@ -89,8 +89,8 @@ public class Computer {
     }
 
     private long readInput() {
-        long firstInput = this.input.get(0);
-        this.input.remove(0);
+        long firstInput = this.input.getFirst();
+        this.input.removeFirst();
         return firstInput;
     }
 
@@ -207,7 +207,7 @@ public class Computer {
 
     @SuppressWarnings({"EmptyMethod", "unused"})
     private void journal(long instruction, String operation, ArrayList<String> parameters) {
-        // System.out.println(instruction + " " + operation + " - " + String.join("-", parameters));
+        //System.out.println(instruction + " " + operation + " - " + String.join("-", parameters));
     }
 
     private long getParameters(int mode, int pos) {

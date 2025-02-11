@@ -21,7 +21,6 @@ public class Day8 extends Day {
         setName("Haunted Wasteland");
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
 

@@ -20,7 +20,6 @@ public class Day3 extends Day {
         Map<Point, Integer> wire2 = mapWire(input.get(1));
         setPart1(part1(wire1, wire2));
         setPart2(part2(wire1, wire2));
-        printParts();
     }
 
     static long part1(Map<Point, Integer> wire1, Map<Point, Integer> wire2) {

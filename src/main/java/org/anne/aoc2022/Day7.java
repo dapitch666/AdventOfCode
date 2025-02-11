@@ -16,7 +16,6 @@ public class Day7 extends Day {
         Directory root = getRoot(readFile());
         setPart1(part1(root));
         setPart2(part2(root));
-        printParts();
     }
 
     public static long part1(Directory root) {

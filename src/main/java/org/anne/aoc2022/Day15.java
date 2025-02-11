@@ -22,7 +22,6 @@ public class Day15 extends Day {
         List<String> input = readFile();
         setPart1(part1(input, 2000000));
         setPart2(part2(input, 4000000));
-        printParts();
     }
 
     public static long part1(List<String> input, int rowNb) {

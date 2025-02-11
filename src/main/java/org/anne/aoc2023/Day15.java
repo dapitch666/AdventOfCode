@@ -17,7 +17,6 @@ public class Day15 extends Day {
         var input = readFileOneLine();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
 

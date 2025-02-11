@@ -18,7 +18,6 @@ public class Day20 extends Day {
         List<String> input = readFile();
         setPart1(part1(input, 100));
         setPart2(part2(input, 100));
-        printParts();
     }
 
     public static int part1(List<String> input, int minSavedTime) {

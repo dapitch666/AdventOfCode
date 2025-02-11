@@ -16,7 +16,6 @@ public class Day6 extends Day {
         List<Integer> input = readFileGetAllInts();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     public static int part1(List<Integer> input) {

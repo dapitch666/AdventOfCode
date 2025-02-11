@@ -1,12 +1,13 @@
 package org.anne.aoc2021;
 
 import org.anne.common.Day;
+import org.anne.common.Direction;
 import org.anne.common.GridHelper;
 
 import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+import java.util.PriorityQueue;
 
 public class Day15 extends Day {
 
@@ -20,83 +21,94 @@ public class Day15 extends Day {
         List<String> input = readFile();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     public static long part1(List<String> input) {
-        return getLowestTotalRisk(input);
-    }
-
-    private static long getLowestTotalRisk(List<String> input) {
-        return getLowestTotalRisk(input, 1);
+        List<List<Node>> mapInput = parseInput(input, 1);
+        return calculateLowerRiskPathCost(mapInput);
     }
 
     public static long part2(List<String> input) {
-        return getLowestTotalRisk(input, 5);
+        List<List<Node>> mapInput = parseInput(input, 5);
+        return calculateLowerRiskPathCost(mapInput);
     }
 
-    private static long getLowestTotalRisk(List<String> input, int multiplier) {
-        int[][] risks = input.stream()
-                .map(s -> s.chars().map(Character::getNumericValue).toArray())
-                .toArray(i -> new int[i][0]);
+    private static long calculateLowerRiskPathCost(List<List<Node>> nodes) {
+        PriorityQueue<QueueEntry> queue = new PriorityQueue<>();
+        queue.offer(new QueueEntry(new Point(), 0));
+        nodes.getFirst().getFirst().costFromStart = 0;
 
-        int[][] paths = new int[risks.length * multiplier][risks[0].length * multiplier];
-        for (int[] ints : paths) {
-            Arrays.fill(ints, Integer.MAX_VALUE);
-        }
-        paths[0][0] = 0;
-        int xMax = paths.length;
-        int yMax = paths[0].length;
-
-        boolean stop = false;
-        do  {
-            for (int i = 0; i < xMax; i++) {
-                for (int j = 0; j < yMax; j++) {
-                    int currentRisk = paths[i][j];
-                    for (Point p : getAdjacent(i, j, xMax, yMax)) {
-                        int neighbourRisk = getRisk(p, risks);
-                        if (paths[p.x][p.y] <= currentRisk + neighbourRisk) {
-                            stop = true;
-                        } else {
-                            stop = false;
-                            paths[p.x][p.y] = currentRisk + neighbourRisk;
-                        }
-                    }
-                }
+        while (!queue.isEmpty()) {
+            QueueEntry current = queue.poll();
+            for (Direction direction : Direction.values()) {
+                tryAddNextPathNode(direction, current, nodes, queue);
             }
-        } while (!stop);
-        return paths[xMax - 1][yMax - 1];
+        }
+
+        return nodes.getLast().get(nodes.getFirst().size()-1).costFromStart;
     }
 
-    private static List<Point> getAdjacent(int i, int j, int xMax, int yMax) {
-        List<Point> adjacent = new ArrayList<>();
-        if (i > 0) {
-            adjacent.add(new Point(i - 1, j));
+    private static void tryAddNextPathNode(Direction direction, Point previous,
+                                           List<List<Node>> nodes, PriorityQueue<QueueEntry> queue) {
+
+        Point next = direction.move(previous);
+        if (next.x < 0 || next.x >= nodes.getFirst().size() || next.y < 0 || next.y >= nodes.size()) return;
+
+        Node node = nodes.get(next.y).get(next.x);
+        if (node.costFromStart != Long.MAX_VALUE) return;
+
+        Node prevNode = nodes.get(previous.y).get(previous.x);
+        long newCost = node.cost + prevNode.costFromStart;
+
+        if (newCost < node.costFromStart) {
+            node.costFromStart = newCost;
+            node.prevNode = previous;
         }
-        if (i < xMax - 1) {
-            adjacent.add(new Point(i + 1, j));
-        }
-        if (j > 0) {
-            adjacent.add(new Point(i, j - 1));
-        }
-        if (j < yMax - 1) {
-            adjacent.add(new Point(i, j + 1));
-        }
-        return adjacent;
+
+        queue.offer(new QueueEntry(next, node.costFromStart));
     }
 
-    public static int getRisk(Point p, int[][] risks) {
-        if (GridHelper.isValidPoint(p, risks)) {
-            return risks[p.x][p.y];
-        } else {
-            int risk = 0;
-            if (p.y >= risks[0].length) {
-                risk = getRisk(new Point(p.x, p.y - risks[0].length), risks) + 1;
+    private static List<List<Node>> parseInput(List<String> input, int multiplier) {
+        int[][] intGrid = GridHelper.getIntGrid(input);
+        int height = intGrid.length;
+        int width = intGrid[0].length;
+
+        List<List<Node>> mapInput = new ArrayList<>();
+        for (int y = 0; y < height * multiplier; y++) {
+            mapInput.add(new ArrayList<>());
+            for (int x = 0; x < width * multiplier; x++) {
+                int value = intGrid[y % height][x % width] + (multiplier > 1 ? x / width + y / height : 0);
+                if (value >= 10)
+                    value -= 9;
+                mapInput.get(y).add(new Node(value));
             }
-            if (p.x >= risks.length) {
-                risk = getRisk(new Point(p.x - risks.length, p.y), risks) + 1;
-            }
-            return risk%10 == 0 ? 1 : risk%10;
+        }
+        return mapInput;
+    }
+
+    private static class Node {
+        int cost;
+        long costFromStart;
+        Point prevNode;
+
+        Node(int cost) {
+            this.cost = cost;
+            this.costFromStart = Long.MAX_VALUE;
+            this.prevNode = new Point();
+        }
+    }
+
+    private static class QueueEntry extends Point implements Comparable<QueueEntry> {
+        long priority;
+
+        QueueEntry(Point point, long priority) {
+            super(point);
+            this.priority = priority;
+        }
+
+        @Override
+        public int compareTo(QueueEntry other) {
+            return Long.compare(this.priority, other.priority);
         }
     }
 }

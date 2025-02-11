@@ -19,7 +19,6 @@ public class Day4 extends Day {
         List<String> input = parseInput(readFile());
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
      static long part1(List<String> input) {

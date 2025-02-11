@@ -17,7 +17,6 @@ public class Day5 extends Day {
         String input = readFileOneLine();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     private static final MessageDigest md5 = HashUtils.getMd5Instance();

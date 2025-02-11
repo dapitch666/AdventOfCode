@@ -18,7 +18,6 @@ public class Day5 extends Day {
         SortedSet<Integer> input = getBoardingPasses(readFile());
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     static int part1(SortedSet<Integer> boardingPasses) {

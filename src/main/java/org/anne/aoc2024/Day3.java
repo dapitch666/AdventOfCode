@@ -17,7 +17,6 @@ public class Day3 extends Day {
         String input = String.join("", readFile());
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     public static int part1(String input) {

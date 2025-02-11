@@ -25,6 +25,7 @@ public abstract class Day {
         long start = System.nanoTime();
         execute();
         long elapsed = System.nanoTime() - start;
+        printParts();
         System.out.println(ANSI_BLUE + "Executed in " + elapsed / 1000000 + "ms" + ANSI_RESET);
         System.out.println();
     }
@@ -50,6 +51,14 @@ public abstract class Day {
         } else {
             System.out.println("Part " + partNumber + ": " + result);
         }
+    }
+
+    public String getPart1() {
+        return part1.toString();
+    }
+
+    public String getPart2() {
+        return part2.toString();
     }
 
     public void printParts() {

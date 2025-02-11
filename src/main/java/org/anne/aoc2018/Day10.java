@@ -21,7 +21,6 @@ public class Day10 extends Day {
         List<String> input = readFile();
         setPart1(part1(input, 10));
         setPart2(part2(input, 10));
-        printParts();
     }
 
     public static String part1(List<String> input, int maxHeight) {

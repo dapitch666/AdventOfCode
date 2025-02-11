@@ -20,7 +20,6 @@ public class Day9 extends Day {
         List<Long> input = readFileAsLongs();
         setPart1(part1(input, STEP));
         setPart2(part2(input, STEP));
-        printParts();
     }
 
     public static long part1(List<Long> input, int step) {

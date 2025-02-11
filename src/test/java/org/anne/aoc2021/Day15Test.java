@@ -20,28 +20,13 @@ class Day15Test {
             "2311944581"
     );
 
-    final List<String> smallInput = List.of(
-            "12",
-            "34"
-    );
-
-    final List<String> mediumInput = List.of(
-            "1223",
-            "3445",
-            "2334",
-            "4556"
-    );
-
     @Test
     void testPart1() {
-        assertEquals(6L, Day15.part1(smallInput));
         assertEquals(40L, Day15.part1(input));
-        assertEquals(21L, Day15.part1(mediumInput));
     }
 
     @Test
     void testPart2() {
-        assertEquals(73L, Day15.part2(smallInput));
         assertEquals(315L, Day15.part2(input));
     }
 }

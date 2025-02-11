@@ -24,7 +24,6 @@ public class Day10 extends Day {
         setName("Syntax Scoring");
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     public static long part1(List<String> input) {

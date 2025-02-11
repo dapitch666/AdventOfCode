@@ -17,7 +17,6 @@ public class Day10 extends Day {
         List<String> input = readFile();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     static int part1(List<String> input) {
@@ -77,9 +76,6 @@ public class Day10 extends Day {
     }
 
     static Map<Double, Point> visibleAsteroids (List<Point> asteroids, Point asteroid) {
-        if (asteroid.x == 0 && asteroid.y == 2) {
-            System.out.println();
-        }
         Map<Double, Point> angles = new HashMap<>();
         for (Point point : asteroids) {
             if (!point.equals(asteroid)) {

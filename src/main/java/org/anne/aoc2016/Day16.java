@@ -13,7 +13,6 @@ public class Day16 extends Day {
         String input = readFileOneLine();
         setPart1(part1(input, 272));
         setPart2(part2(input, 35651584));
-        printParts();
     }
 
     public static String part1(String input, int diskSize) {

@@ -18,7 +18,6 @@ public class Day7 extends Day {
         Map<String, Map<String, Integer>> input = decode(readFile());
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     static int part1(Map<String, Map<String, Integer>> input) {

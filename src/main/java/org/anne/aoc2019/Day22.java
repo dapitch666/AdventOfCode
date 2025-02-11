@@ -16,7 +16,6 @@ public class Day22 extends Day {
         List<String> input = readFile();
         setPart1(part1(input, 10007, 2019));
         setPart2(part2(input, 119315717514047L, 101741582076661L, 2020));
-        printParts();
     }
 
     public static BigInteger part1(List<String> input, int deckSize, int position) {

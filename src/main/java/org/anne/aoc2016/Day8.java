@@ -17,7 +17,6 @@ public class Day8 extends Day {
         List<String> input = readFile();
         setPart1(part1(input, 50, 6));
         setPart2(part2(input, 50, 6));
-        printParts();
     }
 
     public static int part1(List<String> input, int width, int height) {

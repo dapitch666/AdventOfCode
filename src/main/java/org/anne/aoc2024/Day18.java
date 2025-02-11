@@ -19,7 +19,6 @@ public class Day18 extends Day {
         List<String> input = readFile();
         setPart1(part1(input, 71));
         setPart2(part2(input, 71));
-        printParts();
     }
 
     public static int part1(List<String> input, int memorySize) {

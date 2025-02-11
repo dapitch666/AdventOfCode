@@ -15,7 +15,6 @@ public class Day18 extends Day {
         String input = readFileOneLine();
         setPart1(part1(input, 40));
         setPart2(part2(input, 400000));
-        printParts();
     }
 
     public static int part1(String input, int rows) {

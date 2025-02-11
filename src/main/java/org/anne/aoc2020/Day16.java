@@ -20,7 +20,6 @@ public class Day16 extends Day {
         List<String> input = readFile();
         setPart1(part1(input));
         setPart2(part2());
-        printParts();
     }
 
     public static long part1(List<String> input) {

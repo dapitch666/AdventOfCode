@@ -18,7 +18,6 @@ public class Day12  extends Day {
         List<String> input = readFile();
         setPart1(part1(input, 1000));
         setPart2(part2(input));
-        printParts();
     }
 
     static int part1(List<String> input, int steps) {

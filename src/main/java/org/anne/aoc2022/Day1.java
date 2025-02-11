@@ -18,7 +18,6 @@ public class Day1 extends Day {
         List<Integer> elves = getElves(input);
         setPart1(part1(elves));
         setPart2(part2(elves));
-        printParts();
     }
 
     public static int part1(List<Integer> elves) {

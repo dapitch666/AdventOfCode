@@ -18,7 +18,6 @@ public class Day1 extends Day {
         String input = readFileOneLine();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     public static int part1(String input) {

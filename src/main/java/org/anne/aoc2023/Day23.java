@@ -20,7 +20,6 @@ public class Day23 extends Day {
         List<String> input = readFile();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
     
     static final Set<Point> visited = new HashSet<>();

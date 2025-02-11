@@ -22,7 +22,6 @@ public class Day16 extends Day {
 
         setPart1(part1(maxPressureGrid));
         setPart2(part2(maxPressureGrid));
-        printParts();
     }
 
     public static long part1(int[][][] dp) {

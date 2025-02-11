@@ -20,25 +20,22 @@ public class Day17 extends Day {
         List<String> input = readFile();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     public static long part1(List<String> input) {
         var grid = getGrid(input);
-        long result = Arrays.stream(grid)
+        return Arrays.stream(grid)
                 .flatMapToInt(Arrays::stream)
                 .filter(c -> c == 'W' || c == 'F')
                 .count();
-        return result == 31013 ? 1 : result;
     }
 
     public static long part2(List<String> input) {
         var grid = getGrid(input);
-        long result = Arrays.stream(grid)
+        return Arrays.stream(grid)
                 .flatMapToInt(Arrays::stream)
                 .filter(c -> c == 'W')
                 .count();
-        return result == 25448 ? 1 : result;
     }
 
     static boolean flood(int[][] grid, Point point, Direction direction) {

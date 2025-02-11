@@ -17,7 +17,6 @@ public class Day11 extends Day {
         int input = Integer.parseInt(readFileOneLine());
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
 
     public static String part1(int input) {

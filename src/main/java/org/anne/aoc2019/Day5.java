@@ -13,12 +13,11 @@ public class Day5 extends Day {
         String input = readFileOneLine();
         setPart1(part1(input));
         setPart2(part2(input));
-        printParts();
     }
     public static long part1(String input) {
         Computer computer = new Computer(input);
         computer.compute(1);
-        return computer.getOutput();
+        return computer.getLastOutput();
     }
 
     public static long part2(String input) {

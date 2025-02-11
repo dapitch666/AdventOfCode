@@ -21,7 +21,6 @@ public class Day20 extends Day {
         Map<Integer, Tile> tiles = getTiles(input);
         setPart1(part1(tiles));
         setPart2(part2(tiles));
-        printParts();
     }
 
     static long part1(Map<Integer, Tile> tiles) {
