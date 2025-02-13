@@ -56,7 +56,6 @@ def create_day_class(year, day, src_dir, day_class, name):
         file.write("        List<String> input = readFile();\n")
         file.write("        setPart1(part1(input));\n")
         file.write("        setPart2(part2(input));\n")
-        file.write("        printParts();\n")
         file.write("    }\n\n")
         file.write("    public static int part1(List<String> input) {\n")
         file.write("        return 0;\n")
