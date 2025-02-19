@@ -17,5 +17,6 @@ public class TestUtils {
             System.out.println("Day " + day + " is not implemented yet");
         }
         assertEquals(expectedAnswer, actualAnswer, "Year " + year + " " + day + " " + part + " failed");
+        System.out.println("Year " + year + " " + day + " " + part + " passed");
     }
 }
