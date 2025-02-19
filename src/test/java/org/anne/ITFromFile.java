@@ -7,7 +7,7 @@ import static org.anne.TestUtils.runTest;
 
 public class ITFromFile {
 
-    @ParameterizedTest(name = "{0} {1} {2}")
+    @ParameterizedTest//(name = "{0} {1} {2}")
     @CsvFileSource(resources = "/answers.csv", numLinesToSkip = 1)
     void testPuzzleAnswersFromFile(String year, String day, String part, String expectedAnswer) {
         runTest(year, day, part, expectedAnswer);
