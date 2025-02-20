@@ -13,8 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4                # clones your repo
-        with:
-          token: ${{ secrets.AOC_ACTION_PAT }}   # secret containing your personal access token, see setup on how to obtain
 
       - uses: joblo2213/aoc-badges-action@v3
         with:
