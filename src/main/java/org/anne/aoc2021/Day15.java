@@ -87,7 +87,7 @@ public class Day15 extends Day {
     }
 
     private static class Node {
-        int cost;
+        final int cost;
         long costFromStart;
         Point prevNode;
 
@@ -99,7 +99,7 @@ public class Day15 extends Day {
     }
 
     private static class QueueEntry extends Point implements Comparable<QueueEntry> {
-        long priority;
+        final long priority;
 
         QueueEntry(Point point, long priority) {
             super(point);

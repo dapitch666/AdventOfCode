@@ -45,7 +45,8 @@ public class Day24 extends Day {
     }
 
     static class Component {
-        int portA, portB;
+        final int portA;
+        final int portB;
         boolean used = false;
 
         Component(int portA, int portB) {

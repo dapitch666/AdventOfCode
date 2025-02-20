@@ -90,15 +90,15 @@ public class Day24 extends Day {
     }
 
     private static class Group {
-        String army;
+        final String army;
         int units;
         final int initialUnits;
-        int hp;
+        final int hp;
         List<String> weaknesses = new ArrayList<>();
         List<String> immunities = new ArrayList<>();
         int damage;
-        String damageType;
-        int initiative;
+        final String damageType;
+        final int initiative;
 
         public Group(String army, String string) {
             Pattern pattern = Pattern.compile("([0-9]+) units each with ([0-9]+) hit points (\\(.*\\))? ?with an attack that does ([0-9]+) ([a-z]+) damage at initiative ([0-9]+)");
