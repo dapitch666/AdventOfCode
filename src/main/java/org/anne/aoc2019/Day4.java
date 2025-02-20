@@ -15,7 +15,7 @@ public class Day4 extends Day {
     @Override
     public void execute() {
         setName("Secure Container");
-        List<Integer> input = readFileAsInts();
+        List<Integer> input = readFileGetAllInts();
         setPart1(part1(input));
         setPart2(part2(input));
     }

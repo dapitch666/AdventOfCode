@@ -70,8 +70,8 @@ public class Day10 extends Day {
     }
 
     static class Bot {
-        int number;
-        List<Integer> chips = new ArrayList<>();
+        final int number;
+        final List<Integer> chips = new ArrayList<>();
         String lowType;
         int lowValue;
         String highType;

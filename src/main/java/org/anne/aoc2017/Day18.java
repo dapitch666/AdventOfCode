@@ -38,8 +38,8 @@ public class Day18 extends Day {
     }
 
     private static class Program {
-        Map<Character, Long> registers = new HashMap<>();
-        Deque<Long> queue = new ArrayDeque<>();
+        final Map<Character, Long> registers = new HashMap<>();
+        final Deque<Long> queue = new ArrayDeque<>();
         long i = 0;
         boolean wait = false;
         long result = 0;

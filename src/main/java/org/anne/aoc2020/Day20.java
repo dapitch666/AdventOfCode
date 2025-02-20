@@ -70,18 +70,16 @@ public class Day20 extends Day {
         Map<Integer, Tile> tiles = new HashMap<>();
 
         List<Integer> indexes = IntStream.range(0, input.size())
-                .filter(i -> "".equals(input.get(i)))
+                .filter(i -> input.get(i).startsWith("Tile"))
                 .boxed()
-                .collect(Collectors.toList());
-        indexes.add(input.size());
+                .toList();
 
-        int prev = -1;
         for (int index: indexes) {
-            int id = Integer.parseInt(input.get(prev+1).replaceAll("^.+(\\d{4}).$", "$1"));
-            Tile newTile = new Tile(id, new ArrayList<>(input.subList(prev + 2, index)));
+            int id = Integer.parseInt(input.get(index).replaceAll("^.+(\\d{4}).$", "$1"));
+            Tile newTile = new Tile(id, new ArrayList<>(input.subList(index + 1, index + 11)));
             tiles.put(id, newTile);
-            prev = index;
         }
+
         for (Map.Entry<Integer, Tile> first : tiles.entrySet()) {
             for (Map.Entry<Integer, Tile> second : tiles.entrySet()) {
                 if (!first.getKey().equals(second.getKey())) {
@@ -228,7 +226,7 @@ public class Day20 extends Day {
 
         public Tile(int id, List<String> input) {
             this.id = id;
-            this.size = input.get(0).length();
+            this.size = input.getFirst().length();
             this.image = newTile();
             for (int i = 0; i < this.size; i++) {
                 for (int j = 0; j < this.size; j++) {
