@@ -13,7 +13,7 @@ public class Day15 extends Day {
     @Override
     public void execute() {
         setName("Rambunctious Recitation");
-        List<Integer> input = readFileAsInts();
+        List<Integer> input = readFileIntegerOneLine(",");
         setPart1(part1(input));
         setPart2(part2(input));
     }
@@ -26,22 +26,27 @@ public class Day15 extends Day {
         return getLastSpokenNumber(input, 30000000);
     }
 
-    static int getLastSpokenNumber(List<Integer> input, int maxTurns) {
-        int spokenNumber = 0;
-        Map<Integer, Integer> spokenNumbers = new HashMap<>();
-        for (int i = 0; i < input.size(); i++) {
-            spokenNumbers.put(input.get(i), i + 1);
-        }
-        for (int i = input.size() + 1; i < maxTurns; i++) {
-            if (spokenNumbers.containsKey(spokenNumber)) {
-                int val = spokenNumbers.get(spokenNumber);
-                spokenNumbers.put(spokenNumber, i);
-                spokenNumber = i - val;
-            } else {
-                spokenNumbers.put(spokenNumber, i);
-                spokenNumber = 0;
-            }
-        }
-        return spokenNumber;
+   static int getLastSpokenNumber(List<Integer> input, int maxTurns) {
+       int[] birthTime = new int[maxTurns];
+       boolean[] hasKey = new boolean[maxTurns];
+       int spokenNumber = 0, nextNumber;
+
+       for (int i = 0; i < maxTurns; i++) {
+           if (i < input.size()) {
+               nextNumber = input.get(i);
+           } else {
+               if (!hasKey[spokenNumber]) {
+                   nextNumber = 0;
+               } else {
+                   nextNumber = i - birthTime[spokenNumber];
+               }
+           }
+           if (i != 0) {
+               birthTime[spokenNumber] = i;
+               hasKey[spokenNumber] = true;
+           }
+           spokenNumber = nextNumber;
+       }
+       return spokenNumber;
     }
 }

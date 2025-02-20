@@ -9,10 +9,9 @@ public class LargeTests {
 
     @ParameterizedTest(name = "{0} {1} {2}")
     @CsvSource({
-            "2015, Day7, part1, 46065",
-            "2015, Day7, part2, 14134",
+            "2015, Day7, 46065, 14134",
     })
-    void testPuzzleAnswers(String year, String day, String part, String expectedAnswer) {
-        runTest(year, day, part, expectedAnswer);
+    void testPuzzleAnswers(String year, String day, String part1, String part2) {
+        runTest(year, day, part1, part2);
     }
 }
