@@ -4,6 +4,15 @@ This repository contains my solutions for the [Advent of Code challenge](https:/
 No external libraries are used, only the standard Java libraries. The code is written in a way that it should be easy to understand and follow, even though it is not commented (that's a very bad practice, I know). I try to keep the execution times under 1 second for each puzzle.
 
 [![Build and test](https://github.com/dapitch666/AdventOfCode/actions/workflows/maven.yml/badge.svg)](https://github.com/dapitch666/AdventOfCode/actions/workflows/maven.yml)
+
+## Advent of Code stars
+The goal of the challenge is to collect stars by solving puzzles. There are two puzzles per day, each with two parts. For each part, a star is awarded. The puzzles are released daily at midnight EST (UTC-5) from December 1st to December 25th.
+The following badges show the number of stars obtained in the Advent of Code challenge for each year. The number of stars is updated daily during the challenge.
+
+### Current year
+![](https://img.shields.io/badge/2025-0%20⭐-teal)
+
+### Previous years
 ![](https://img.shields.io/badge/2015-34%20⭐-teal)
 ![](https://img.shields.io/badge/2016-50%20⭐-teal)
 ![](https://img.shields.io/badge/2017-50%20⭐-teal)

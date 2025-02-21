@@ -1,7 +1,7 @@
 name: Update AoC Badges
 on:
   schedule:                                      # run workflow based on schedule
-    - cron: '27 4 1-25 12 *'                     # from the 1. December till 25. December every day at 5:06am (avoid load at full hours)
+    - cron: '27 14 1-25 12 *'                    # from the 1. December till 25. December every day at 2:27pm (avoid load at full hours)
 
   workflow_dispatch:                             # allow to manually start the workflow
 
@@ -18,8 +18,8 @@ jobs:
         with:
           userid: 1111343                        # your user id, see setup on how to obtain
           session: ${{ secrets.AOC_SESSION }}    # secret containing session code, see setup on how to obtain
-          year: 2015                             # the year for which stats should be retrieved
-          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2015-)[0-9]+(?=%20⭐-teal)'             # Regular expression that finds the content of the stars badge in your file.
+          year: 2025                             # the year for which stats should be retrieved
+          starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/2025-)[0-9]+(?=%20⭐-teal)'             # Regular expression that finds the content of the stars badge in your file.
 
       #         Optional inputs:
       #
@@ -32,5 +32,5 @@ jobs:
 
       - uses: stefanzweifel/git-auto-commit-action@v5    # Step that pushes these local changes back to your github repo
         with:
-          commit_message: Update badges skip-checks:true
+          commit_message: Updating badges. skip-checks:true
           file_pattern: README.md
