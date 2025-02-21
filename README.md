@@ -4,7 +4,7 @@ This repository contains my solutions for the [Advent of Code challenge](https:/
 No external libraries are used, only the standard Java libraries. The code is written in a way that it should be easy to understand and follow, even though it is not commented (that's a very bad practice, I know). I try to keep the execution times under 1 second for each puzzle.
 
 [![Build and test](https://github.com/dapitch666/AdventOfCode/actions/workflows/maven.yml/badge.svg)](https://github.com/dapitch666/AdventOfCode/actions/workflows/maven.yml)
-![](https://img.shields.io/badge/2015-34%20⭐-teal)
+![](https://img.shields.io/badge/2015-50%20⭐-teal)
 ![](https://img.shields.io/badge/2016-50%20⭐-teal)
 ![](https://img.shields.io/badge/2017-50%20⭐-teal)
 ![](https://img.shields.io/badge/2018-50%20⭐-teal)
