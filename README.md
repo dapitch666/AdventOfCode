@@ -13,7 +13,7 @@ The following badges show the number of stars obtained in the Advent of Code cha
 ![](https://img.shields.io/badge/2025-0%20⭐-teal)
 
 ### Previous years
-![](https://img.shields.io/badge/2015-34%20⭐-teal)
+![](https://img.shields.io/badge/2015-50%20⭐-teal)
 ![](https://img.shields.io/badge/2016-50%20⭐-teal)
 ![](https://img.shields.io/badge/2017-50%20⭐-teal)
 ![](https://img.shields.io/badge/2018-50%20⭐-teal)
