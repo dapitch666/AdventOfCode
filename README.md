@@ -10,7 +10,7 @@ The goal of the challenge is to collect stars by solving puzzles. There are two 
 The following badges show the number of stars obtained in the Advent of Code challenge for each year. The number of stars is updated daily during the challenge.
 
 ### Current year
-![](https://img.shields.io/badge/2025-2%20⭐-teal)
+![](https://img.shields.io/badge/2025-6%20⭐-teal)
 
 ### Previous years
 ![](https://img.shields.io/badge/2015-50%20⭐-teal)
